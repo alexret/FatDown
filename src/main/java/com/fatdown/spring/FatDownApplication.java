@@ -1,4 +1,4 @@
-package com.example.fatdown;
+package com.fatdown.spring;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
