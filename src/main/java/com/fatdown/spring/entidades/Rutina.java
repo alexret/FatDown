@@ -5,6 +5,8 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
+@Entity
+@Table(name = "RUTINA")
 public class Rutina implements Serializable {
 
     private static final long serialVersionUID = -8548755844378572452L;

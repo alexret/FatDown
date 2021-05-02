@@ -10,11 +10,14 @@ import java.util.Set;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
+/* @ de lombok para que se autogenere el constructor y los getter y setter*/
 @Getter
 @Setter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@Entity
+@Table(name = "EJERCICIO")
 public class Ejercicio implements Serializable {
 
     private static final long serialVersionUID = -8548755844378572454L;
@@ -61,10 +64,10 @@ public class Ejercicio implements Serializable {
     private String duracionEjercicio;
 
     // Relación OneToMany LineasProducto
-    @OneToMany(mappedBy="rutina",
+    @OneToMany(mappedBy="ejercicio",
             cascade = { CascadeType.PERSIST, CascadeType.MERGE },
             orphanRemoval=true)
-    private Set<Rutina> productos = new HashSet<>();
+    private Set<Rutina> rutina = new HashSet<>();
 
 
 
