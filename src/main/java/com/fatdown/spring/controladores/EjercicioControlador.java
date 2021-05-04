@@ -5,6 +5,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping(value = "/ejercicio")
-public class EjercicioController {
+public class EjercicioControlador {
 
 }

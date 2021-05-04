@@ -1,8 +1,53 @@
-<html lang="es" xmlns:th="http://www.thymeleaf.org">
-	<head>
-	</head>
-	<body>
-		<h1>Hola mundo</h1>
-		<h2>Ahora con seguridad</h2>
-	</body>
+<!DOCTYPE html>
+<html lang=es xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+<title>Fat Down</title>
+<meta charset="UTF-8">
+<meta name="description" content="Aplicación de fitness">
+<meta name="keywords" content="work out, gym, fitness, wellness" />
+<meta name="author" content="Daniel Esteban, Alejandro Relaño & Amanda Segura" />
+<meta name="copyright" content="Daniel Esteban, Alejandro Relaño & Amanda Segura" />
+<link rel="stylesheet" type="text/css"
+	th:href="@{/css/bootstrap.minSUPERHERO.css}" />
+<style th:inline="text">
+.logo {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	width: 30%;
+}
+
+.boton {
+	display: block;
+	left: 50%;
+	right: auto;
+	text-decoration: none;
+}
+</style>
+</head>
+<body>
+	<header>
+		<!--Cabecera con logo en imágenes que presentan la página-->
+		<figure>
+			<img class="logo" th:src="@{/pictures/logo.gif}" />
+		</figure>
+
+		<a name="arriba" href=#abajo class="boton"><button type="button"
+				class="btn btn-warning boton btn-sm">Ir abajo</button></a><br />
+		<div class="progress">
+			<div class="progress-bar bg-info" role="progressbar"
+				style="width: 100%;" aria-valuenow="50" aria-valuemin="0"
+				aria-valuemax="100"></div>
+		</div>
+		<br />
+	</header>
+	<section></section>
+	<!--Pie de página que permite regresar al principio-->
+	<footer>
+		<a name="abajo" href=#arriba class="boton"><button type="button"
+				class="btn btn-warning boton btn-sm">Ir arriba</button></a>
+	</footer>
+	</div>
+</body>
 </html>

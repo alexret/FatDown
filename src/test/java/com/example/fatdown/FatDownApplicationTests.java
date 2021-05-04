@@ -2,8 +2,9 @@ package com.example.fatdown;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
+import com.fatdown.spring.FatDownApplication;
 
-@SpringBootTest
+@SpringBootTest(classes = FatDownApplication.class)
 class FatDownApplicationTests {
 
 	@Test
