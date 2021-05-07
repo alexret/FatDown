@@ -26,6 +26,7 @@ public class UsuarioControlador {
 	
 	@Autowired
 	private UsuarioServicio usuarioServicio;
+	
 	// Métodos get y post
 
 	@GetMapping("/signup")
@@ -36,6 +37,7 @@ public class UsuarioControlador {
 	@PostMapping("/signup")
 	public String darseDeAlta(HttpServletRequest request) {
 		String nombreUsuario = request.getParameter("nombreusuario");
+		String username = request.getParameter("nombreusuario");
 		String apellidosUsuario = request.getParameter("apellidosusuario");
 		String passwordUsuario = request.getParameter("passwordusuario");
 		String emailUsuario = request.getParameter("emailusuario");
@@ -53,6 +55,7 @@ public class UsuarioControlador {
 
 		Usuario u = new Usuario();
 		u.setNombreUsuario(nombreUsuario);
+		u.setUsername(username);
 		u.setApellidosUsuario(apellidosUsuario);
 		u.setPasswordUsuario(passwordUsuario);
 		u.setEmailUsuario(emailUsuario);
@@ -69,22 +72,12 @@ public class UsuarioControlador {
 
 	@GetMapping("/login")
 	public String login(Model model, HttpSession session) {
-		/*
-		 * Boolean error = false;
-		 * 
-		 * model.addAttribute("error", error);
-		 */
 
 		return "login";
 	}
 
 	@GetMapping("/login_error")
 	public String login_error(Model model, HttpSession session) {
-		/*
-		 * Boolean error = false;
-		 * 
-		 * model.addAttribute("error", error);
-		 */
 
 		return "login_error";
 	}

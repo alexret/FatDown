@@ -32,6 +32,9 @@ public class Usuario implements Serializable {
 
 	// Datos personales
 
+	@Column(name = "USERNAME")
+	private String username;
+	
 	@Column(name = "NOMBRE_USUARIO")
 	private String nombreUsuario;
 
@@ -112,6 +115,14 @@ public class Usuario implements Serializable {
 
 	public void setIdUsuario(Long idUsuario) {
 		this.idUsuario = idUsuario;
+	}
+	
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
 	public String getNombreUsuario() {
