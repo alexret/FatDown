@@ -71,10 +71,10 @@ public class UsuarioServicioImpl implements UsuarioServicio {
 		return usuarioRepository.findAll();
 	}
 
-	@Override
-	public Usuario buscarPorNombreUsuario(String username) {
-		return usuarioRepository.findByUsername(username);
-	}
+//	@Override
+//	public Usuario buscarPorNombreUsuario(String username) {
+//		return usuarioRepository.findByUsername(username);
+//	}
 
 	@Override
 	public Usuario buscarPorEmailUsuario(String emailUsuario) {

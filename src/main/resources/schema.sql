@@ -11,7 +11,7 @@ use springmarket;
          email_usuario varchar(255),
          fechanac_usuario varchar(255),
          nombre_usuario varchar(255),
-         username varchar (255),
+         -- username varchar (255),
          numtarjeta_usuario varchar(255),
          password_usuario varchar(255),
          titular_usuario varchar(255),

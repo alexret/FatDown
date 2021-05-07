@@ -14,7 +14,7 @@ public interface UsuarioServicio {
 
 	public Iterable<Usuario> listarUsuarios();
 	
-	public Usuario buscarPorNombreUsuario(String username);
+	//public Usuario buscarPorNombreUsuario(String username);
 	
 	public Usuario buscarPorEmailUsuario (String emailUsuario);
 

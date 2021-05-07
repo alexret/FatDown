@@ -12,8 +12,8 @@ import org.springframework.stereotype.Repository;
 import com.fatdown.spring.entidades.Usuario;
 
 @Repository
+@Component("usuarioRepository")
 public interface UsuarioRepository extends PagingAndSortingRepository<Usuario, Long> {
 
 	Usuario findByUsername(String username);
-
 }

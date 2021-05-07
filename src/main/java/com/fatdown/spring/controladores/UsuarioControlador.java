@@ -37,7 +37,6 @@ public class UsuarioControlador {
 	@PostMapping("/signup")
 	public String darseDeAlta(HttpServletRequest request) {
 		String nombreUsuario = request.getParameter("nombreusuario");
-		String username = request.getParameter("nombreusuario");
 		String apellidosUsuario = request.getParameter("apellidosusuario");
 		String passwordUsuario = request.getParameter("passwordusuario");
 		String emailUsuario = request.getParameter("emailusuario");
@@ -55,7 +54,7 @@ public class UsuarioControlador {
 
 		Usuario u = new Usuario();
 		u.setNombreUsuario(nombreUsuario);
-		u.setUsername(username);
+		//u.setUsername(nombreUsuario);
 		u.setApellidosUsuario(apellidosUsuario);
 		u.setPasswordUsuario(passwordUsuario);
 		u.setEmailUsuario(emailUsuario);

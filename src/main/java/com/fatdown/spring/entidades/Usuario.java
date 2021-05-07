@@ -32,9 +32,9 @@ public class Usuario implements Serializable {
 
 	// Datos personales
 
-	@Column(name = "USERNAME")
-	private String username;
-	
+//	@Column(name = "USERNAME")
+//	private String username;
+
 	@Column(name = "NOMBRE_USUARIO")
 	private String nombreUsuario;
 
@@ -78,7 +78,7 @@ public class Usuario implements Serializable {
 
 	public Usuario(Long idUsuario, String nombreUsuario, String apellidosUsuario, String passwordUsuario,
 			String emailUsuario, String fechanacUsuario, String numtarjetaUsuario, String titularUsuario,
-			String codsegUsuario, String direcfactUsuario) {
+			String codsegUsuario, String direcfactUsuario, Set<Rol> roles) {
 		super();
 		this.idUsuario = idUsuario;
 		this.nombreUsuario = nombreUsuario;
@@ -90,11 +90,12 @@ public class Usuario implements Serializable {
 		this.titularUsuario = titularUsuario;
 		this.codsegUsuario = codsegUsuario;
 		this.direcfactUsuario = direcfactUsuario;
+		this.roles = roles;
 	}
 
 	public Usuario(String nombreUsuario, String apellidosUsuario, String passwordUsuario, String emailUsuario,
 			String fechanacUsuario, String numtarjetaUsuario, String titularUsuario, String codsegUsuario,
-			String direcfactUsuario) {
+			String direcfactUsuario, Set<Rol> roles) {
 		super();
 		this.nombreUsuario = nombreUsuario;
 		this.apellidosUsuario = apellidosUsuario;
@@ -105,7 +106,44 @@ public class Usuario implements Serializable {
 		this.titularUsuario = titularUsuario;
 		this.codsegUsuario = codsegUsuario;
 		this.direcfactUsuario = direcfactUsuario;
+		this.roles = roles;
 	}
+
+// Constructores con username
+//	public Usuario(Long idUsuario, String username, String nombreUsuario, String apellidosUsuario,
+//			String passwordUsuario, String emailUsuario, String fechanacUsuario, String numtarjetaUsuario,
+//			String titularUsuario, String codsegUsuario, String direcfactUsuario, Set<Rol> roles) {
+//		super();
+//		this.idUsuario = idUsuario;
+//		this.username = username;
+//		this.nombreUsuario = nombreUsuario;
+//		this.apellidosUsuario = apellidosUsuario;
+//		this.passwordUsuario = passwordUsuario;
+//		this.emailUsuario = emailUsuario;
+//		this.fechanacUsuario = fechanacUsuario;
+//		this.numtarjetaUsuario = numtarjetaUsuario;
+//		this.titularUsuario = titularUsuario;
+//		this.codsegUsuario = codsegUsuario;
+//		this.direcfactUsuario = direcfactUsuario;
+//		this.roles = roles;
+//	}
+//	
+//	public Usuario(String username, String nombreUsuario, String apellidosUsuario, String passwordUsuario,
+//			String emailUsuario, String fechanacUsuario, String numtarjetaUsuario, String titularUsuario,
+//			String codsegUsuario, String direcfactUsuario, Set<Rol> roles) {
+//		super();
+//		this.username = username;
+//		this.nombreUsuario = nombreUsuario;
+//		this.apellidosUsuario = apellidosUsuario;
+//		this.passwordUsuario = passwordUsuario;
+//		this.emailUsuario = emailUsuario;
+//		this.fechanacUsuario = fechanacUsuario;
+//		this.numtarjetaUsuario = numtarjetaUsuario;
+//		this.titularUsuario = titularUsuario;
+//		this.codsegUsuario = codsegUsuario;
+//		this.direcfactUsuario = direcfactUsuario;
+//		this.roles = roles;
+//	}
 
 	// Getters y setters
 
@@ -116,14 +154,15 @@ public class Usuario implements Serializable {
 	public void setIdUsuario(Long idUsuario) {
 		this.idUsuario = idUsuario;
 	}
-	
-	public String getUsername() {
-		return username;
-	}
 
-	public void setUsername(String username) {
-		this.username = username;
-	}
+// Get y set de username
+//	public String getUsername() {
+//		return username;
+//	}
+//
+//	public void setUsername(String username) {
+//		this.username = username;
+//	}
 
 	public String getNombreUsuario() {
 		return nombreUsuario;
@@ -220,7 +259,6 @@ public class Usuario implements Serializable {
 		this.roles.remove(rol);
 		rol.getUsuarios().remove(this);
 	}
-
 
 	@Override
 	public String toString() {
