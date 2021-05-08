@@ -7,10 +7,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 
 @Entity
-@Table(name = "MULTIMEDIA")
+@Inheritance(strategy = InheritanceType.JOINED)
 
 public abstract class Multimedia implements Serializable {
 
@@ -44,6 +45,25 @@ public abstract class Multimedia implements Serializable {
 		this.multimedia = multimedia;
 	}
 	
+		
+	public Multimedia(String nombreMultimedia, byte multimedia, Consejo consejo, Ejercicio ejercicio) {
+		super();
+		this.nombreMultimedia = nombreMultimedia;
+		this.multimedia = multimedia;
+		this.consejo = consejo;
+		this.ejercicio = ejercicio;
+	}
+
+	public Multimedia(long idMultimedia, String nombreMultimedia, byte multimedia, Consejo consejo,
+			Ejercicio ejercicio) {
+		super();
+		this.idMultimedia = idMultimedia;
+		this.nombreMultimedia = nombreMultimedia;
+		this.multimedia = multimedia;
+		this.consejo = consejo;
+		this.ejercicio = ejercicio;
+	}
+
 	//Getters & Setters
 
 	public long getIdMultimedia() {
