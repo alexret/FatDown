@@ -30,13 +30,13 @@ public class EjercicioControlador {
         ejercicioServicio.crearEjercicio(ejercicio);
         return "redirect:/ejercicio/crearEjercicio";
     }
-
+/*
     @PostMapping("/eliminarEjercicio")
     public String eliminarEjercicio(@Valid Ejercicio ejercicio) {
         ejercicioServicio.borrarEjercicio(ejercicio.getIdEjercicio());
         return "redirect:/index";
     }
-
+*/
     @PostMapping("/listarEjercicios")
     public String listarEjercicios() {
         ejercicioServicio.listarEjercicios();

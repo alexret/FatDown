@@ -18,7 +18,7 @@
 	margin-left: auto;
 }
 
-@media (max-width : 600px) {
+@media ( max-width : 600px) {
 	.wrapper {
 		width: 100%;
 	}
@@ -42,6 +42,8 @@ label {
 	margin-right: auto;
 	text-decoration: none;
 }
+
+
 </style>
 </head>
 <body>
@@ -54,21 +56,23 @@ label {
 			<br />
 		</header>
 		<div class="wrapper">
-			<form th:action="@{/usuario/login}" method="post">
+			<form th:action="@{/login}" method="post">
 				<fieldset>
 					<legend style="text-shadow: 4px 3px 2px rgba(99, 255, 145, 1);">Inicia
 						sesión</legend>
-					<div class="form-group">
+					<div class="form-group has-danger">
 						<label>Usuario</label> <input type="email"
-							class="form-control form-control-lg"
+							class="form-control is-invalid form-control-lg"
 							placeholder="Tu email es tu usuario" name="username" required>
 					</div>
-					<div class="form-group">
+					<div class="form-group has-danger">
 						<label>Contraseña</label> <input type="password"
-							class="form-control form-control-lg"
-							placeholder="Escribe aquí tu contraseña" name="password" required>
+							class="form-control is-invalid form-control-lg"
+							placeholder="Escribe aquí tu contraseña" name="password"
+							required>
 					</div>
-					<br />
+					<small class="form-text text-danger">Lo sentimos, el email
+						o la contraseña no son correctos</small> <br />
 					<button type="submit" class="btn btn-success btn-lg">Inicia
 						sesión</button>
 				</fieldset>

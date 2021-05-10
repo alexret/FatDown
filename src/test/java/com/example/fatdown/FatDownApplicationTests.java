@@ -20,7 +20,7 @@ class FatDownApplicationTests {
 
 	@Test
 	void contextLoads() {
-
+/*
 		Ejercicio e = new Ejercicio();
 		e.setIdEjercicio(1l);
 		e.setNombreEjercicio("Prueba1");
@@ -41,6 +41,7 @@ class FatDownApplicationTests {
 		ejercicioControlador.crearEjercicio(g);
 
 		System.out.println(ejercicioRepositorio.findAll());
+		*/
 	}
 
 }

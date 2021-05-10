@@ -1,18 +1,16 @@
 package com.fatdown.spring.servicios;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.fatdown.spring.entidades.Usuario;
 import com.fatdown.spring.entidades.Rol;
-import com.fatdown.spring.repositorios.UsuarioRepository;
+import com.fatdown.spring.entidades.Usuario;
 import com.fatdown.spring.repositorios.RolRepository;
+import com.fatdown.spring.repositorios.UsuarioRepository;
 
 @Transactional
 @Service
@@ -26,6 +24,7 @@ public class UsuarioServicioImpl implements UsuarioServicio {
 
 	@Autowired
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
+	
 
 //	@PersistenceContext
 //	protected EntityManager em;
@@ -75,6 +74,11 @@ public class UsuarioServicioImpl implements UsuarioServicio {
 	public Usuario buscarPorEmailUsuario(String emailUsuario) {
 		return usuarioRepository.findByEmailUsuario(emailUsuario);
 	}
+	
+	@Bean
+    public BCryptPasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder(); // or any other password encoder
+    }
 
 //	@Override
 //	public Usuario buscarPorEmailUsuario(String emailUsuario) {
