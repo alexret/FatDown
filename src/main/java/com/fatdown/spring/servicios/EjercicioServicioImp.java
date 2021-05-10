@@ -17,16 +17,19 @@ public class EjercicioServicioImp implements EjercicioServicio {
 
     @Override
     public Ejercicio crearEjercicio(Ejercicio ejercicio) {
+
         return ejercicioRepositorio.save(ejercicio);
     }
 
     @Override
     public void borrarEjercicio(Long id) {
+
         ejercicioRepositorio.deleteById(id);
     }
 
     @Override
     public List<Ejercicio> listarEjercicios() {
+
         return ejercicioRepositorio.findAll();
     }
 }
