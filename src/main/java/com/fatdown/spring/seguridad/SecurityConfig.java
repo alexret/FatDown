@@ -35,8 +35,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 						"/favicon.ico",
 						"/pictures/**",
 						"/usuario/**").permitAll()
-				.antMatchers("").hasAnyAuthority("registrado", "admin")
-				.antMatchers("").hasAuthority("admin")
+				.antMatchers().hasAnyAuthority("registrado", "admin")
+				.antMatchers().hasAuthority("admin")
 				.anyRequest().authenticated()
 			.and()
 				.formLogin()

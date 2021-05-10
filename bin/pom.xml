@@ -9,17 +9,22 @@
 		<version>2.4.4</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.example</groupId>
+	<groupId>com.fatdown</groupId>
 	<artifactId>FatDown</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>FatDown</name>
-	<description>FatDown</description>
+	<description>Fitness application</description>
+
 	<properties>
 		<java.version>11</java.version>
-		<spring.security.version>5.3.0.RELEASE</spring.security.version>
+		<spring.security.version>5.3.5.RELEASE</spring.security.version>
 		<thymeleaf.spring-security.version>3.0.4.RELEASE</thymeleaf.spring-security.version>
+		<jackson.version>2.5.2</jackson.version>
+		<jaction.xml.version>2.11.0</jaction.xml.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 	</properties>
-	
+
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -56,22 +61,22 @@
 			</exclusions>
 		</dependency>
 
-
-<!-- 		<dependency> -->
-<!-- 		<groupId>org.springframework.security</groupId> -->
-<!-- 		<artifactId>spring-security-config</artifactId> -->
-<!-- 		<version>${spring.security.version}</version> -->
-<!-- 		</dependency> -->
-<!-- 		<dependency> -->
-<!-- 		<groupId>org.springframework.security</groupId> -->
-<!-- 		<artifactId>spring-security-web</artifactId> -->
-<!-- 		<version>${spring.security.version}</version> -->
-<!-- 		</dependency> -->
-<!-- 		<dependency> -->
-<!-- 		<groupId>org.thymeleaf.extras</groupId> -->
-<!-- 		<artifactId>thymeleaf-extras-springsecurity5</artifactId> -->
-<!-- 		<version>${thymeleaf.spring-security.version}</version> -->
-<!-- 		</dependency> -->
+		<!-- Security -->
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-config</artifactId>
+			<version>${spring.security.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-web</artifactId>
+			<version>${spring.security.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.thymeleaf.extras</groupId>
+			<artifactId>thymeleaf-extras-springsecurity5</artifactId>
+			<version>${thymeleaf.spring-security.version}</version>
+		</dependency>
 
 		<!-- JSON -->
 		<dependency>
@@ -90,6 +95,28 @@
 			<version>1.9.13</version>
 		</dependency>
 
+		<!-- ¿Lombok? -->
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>1.18.20</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/javax.validation/validation-api -->
+		<dependency>
+			<groupId>javax.validation</groupId>
+			<artifactId>validation-api</artifactId>
+			<version>2.0.1.Final</version>
+		</dependency>
+
+
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
+		</dependency>
+
 	</dependencies>
 
 	<build>
@@ -97,6 +124,12 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>3.1.0</version>
 			</plugin>
 		</plugins>
 	</build>

@@ -1,7 +1,7 @@
 drop database if exists FatDown;
 create database FatDown;
 
-use springmarket;
+use FatDown;
     
         create table usuario (
        	 id_usuario bigint not null auto_increment,

@@ -18,6 +18,9 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fatdown.spring.entidades.Rutina;
+import com.fatdown.spring.entidades.Video;
+
 @Entity
 @Table(name = "USUARIO")
 /* POJO */
@@ -69,6 +72,16 @@ public class Usuario implements Serializable {
 	@ManyToMany(fetch = FetchType.EAGER, cascade = { CascadeType.MERGE, CascadeType.PERSIST })
 	@JoinTable(name = "USUARIO_ROL", joinColumns = @JoinColumn(name = "ID_USUARIO"), inverseJoinColumns = @JoinColumn(name = "ID_ROL"))
 	private Set<Rol> roles = new HashSet<>();
+
+	// Relación OneToMany Rutina - propietaria
+
+	@OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
+	private Set<Rutina> rutinas = new HashSet<>();
+
+	// Relación OneToMany Video - propietaria
+
+	@OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
+	private Set<Video> videos = new HashSet<>();
 
 	// Constructores
 
@@ -260,13 +273,42 @@ public class Usuario implements Serializable {
 		rol.getUsuarios().remove(this);
 	}
 
-	@Override
-	public String toString() {
-		return "Usuario [idUsuario=" + idUsuario + ", nombreUsuario=" + nombreUsuario + ", apellidosUsuario="
-				+ apellidosUsuario + ", passwordUsuario=" + passwordUsuario + ", emailUsuario=" + emailUsuario
-				+ ", fechanacUsuario=" + fechanacUsuario + ", numtarjetaUsuario=" + numtarjetaUsuario
-				+ ", titularUsuario=" + titularUsuario + ", codsegUsuario=" + codsegUsuario + ", direcfactUsuario="
-				+ direcfactUsuario + "]";
+	// Métodos Rutina
+
+	public Set<Rutina> getRutinas() {
+		return rutinas;
+	}
+
+	public void setRutinas(Set<Rutina> rutinas) {
+		this.rutinas = rutinas;
+	}
+
+	public boolean anadirRutinas(Rutina rutina) {
+		rutina.setUsuario(this);
+		return getRutinas().add(rutina);
+	}
+
+	public void eliminarRutina(Rutina rutina) {
+		getRutinas().remove(rutina);
+	}
+
+	// Métodos Video
+
+	public Set<Video> getVideos() {
+		return videos;
+	}
+
+	public void setVideos(Set<Video> videos) {
+		this.videos = videos;
+	}
+
+	public boolean anadirVideos(Video video) {
+		video.setUsuario(this);
+		return getVideos().add(video);
+	}
+
+	public void eliminarVideo(Video video) {
+		getVideos().remove(video);
 	}
 
 }

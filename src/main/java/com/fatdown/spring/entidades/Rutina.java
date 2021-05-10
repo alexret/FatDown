@@ -3,6 +3,9 @@ package com.fatdown.spring.entidades;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+
+import com.fatdown.spring.entidades.Usuario;
+
 import java.io.Serializable;
 
 @Entity
@@ -22,12 +25,23 @@ public class Rutina implements Serializable {
     @NotBlank(message = "El nombre de la rutina no puede estar vacío")
     private String nombreRutina;
 
-    @Column(name = "nombreUsuario")
-    private Usuario usuario;
+    @ManyToOne
+	@JoinColumn(name = "ID_USUARIO")
+	private Usuario usuario;
 
     @ManyToOne
-    @JoinColumn(name = "idEjercicio")
+    @JoinColumn(name = "ID_EJERCICIO")
     private Ejercicio ejercicio;
+    
+    // Getters y setters
+    
+    public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
 }
 
 

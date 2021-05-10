@@ -8,9 +8,9 @@ import javax.persistence.MappedSuperclass;
 
 import com.fatdown.spring.enums.Categoria;
 
-@MappedSuperclass
+//An entity cannot be annotated with both @Entity and @MappedSuperclass
+//@MappedSuperclass
 @Entity
-
 public class Video extends Multimedia {
 
 	private static final long serialVersionUID = 7337585826428548113L;
@@ -20,11 +20,11 @@ public class Video extends Multimedia {
 
 	@Column(name = "LINK_VIDEO")
 	private String linkVideo;
-	
+
 	// OneToMany Usuario - poseída
-		@ManyToOne
-		@JoinColumn(name = "ID_USUARIO")
-		private Usuario usuario;
+	@ManyToOne
+	@JoinColumn(name = "ID_USUARIO")
+	private Usuario usuario;
 
 	// Constructores
 
@@ -45,7 +45,7 @@ public class Video extends Multimedia {
 		this.linkVideo = linkVideo;
 	}
 
-	// Metodos
+	// Métodos
 
 	public Categoria getCategoriaVideo() {
 		return categoriaVideo;
@@ -66,5 +66,15 @@ public class Video extends Multimedia {
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+	
+	
 
 }

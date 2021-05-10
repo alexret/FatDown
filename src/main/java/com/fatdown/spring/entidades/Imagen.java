@@ -3,7 +3,8 @@ package com.fatdown.spring.entidades;
 import javax.persistence.Entity;
 import javax.persistence.MappedSuperclass;
 
-@MappedSuperclass
+//An entity cannot be annotated with both @Entity and @MappedSuperclass
+//@MappedSuperclass
 @Entity
 public class Imagen extends Multimedia {
 

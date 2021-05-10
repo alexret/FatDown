@@ -27,8 +27,8 @@ public class UsuarioServicioImpl implements UsuarioServicio {
 	@Autowired
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
 
-	@PersistenceContext
-	protected EntityManager em;
+//	@PersistenceContext
+//	protected EntityManager em;
 
 	public UsuarioServicioImpl() {
 		super();
@@ -71,22 +71,22 @@ public class UsuarioServicioImpl implements UsuarioServicio {
 		return usuarioRepository.findAll();
 	}
 
-//	@Override
-//	public Usuario buscarPorNombreUsuario(String username) {
-//		return usuarioRepository.findByUsername(username);
-//	}
-
 	@Override
 	public Usuario buscarPorEmailUsuario(String emailUsuario) {
-		Query query = this.em.createQuery("select u FROM Usuario u where u.emailUsuario =  :emailUsuario");
-		query.setParameter("emailUsuario", emailUsuario);
-
-		try {
-			Usuario usuario = (Usuario) query.getSingleResult();
-			return usuario;
-		} catch (javax.persistence.NoResultException e) {
-			return null;
-		}
-
+		return usuarioRepository.findByEmailUsuario(emailUsuario);
 	}
+
+//	@Override
+//	public Usuario buscarPorEmailUsuario(String emailUsuario) {
+//		Query query = this.em.createQuery("select u FROM Usuario u where u.emailUsuario =  :emailUsuario");
+//		query.setParameter("emailUsuario", emailUsuario);
+//
+//		try {
+//			Usuario usuario = (Usuario) query.getSingleResult();
+//			return usuario;
+//		} catch (javax.persistence.NoResultException e) {
+//			return null;
+//		}
+//
+//	}
 }
