@@ -24,7 +24,7 @@ public class Ejercicio implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID_USUARIO")
+    @Column(name = "ID_EJERCICIO")
     private Long idEjercicio;
 
     // Datos
