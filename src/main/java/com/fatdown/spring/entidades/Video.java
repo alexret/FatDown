@@ -2,6 +2,8 @@ package com.fatdown.spring.entidades;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.MappedSuperclass;
 
 import com.fatdown.spring.enums.Categoria;
@@ -18,6 +20,11 @@ public class Video extends Multimedia {
 
 	@Column(name = "LINK_VIDEO")
 	private String linkVideo;
+	
+	// OneToMany Usuario - poseída
+		@ManyToOne
+		@JoinColumn(name = "ID_USUARIO")
+		private Usuario usuario;
 
 	// Constructores
 
