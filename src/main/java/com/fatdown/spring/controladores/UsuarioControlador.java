@@ -85,8 +85,8 @@ public class UsuarioControlador {
 	public String iniciarSesion(Model model, HttpServletRequest request, HttpSession session) {
 
 		// Recogemos los valores del formulario
-		String emailUsuario = request.getParameter("emailusuario");
-		String passwordUsuario = request.getParameter("passwordusuario");
+		String emailUsuario = request.getParameter("username");
+		String passwordUsuario = request.getParameter("password");
 
 		Usuario buscado = usuarioServicio.buscarPorEmailUsuario(emailUsuario);
 
