@@ -80,10 +80,10 @@ public class UsuarioServicioImpl implements UsuarioServicio {
 		return usuarioRepository.findByEmailUsuario(emailUsuario);
 	}
 	
-	@Bean
-    public BCryptPasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder(); // or any other password encoder
-    }
+//	@Bean
+//    public BCryptPasswordEncoder passwordEncoder() {
+//        return new BCryptPasswordEncoder(); // or any other password encoder
+//    }
 
 //	@Override
 //	public Usuario buscarPorEmailUsuario(String emailUsuario) {

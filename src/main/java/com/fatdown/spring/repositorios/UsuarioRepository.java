@@ -1,7 +1,9 @@
 package com.fatdown.spring.repositorios;
 
 import java.util.List;
+import java.util.Optional;
 
+import com.fatdown.spring.servicios.UsuarioServicio;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.repository.query.Param;
@@ -16,5 +18,9 @@ import com.fatdown.spring.entidades.Usuario;
 public interface UsuarioRepository extends PagingAndSortingRepository<Usuario, Long> {
 
 	//Usuario findByUsername(String username);
+//	Usuario findByEmailUsuario(String emailUsuario);
+
+
+	@Query(value = "select u.* from Usuario u where email_usuario= :emailUsuario", nativeQuery = true)
 	Usuario findByEmailUsuario(String emailUsuario);
 }
