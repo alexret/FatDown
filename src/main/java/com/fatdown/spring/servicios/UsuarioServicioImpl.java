@@ -24,12 +24,6 @@ public class UsuarioServicioImpl implements UsuarioServicio {
 
 	@Autowired
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
-	
-
-	@Bean
-	public BCryptPasswordEncoder passwordEncoder() {
-		return new BCryptPasswordEncoder(); // or any other password encoder
-	}
 
 //	@PersistenceContext
 //	protected EntityManager em;
