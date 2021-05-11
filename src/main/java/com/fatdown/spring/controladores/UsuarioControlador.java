@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -89,10 +90,12 @@ public class UsuarioControlador {
 		String passwordUsuario = request.getParameter("password");
 
 		Usuario buscado = usuarioServicio.buscarPorEmailUsuario(emailUsuario);
-
+		// Solución provisional al problema con security. No descifra bien las contraseñas.
+		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 		// Comprobamos si el email y el password son correctos buscando el usuario
 		if ((buscado != null)) {
-			if (buscado.getPasswordUsuario().equals(passwordUsuario)) {
+			if (encoder.matches(passwordUsuario, buscado.getPasswordUsuario())) {
+			//if (buscado.getPasswordUsuario().equals(passwordUsuario)) {
 				session.setAttribute("usuario", buscado);
 				return "redirect:/index";
 			}

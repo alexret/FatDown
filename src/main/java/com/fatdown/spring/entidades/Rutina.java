@@ -1,8 +1,8 @@
 package com.fatdown.spring.entidades;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
+//import javax.validation.constraints.NotBlank;
+//import javax.validation.constraints.NotNull;
 
 import com.fatdown.spring.entidades.Usuario;
 
@@ -21,8 +21,8 @@ public class Rutina implements Serializable {
 
     // Datos
     @Column(name = "NOMBRE_RUTINA")
-    @NotNull(message = "El nombre de la rutina no puede ser nulo")
-    @NotBlank(message = "El nombre de la rutina no puede estar vacío")
+//    @NotNull(message = "El nombre de la rutina no puede ser nulo")
+//    @NotBlank(message = "El nombre de la rutina no puede estar vacío")
     private String nombreRutina;
 
     @ManyToOne
@@ -33,7 +33,26 @@ public class Rutina implements Serializable {
     @JoinColumn(name = "ID_EJERCICIO")
     private Ejercicio ejercicio;
     
-    // Getters y setters
+    public Rutina() {
+		super();
+	}
+
+	public Rutina(String nombreRutina, Usuario usuario, Ejercicio ejercicio) {
+		super();
+		this.nombreRutina = nombreRutina;
+		this.usuario = usuario;
+		this.ejercicio = ejercicio;
+	}
+
+	public Rutina(Long idRutina, String nombreRutina, Usuario usuario, Ejercicio ejercicio) {
+		super();
+		this.idRutina = idRutina;
+		this.nombreRutina = nombreRutina;
+		this.usuario = usuario;
+		this.ejercicio = ejercicio;
+	}
+
+	// Getters y setters
     
     public Usuario getUsuario() {
 		return usuario;
@@ -42,6 +61,36 @@ public class Rutina implements Serializable {
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}
+
+	public Long getIdRutina() {
+		return idRutina;
+	}
+
+	public void setIdRutina(Long idRutina) {
+		this.idRutina = idRutina;
+	}
+
+	public String getNombreRutina() {
+		return nombreRutina;
+	}
+
+	public void setNombreRutina(String nombreRutina) {
+		this.nombreRutina = nombreRutina;
+	}
+
+	public Ejercicio getEjercicio() {
+		return ejercicio;
+	}
+
+	public void setEjercicio(Ejercicio ejercicio) {
+		this.ejercicio = ejercicio;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+	
+	
 }
 
 

@@ -37,6 +37,7 @@ public class AuthenticationSuccessHandlerImpl implements AuthenticationSuccessHa
 		UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
 		HttpSession session = request.getSession();
+		// El UserDetails busca por username. ¿En login debe ser el name=username aunque sea emailUsuario para que lo encuentre?
 		Usuario authUser = usuarioServicio.buscarPorEmailUsuario(userDetails.getUsername());
 		session.setAttribute("nombre", authUser.getNombreUsuario());
 		session.setAttribute("idUsuario", authUser.getIdUsuario());

@@ -1,7 +1,6 @@
 package com.fatdown.spring.controladores;
 
 import javax.servlet.http.HttpSession;
-import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -28,13 +27,13 @@ public class MultimediaControlador {
 	}
 
 	@PostMapping("/crearMultimedia")
-	public String crearMultimedia(@Valid @RequestBody Multimedia multimedia) {
+	public String crearMultimedia(@RequestBody Multimedia multimedia) {
 		multimediaServicio.crearMultimedia(multimedia);
 		return "redirect:/crearMultimedia";
 	}
 
 	@PostMapping("/eliminarEjercicio")
-	public String eliminarEjercicio(@Valid Multimedia multimedia) {
+	public String eliminarEjercicio(Multimedia multimedia) {
 		multimediaServicio.eliminarMultimedia(multimedia.getIdMultimedia());
 		return "redirect:/index";
 	}

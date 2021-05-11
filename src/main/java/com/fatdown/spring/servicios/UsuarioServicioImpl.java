@@ -25,9 +25,6 @@ public class UsuarioServicioImpl implements UsuarioServicio {
 	@Autowired
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
 
-//	@PersistenceContext
-//	protected EntityManager em;
-
 	public UsuarioServicioImpl() {
 		super();
 	}
@@ -74,22 +71,9 @@ public class UsuarioServicioImpl implements UsuarioServicio {
 		return usuarioRepository.findByEmailUsuario(emailUsuario);
 	}
 	
+	// Con esto, conseguimos evitar la excepción BeanCurrentlyInCreation: error cíclico. ¿Por qué? Este bean no debería estar aquí, solo en SecurityConfig
 	@Bean
     public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder(); // or any other password encoder
     }
-
-//	@Override
-//	public Usuario buscarPorEmailUsuario(String emailUsuario) {
-//		Query query = this.em.createQuery("select u FROM Usuario u where u.emailUsuario =  :emailUsuario");
-//		query.setParameter("emailUsuario", emailUsuario);
-//
-//		try {
-//			Usuario usuario = (Usuario) query.getSingleResult();
-//			return usuario;
-//		} catch (javax.persistence.NoResultException e) {
-//			return null;
-//		}
-//
-//	}
 }
