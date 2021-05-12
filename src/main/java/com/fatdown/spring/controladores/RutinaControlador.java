@@ -7,7 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import javax.validation.Valid;
+//import javax.validation.Valid;
 
 @Controller
 @RequestMapping(value = "/rutina")
@@ -17,7 +17,8 @@ public class RutinaControlador {
     RutinaServicio rutinaServicio;
 
     @PostMapping("/addEjercicio")
-    public String addEjercicio(@Valid Ejercicio ejercicio) {
+    //public String addEjercicio(@Valid Ejercicio ejercicio) {
+    public String addEjercicio(Ejercicio ejercicio) {
         rutinaServicio.addEjercicio(ejercicio);
         return "redirect:/rutina/addEjercicio";
     }

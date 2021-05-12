@@ -24,15 +24,6 @@ public class UsuarioServicioImpl implements UsuarioServicio {
 
 	@Autowired
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
-	
-
-	@Bean
-	public BCryptPasswordEncoder passwordEncoder() {
-		return new BCryptPasswordEncoder(); // or any other password encoder
-	}
-
-//	@PersistenceContext
-//	protected EntityManager em;
 
 	public UsuarioServicioImpl() {
 		super();
@@ -80,10 +71,6 @@ public class UsuarioServicioImpl implements UsuarioServicio {
 		return usuarioRepository.findByEmailUsuario(emailUsuario);
 	}
 	
-//	@Bean
-//    public BCryptPasswordEncoder passwordEncoder() {
-//        return new BCryptPasswordEncoder(); // or any other password encoder
-//    }
 
 //	@Override
 //	public Usuario buscarPorEmailUsuario(String emailUsuario) {

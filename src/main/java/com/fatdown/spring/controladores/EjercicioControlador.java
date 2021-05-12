@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpSession;
-import javax.validation.Valid;
+//import javax.validation.Valid;
 
 @Controller
 @RequestMapping(value = "/ejercicio")
@@ -26,7 +26,8 @@ public class EjercicioControlador {
     }
 
     @PostMapping("/crearEjercicio")
-    public String crearEjercicio(@Valid Ejercicio ejercicio) {
+    //public String crearEjercicio(@Valid Ejercicio ejercicio) {
+    public String crearEjercicio(Ejercicio ejercicio) {
         ejercicioServicio.crearEjercicio(ejercicio);
         return "redirect:/ejercicio/crearEjercicio";
     }
