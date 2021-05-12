@@ -71,9 +71,9 @@ public class UsuarioServicioImpl implements UsuarioServicio {
 		return usuarioRepository.findByEmailUsuario(emailUsuario);
 	}
 	
-	// Con esto, conseguimos evitar la excepción BeanCurrentlyInCreation: error cíclico. ¿Por qué? Este bean no debería estar aquí, solo en SecurityConfig
-	@Bean
-    public BCryptPasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder(); // or any other password encoder
-    }
+//	// Con esto, conseguimos evitar la excepción BeanCurrentlyInCreation: error cíclico. ¿Por qué? Este bean no debería estar aquí, solo en SecurityConfig
+//	@Bean
+//    public BCryptPasswordEncoder passwordEncoder() {
+//        return new BCryptPasswordEncoder(); // or any other password encoder
+//    }
 }

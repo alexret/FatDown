@@ -8,12 +8,12 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.core.userdetails.UserDetailsService;
+//import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
-import com.fatdown.spring.seguridad.AuthenticationSuccessHandlerImpl;
+import com.fatdown.spring.servicios.CustomUserDetailsService;
 
 @Configuration
 @EnableGlobalMethodSecurity(securedEnabled = true)
@@ -21,7 +21,7 @@ import com.fatdown.spring.seguridad.AuthenticationSuccessHandlerImpl;
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Autowired
-	private UserDetailsService userDetailsService;
+	private CustomUserDetailsService userDetailsService;
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
@@ -40,7 +40,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			.and()
 				.formLogin()
 					.loginPage("/usuario/login")
-					.loginProcessingUrl("/login")
+					.loginProcessingUrl("/usuario/login")
 					.successHandler(myAuthenticationSuccessHandler())
 					.permitAll()
 					.failureUrl("/usuario/login_error")

@@ -82,28 +82,28 @@ public class UsuarioControlador {
 		return "login_error";
 	}
 
-	@PostMapping("/login")
-	public String iniciarSesion(Model model, HttpServletRequest request, HttpSession session) {
-
-		// Recogemos los valores del formulario
-		String emailUsuario = request.getParameter("username");
-		String passwordUsuario = request.getParameter("password");
-
-		Usuario buscado = usuarioServicio.buscarPorEmailUsuario(emailUsuario);
-		// Solución provisional al problema con security. No descifra bien las contraseñas.
-		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-		// Comprobamos si el email y el password son correctos buscando el usuario
-		if ((buscado != null)) {
-			if (encoder.matches(passwordUsuario, buscado.getPasswordUsuario())) {
-			//if (buscado.getPasswordUsuario().equals(passwordUsuario)) {
-				session.setAttribute("usuario", buscado);
-				return "redirect:/index";
-			}
-		}
-
-		return "login_error";
-
-	}
+//	@PostMapping("/login")
+//	public String iniciarSesion(Model model, HttpServletRequest request, HttpSession session) {
+//
+//		// Recogemos los valores del formulario
+//		String emailUsuario = request.getParameter("username");
+//		String passwordUsuario = request.getParameter("password");
+//
+//		Usuario buscado = usuarioServicio.buscarPorEmailUsuario(emailUsuario);
+//		// Solución provisional al problema con security. No descifra bien las contraseñas.
+//		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+//		// Comprobamos si el email y el password son correctos buscando el usuario
+//		if ((buscado != null)) {
+//			if (encoder.matches(passwordUsuario, buscado.getPasswordUsuario())) {
+//			//if (buscado.getPasswordUsuario().equals(passwordUsuario)) {
+//				session.setAttribute("usuario", buscado);
+//				return "redirect:/index";
+//			}
+//		}
+//
+//		return "login_error";
+//
+//	}
 
 	@PostMapping("/logout")
 	public String cerrarSesion(HttpServletRequest request) {
