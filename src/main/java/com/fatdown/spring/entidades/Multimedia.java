@@ -3,13 +3,14 @@ package com.fatdown.spring.entidades;
 import java.io.Serializable;
 
 import javax.persistence.Column;
-import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
 import javax.persistence.MappedSuperclass;
+import javax.persistence.OneToOne;
 
 @MappedSuperclass
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -25,18 +26,20 @@ public abstract class Multimedia implements Serializable {
 
 	@Column(name = "NOMBRE_MULTIMEDIA")
 	private String nombreMultimedia;
-	
+
 	@Column(name = "MULTIMEDIA")
 	private byte multimedia;
-	
-	@Column(name = "MULTIMEDIA_CONSEJO")
+
+	@OneToOne
+	@JoinColumn(name = "id_consejo")
 	private Consejo consejo;
-	
-	@Column(name = "MULTIMEDIA_EJERCICIO")
+
+	@OneToOne
+	@JoinColumn(name = "id_ejercicio")
 	private Ejercicio ejercicio;
 
-	//Constructores
-	
+	// Constructores
+
 	public Multimedia() {
 		super();
 	}
@@ -45,8 +48,7 @@ public abstract class Multimedia implements Serializable {
 		super();
 		this.multimedia = multimedia;
 	}
-	
-		
+
 	public Multimedia(String nombreMultimedia, byte multimedia, Consejo consejo, Ejercicio ejercicio) {
 		super();
 		this.nombreMultimedia = nombreMultimedia;
@@ -65,7 +67,7 @@ public abstract class Multimedia implements Serializable {
 		this.ejercicio = ejercicio;
 	}
 
-	//Getters & Setters
+	// Getters & Setters
 
 	public long getIdMultimedia() {
 		return idMultimedia;
@@ -110,8 +112,8 @@ public abstract class Multimedia implements Serializable {
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
-	
-	//Methods
+
+	// Methods
 
 	@Override
 	public int hashCode() {
@@ -155,11 +157,5 @@ public abstract class Multimedia implements Serializable {
 			return false;
 		return true;
 	}
-	
-	
-	
-	
-	
-	
 
 }

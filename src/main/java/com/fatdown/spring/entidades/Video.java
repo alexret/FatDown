@@ -2,9 +2,10 @@ package com.fatdown.spring.entidades;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.MappedSuperclass;
 
 import com.fatdown.spring.enums.Categoria;
 
@@ -14,8 +15,17 @@ import com.fatdown.spring.enums.Categoria;
 public class Video extends Multimedia {
 
 	private static final long serialVersionUID = 7337585826428548113L;
-
+	
+	/* Enumerated
+	 * Esta anotación indica que la propiedad Java es un enumerado EnumType Este
+	 * atributo indica cómo se debe persistir en la base de datos el enumerado. Sus
+	 * posible valores son: ORDINAL: Se almacenará en la base de datos el ordinal
+	 * del enumerado. STRING: Se almacenará en la base de datos el nombre del
+	 * enumerado.
+	 */
+	
 	@Column(name = "CATEGORIA_VIDEO")
+	@Enumerated(EnumType.ORDINAL)
 	private Categoria categoriaVideo;
 
 	@Column(name = "LINK_VIDEO")
@@ -74,7 +84,5 @@ public class Video extends Multimedia {
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}
-	
-	
 
 }

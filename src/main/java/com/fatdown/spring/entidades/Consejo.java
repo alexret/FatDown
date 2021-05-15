@@ -2,12 +2,16 @@ package com.fatdown.spring.entidades;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.*;
+
 
 @Entity
 @Table(name = "CONSEJO")
@@ -27,8 +31,10 @@ public class Consejo implements Serializable {
 	@Column(name = "DESCRIPCION_CONSEJO")
 	private String descripcionConsejo;
 
-	@Column(name = "MULTIMEDIA_CONSEJO")
-	private Multimedia multimediaConsejo;
+	//org.hibernate.AnnotationException: Unknown mappedBy
+//	@OneToOne (mappedBy = "consejo", cascade = CascadeType.ALL)
+	@PrimaryKeyJoinColumn	
+	private Multimedia multimedia;
 	
 	//Constructores
 
@@ -41,14 +47,14 @@ public class Consejo implements Serializable {
 		this.idConsejo = idConsejo;
 		this.nombreConsejo = nombreConsejo;
 		this.descripcionConsejo = descripcionConsejo;
-		this.multimediaConsejo = multimediaConsejo;
+		this.multimedia = multimediaConsejo;
 	}
 
 	public Consejo(String nombreConsejo, String descripcionConsejo, Multimedia multimediaConsejo) {
 		super();
 		this.nombreConsejo = nombreConsejo;
 		this.descripcionConsejo = descripcionConsejo;
-		this.multimediaConsejo = multimediaConsejo;
+		this.multimedia = multimediaConsejo;
 	}
 	
 	//Getters & Setters
@@ -78,11 +84,11 @@ public class Consejo implements Serializable {
 	}
 
 	public Multimedia getMultimediaConsejo() {
-		return multimediaConsejo;
+		return multimedia;
 	}
 
 	public void setMultimediaConsejo(Multimedia multimediaConsejo) {
-		this.multimediaConsejo = multimediaConsejo;
+		this.multimedia = multimediaConsejo;
 	}
 
 	public static long getSerialversionuid() {

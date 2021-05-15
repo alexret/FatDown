@@ -35,3 +35,43 @@ use FatDown;
 		 constraint fk_usuario_rol_1 foreign key (id_usuario) references usuario (id_usuario) on delete cascade,
 		 constraint fk_usuario_rol_2 foreign key (id_rol) references rol (id_rol)
 	);
+	
+		create table consejo (
+		    id_consejo bigint not null auto_increment,
+		    nombre_consejo varchar(50) not null,
+		    descripcion_consejo varchar(255) not null,
+		    primary key (id_consejo)				
+    ) ;
+	
+		create table imagen (
+	       	 id_multimedia bigint not null auto_increment,
+	         nombre_multimedia varchar(50) not null,
+	         multimedia longblob not null,
+	         id_consejo bigint not null,
+	         primary key (id_multimedia),
+			constraint fk_imagen_consejo foreign key (id_consejo) references consejo (id_consejo) on update cascade
+    ) ;
+    
+    	create table gif (
+	       	 id_multimedia bigint not null auto_increment,
+	         nombre_multimedia varchar(50) not null,
+	         multimedia longblob not null,
+	        --id_ejercicio bigint not null,
+	         primary key (id_multimedia)
+	        --AUN NO EXISTE EJERCICIO
+			--constraint fk_gif_ejercicio	foreign key (id_ejercicio) references ejercicio (id_ejercicio) on update cascade
+    ) ;
+    
+    	create table video (
+	       	 id_multimedia bigint not null auto_increment,
+	         nombre_multimedia varchar(50) not null,
+	        -- multimedia longblob not null,
+	        categoria_video integer not null,
+	        link_video varchar (255) not null,
+	         id_usuario bigint not null,
+	         primary key (id_multimedia),
+	         constraint fk_video_usuario
+        foreign key (id_usuario) references usuario (id_usuario) 
+		on update cascade
+			
+    ) ;
