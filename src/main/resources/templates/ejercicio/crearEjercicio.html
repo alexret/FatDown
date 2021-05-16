@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang=es xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <title>Fat Down</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="Aplicación de fitness">
+    <meta name="keywords" content="work out, gym, fitness, wellness" />
+    <meta name="author"
+          content="Daniel Esteban, Alejandro Relaño & Amanda Segura" />
+    <meta name="copyright"
+          content="Daniel Esteban, Alejandro Relaño & Amanda Segura" />
+    <link rel="stylesheet" type="text/css"
+          th:href="@{/css/bootstrap.minSUPERHERO.css}" />
+    <style th:inline="text">
+.wrapper {
+	width: 50%;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+@media ( max-width : 600px) {
+	.wrapper {
+		width: 100%;
+	}
+}
+
+span, label {
+	font-size: 24pt;
+}
+
+.logo {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 20px;
+	width: 10%;
+}
+
+.boton {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	text-decoration: none;
+}
+
+h1 {
+	color: white;
+	text-align: center;
+}
+</style>
+</head>
+<body>
+<nav th:replace="navbar_loader"></nav>
+<header>
+    <!--Cabecera con logo en imágenes que presentan la página-->
+    <figure>
+        <img class="logo" th:src="@{/pictures/logo.gif}" />
+    </figure>
+    <br />
+</header>
+<h1>¡Forma parte de la familia Fat Down!</h1>
+<br />
+<div class="wrapper">
+    <div class="progress">
+        <div class="progress-bar bg-info" role="progressbar"
+             style="width: 100%;" aria-valuenow="50" aria-valuemin="0"
+             aria-valuemax="100"></div>
+    </div>
+    <form th:action="@{/ejercicio/crearEjercicio}" method="post">
+        <fieldset>
+            <div class="input-group">
+                <input name="nombreEjercicio" type="text" aria-label="Nombre del ejercicio"
+                       class="form-control form-control-lg" placeholder="Nombre del ejercicio" required>
+                <input name="descripcionEjercicio" type="text" aria-label="Descripcion del ejercicio"
+                       class="form-control form-control-lg" placeholder="Descripcion del ejercicio"
+                       required>
+
+            </div>
+            <div class="form-group">
+                <input name="categoriaEjercicio" type="text" aria-label="Categoría"
+                       class="form-control form-control-lg" placeholder="Categoria"
+                       required>
+
+                <input name="tipoEjercicio" type="text" aria-label="Tipo"
+                       class="form-control form-control-lg" placeholder="Tipo"
+                       required>
+            </div>
+
+            <div class="form-group">
+                <input name="repeticionEjercicio" type="number" aria-label="Repeticion"
+                       class="form-control form-control-lg" placeholder="Repeticion"
+                       required>
+
+                <input name="duracionEjercicio" type="number" aria-label="Duracion"
+                       class="form-control form-control-lg" placeholder="Duracion"
+                       required>
+
+                <input name="gif" type="file" aria-label="Duracion"
+                       class="form-control form-control-lg" placeholder="Duracion"
+                       required>
+            </div>
+            </fieldset>
+            <button type="submit" class="btn btn-success btn-lg">¡Dame
+                de alta!</button>
+        </fieldset>
+    </form>
+</div>
+</body>
+</html>

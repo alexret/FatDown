@@ -51,17 +51,7 @@ use FatDown;
 	         primary key (id_multimedia),
 			constraint fk_imagen_consejo foreign key (id_consejo) references consejo (id_consejo) on update cascade
     ) ;
-    
-    	create table gif (
-	       	 id_multimedia bigint not null auto_increment,
-	         nombre_multimedia varchar(50) not null,
-	         multimedia longblob not null,
-	        --id_ejercicio bigint not null,
-	         primary key (id_multimedia)
-	        --AUN NO EXISTE EJERCICIO
-			--constraint fk_gif_ejercicio	foreign key (id_ejercicio) references ejercicio (id_ejercicio) on update cascade
-    ) ;
-    
+
     	create table video (
 	       	 id_multimedia bigint not null auto_increment,
 	         nombre_multimedia varchar(50) not null,
@@ -71,7 +61,36 @@ use FatDown;
 	         id_usuario bigint not null,
 	         primary key (id_multimedia),
 	         constraint fk_video_usuario
-        foreign key (id_usuario) references usuario (id_usuario) 
+        foreign key (id_usuario) references usuario (id_usuario)
 		on update cascade
-			
+
     ) ;
+        	create table ejercicio (
+    	       	 id_ejercicio bigint not null auto_increment,
+    	         nombre_ejercicio varchar(50) not null,
+                 descripcion_ejercicio varchar(50) not null,
+                 categoria_ejercicio varchar(50) not null,
+                 tipo_ejercicio varchar(50) not null,
+                 repeticion_ejercicio varchar(50) not null,
+                 duracion_ejercicio int not null,
+    	         primary key (id_ejercicio)
+        ) ;
+
+      create table rutina (
+        	       	 id_rutina bigint not null auto_increment,
+        	         nombre_rutina varchar(50) not null,
+                     id_usuario bigint not null,
+                     id_ejercicio bigint not null,
+                     primary key(id_rutina),
+		 constraint fk_rutina_usuario foreign key (id_usuario) references usuario (id_usuario) on delete cascade,
+		 constraint fk_rutina_ejercici foreign key (id_ejercicio) references ejercicio (id_ejercicio)
+		  ) ;
+
+        create table gif (
+             id_multimedia bigint not null auto_increment,
+             nombre_multimedia varchar(50) not null,
+             multimedia longblob not null,
+             id_ejercicio bigint not null,
+             primary key (id_multimedia),
+            constraint fk_gif_ejercicio	foreign key (id_ejercicio) references ejercicio (id_ejercicio) on update cascade
+      ) ;

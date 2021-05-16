@@ -1,11 +1,8 @@
 package com.fatdown.spring.entidades;
 
 import javax.persistence.*;
-//import javax.validation.constraints.NotBlank;
-//import javax.validation.constraints.NotNull;
-
-import com.fatdown.spring.entidades.Usuario;
-
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 @Entity
@@ -21,8 +18,8 @@ public class Rutina implements Serializable {
 
     // Datos
     @Column(name = "NOMBRE_RUTINA")
-//    @NotNull(message = "El nombre de la rutina no puede ser nulo")
-//    @NotBlank(message = "El nombre de la rutina no puede estar vacío")
+    @NotNull(message = "El nombre de la rutina no puede ser nulo")
+    @NotBlank(message = "El nombre de la rutina no puede estar vacío")
     private String nombreRutina;
 
     @ManyToOne

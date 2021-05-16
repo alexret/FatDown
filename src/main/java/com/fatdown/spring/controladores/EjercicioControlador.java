@@ -1,6 +1,8 @@
 package com.fatdown.spring.controladores;
 
+import com.fatdown.spring.DTO.EjercicioDTO;
 import com.fatdown.spring.entidades.Ejercicio;
+import com.fatdown.spring.entidades.Gif;
 import com.fatdown.spring.servicios.EjercicioServicio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -27,7 +29,11 @@ public class EjercicioControlador {
 
     @PostMapping("/crearEjercicio")
     //public String crearEjercicio(@Valid Ejercicio ejercicio) {
-    public String crearEjercicio(Ejercicio ejercicio) {
+    public String crearEjercicio(EjercicioDTO ejercicioDTO) {
+
+        Ejercicio ejercicio = new Ejercicio();
+        Gif gif = new Gif();
+
         ejercicioServicio.crearEjercicio(ejercicio);
         return "redirect:/ejercicio/crearEjercicio";
     }
