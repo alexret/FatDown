@@ -14,4 +14,7 @@ public class Imagen extends Multimedia {
 		return serialVersionUID;
 	}
 
+	public Imagen() {
+		super();
+	}
 }

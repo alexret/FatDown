@@ -1,12 +1,12 @@
 package com.fatdown.spring.repositorios;
 
+import org.springframework.data.repository.NoRepositoryBean;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Repository;
 
 import com.fatdown.spring.entidades.Multimedia;
 
-@Repository
+@NoRepositoryBean
 @Component("multimediaRepository")
 public interface MultimediaRepository extends PagingAndSortingRepository<Multimedia, Long> {
 

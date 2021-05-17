@@ -13,6 +13,7 @@ import javax.persistence.MappedSuperclass;
 import javax.persistence.OneToOne;
 
 @MappedSuperclass
+//Designates a class whose mapping information is applied to the entities that inherit from it. A mapped superclass has no separate table defined for it.
 @Inheritance(strategy = InheritanceType.JOINED)
 
 public abstract class Multimedia implements Serializable {
