@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 import com.fatdown.spring.entidades.Multimedia;
 
 @NoRepositoryBean
+//Hace que no se pueda instanciar, para que se herede
 @Component("multimediaRepository")
 public interface MultimediaRepository extends PagingAndSortingRepository<Multimedia, Long> {
 
