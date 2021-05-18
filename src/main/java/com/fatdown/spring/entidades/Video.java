@@ -15,15 +15,15 @@ import com.fatdown.spring.enums.Categoria;
 public class Video extends Multimedia {
 
 	private static final long serialVersionUID = 7337585826428548113L;
-	
-	/* Enumerated
-	 * Esta anotación indica que la propiedad Java es un enumerado EnumType Este
-	 * atributo indica cómo se debe persistir en la base de datos el enumerado. Sus
-	 * posible valores son: ORDINAL: Se almacenará en la base de datos el ordinal
-	 * del enumerado. STRING: Se almacenará en la base de datos el nombre del
-	 * enumerado.
+
+	/*
+	 * Enumerated Esta anotación indica que la propiedad Java es un enumerado
+	 * EnumType Este atributo indica cómo se debe persistir en la base de datos el
+	 * enumerado. Sus posible valores son: ORDINAL: Se almacenará en la base de
+	 * datos el ordinal del enumerado. STRING: Se almacenará en la base de datos el
+	 * nombre del enumerado.
 	 */
-	
+
 	@Column(name = "CATEGORIA_VIDEO")
 	@Enumerated(EnumType.ORDINAL)
 	private Categoria categoriaVideo;
@@ -42,17 +42,22 @@ public class Video extends Multimedia {
 		super();
 	}
 
-	public Video(long idMultimedia, String nombreMultimedia, Categoria categoriaVideo, String linkVideo) {
-		super();
-
+	public Video(long idMultimedia, String nombreMultimedia, byte multimedia, Categoria categoriaVideo,
+			String linkVideo, Usuario usuario) {
+		super(idMultimedia, nombreMultimedia, multimedia);
 		this.categoriaVideo = categoriaVideo;
 		this.linkVideo = linkVideo;
+		this.usuario = usuario;
+
 	}
 
-	public Video(String nombreMultimedia, Categoria categoriaVideo, String linkVideo) {
-		super();
+	public Video(String nombreMultimedia, byte multimedia, Categoria categoriaVideo, String linkVideo,
+			Usuario usuario) {
+		super(nombreMultimedia, multimedia);
 		this.categoriaVideo = categoriaVideo;
 		this.linkVideo = linkVideo;
+		this.usuario = usuario;
+
 	}
 
 	// Métodos

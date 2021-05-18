@@ -1,7 +1,5 @@
 package com.fatdown.spring.servicios;
 
-import java.util.List;
-
 import com.fatdown.spring.entidades.Multimedia;
 
 public interface MultimediaServicio {

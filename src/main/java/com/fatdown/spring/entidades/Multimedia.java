@@ -8,9 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
-import javax.persistence.JoinColumn;
 import javax.persistence.MappedSuperclass;
-import javax.persistence.OneToOne;
 
 @MappedSuperclass
 //Designates a class whose mapping information is applied to the entities that inherit from it. A mapped superclass has no separate table defined for it.
@@ -31,14 +29,6 @@ public abstract class Multimedia implements Serializable {
 	@Column(name = "MULTIMEDIA")
 	private byte multimedia;
 
-	@OneToOne
-	@JoinColumn(name = "id_consejo")
-	private Consejo consejo;
-
-	@OneToOne
-	@JoinColumn(name = "id_ejercicio")
-	private Ejercicio ejercicio;
-
 	// Constructores
 
 	public Multimedia() {
@@ -50,22 +40,18 @@ public abstract class Multimedia implements Serializable {
 		this.multimedia = multimedia;
 	}
 
-	public Multimedia(String nombreMultimedia, byte multimedia, Consejo consejo, Ejercicio ejercicio) {
+	public Multimedia(String nombreMultimedia, byte multimedia) {
 		super();
 		this.nombreMultimedia = nombreMultimedia;
 		this.multimedia = multimedia;
-		this.consejo = consejo;
-		this.ejercicio = ejercicio;
+
 	}
 
-	public Multimedia(long idMultimedia, String nombreMultimedia, byte multimedia, Consejo consejo,
-			Ejercicio ejercicio) {
+	public Multimedia(long idMultimedia, String nombreMultimedia, byte multimedia) {
 		super();
 		this.idMultimedia = idMultimedia;
 		this.nombreMultimedia = nombreMultimedia;
 		this.multimedia = multimedia;
-		this.consejo = consejo;
-		this.ejercicio = ejercicio;
 	}
 
 	// Getters & Setters
@@ -94,22 +80,6 @@ public abstract class Multimedia implements Serializable {
 		this.multimedia = multimedia;
 	}
 
-	public Consejo getConsejo() {
-		return consejo;
-	}
-
-	public void setConsejo(Consejo consejo) {
-		this.consejo = consejo;
-	}
-
-	public Ejercicio getEjercicio() {
-		return ejercicio;
-	}
-
-	public void setEjercicio(Ejercicio ejercicio) {
-		this.ejercicio = ejercicio;
-	}
-
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
@@ -120,8 +90,7 @@ public abstract class Multimedia implements Serializable {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((consejo == null) ? 0 : consejo.hashCode());
-		result = prime * result + ((ejercicio == null) ? 0 : ejercicio.hashCode());
+
 		result = prime * result + (int) (idMultimedia ^ (idMultimedia >>> 32));
 		result = prime * result + multimedia;
 		result = prime * result + ((nombreMultimedia == null) ? 0 : nombreMultimedia.hashCode());
@@ -137,16 +106,7 @@ public abstract class Multimedia implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Multimedia other = (Multimedia) obj;
-		if (consejo == null) {
-			if (other.consejo != null)
-				return false;
-		} else if (!consejo.equals(other.consejo))
-			return false;
-		if (ejercicio == null) {
-			if (other.ejercicio != null)
-				return false;
-		} else if (!ejercicio.equals(other.ejercicio))
-			return false;
+
 		if (idMultimedia != other.idMultimedia)
 			return false;
 		if (multimedia != other.multimedia)

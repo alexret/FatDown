@@ -1,7 +1,9 @@
 package com.fatdown.spring.entidades;
 
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
 import javax.persistence.MappedSuperclass;
+import javax.persistence.OneToOne;
 
 //An entity cannot be annotated with both @Entity and @MappedSuperclass
 //@MappedSuperclass
@@ -14,7 +16,23 @@ public class Imagen extends Multimedia {
 		return serialVersionUID;
 	}
 
+	@OneToOne
+	@JoinColumn(name = "id_consejo")
+	private Consejo consejo;
+
 	public Imagen() {
 		super();
+
+	}
+
+	public Imagen(long idMultimedia, String nombreMultimedia, byte multimedia, Consejo consejo) {
+		super(idMultimedia, nombreMultimedia, multimedia);
+		this.consejo = consejo;
+
+	}
+
+	public Imagen(String nombreMultimedia, byte multimedia, Consejo consejo) {
+		super(nombreMultimedia, multimedia);
+		this.consejo = consejo;
 	}
 }
