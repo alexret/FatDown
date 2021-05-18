@@ -27,7 +27,7 @@ public abstract class Multimedia implements Serializable {
 	private String nombreMultimedia;
 
 	@Column(name = "MULTIMEDIA")
-	private byte multimedia;
+	private byte[] multimedia;
 
 	// Constructores
 
@@ -35,19 +35,19 @@ public abstract class Multimedia implements Serializable {
 		super();
 	}
 
-	public Multimedia(byte multimedia) {
+	public Multimedia(byte[] multimedia) {
 		super();
 		this.multimedia = multimedia;
 	}
 
-	public Multimedia(String nombreMultimedia, byte multimedia) {
+	public Multimedia(String nombreMultimedia, byte[] multimedia) {
 		super();
 		this.nombreMultimedia = nombreMultimedia;
 		this.multimedia = multimedia;
 
 	}
 
-	public Multimedia(long idMultimedia, String nombreMultimedia, byte multimedia) {
+	public Multimedia(long idMultimedia, String nombreMultimedia, byte[] multimedia) {
 		super();
 		this.idMultimedia = idMultimedia;
 		this.nombreMultimedia = nombreMultimedia;
@@ -72,11 +72,11 @@ public abstract class Multimedia implements Serializable {
 		this.nombreMultimedia = nombreMultimedia;
 	}
 
-	public byte getMultimedia() {
+	public byte[] getMultimedia() {
 		return multimedia;
 	}
 
-	public void setMultimedia(byte multimedia) {
+	public void setMultimedia(byte[] multimedia) {
 		this.multimedia = multimedia;
 	}
 
@@ -92,7 +92,8 @@ public abstract class Multimedia implements Serializable {
 		int result = 1;
 
 		result = prime * result + (int) (idMultimedia ^ (idMultimedia >>> 32));
-		result = prime * result + multimedia;
+		// Alex -- No sé cómo corregir esto, lo dejo comentado para que no de error
+//		result = prime * result + multimedia;
 		result = prime * result + ((nombreMultimedia == null) ? 0 : nombreMultimedia.hashCode());
 		return result;
 	}
