@@ -10,8 +10,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.fatdown.spring.entidades.Multimedia;
-import com.fatdown.spring.servicios.MultimediaServicio;
+import com.fatdown.spring.entidades.Video;
+import com.fatdown.spring.servicios.VideoServicio;
+
 
 @Controller
 @RequestMapping(value = "/multimedia")
@@ -19,28 +20,28 @@ import com.fatdown.spring.servicios.MultimediaServicio;
 public class MultimediaControlador {
 
 	@Autowired
-	MultimediaServicio multimediaServicio;
+	VideoServicio videoServicio;
 
 	@GetMapping("/crearMultimedia")
 	public String creaEjericio(Model model, HttpSession session) {
 		return "multimedia/crearMultimedia";
 	}
 
-	@PostMapping("/crearMultimedia")
-	public String crearMultimedia(@RequestBody Multimedia multimedia) {
-		multimediaServicio.crearMultimedia(multimedia);
+	@PostMapping("/crearVideo")
+	public String crearMultimedia(@RequestBody Video video) {
+		videoServicio.crearVideo(video);
 		return "redirect:/crearMultimedia";
 	}
 
-	@PostMapping("/eliminarEjercicio")
-	public String eliminarEjercicio(Multimedia multimedia) {
-		multimediaServicio.eliminarMultimedia(multimedia.getIdMultimedia());
+	@PostMapping("/eliminarVideo")
+	public String eliminarVideo(Video video) {
+		videoServicio.eliminarVideo(video.getIdMultimedia());
 		return "redirect:/index";
 	}
 
-	@PostMapping("/listarEjercicios")
+	@PostMapping("/listarVideos")
 	public String listarEjercicios() {
-		multimediaServicio.listarMultimedia();
+		videoServicio.listarVideo();
 		return "redirect:/index";
 	}
 }
