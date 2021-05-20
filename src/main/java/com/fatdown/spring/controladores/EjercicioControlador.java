@@ -27,16 +27,16 @@ public class EjercicioControlador {
         return "ejercicio/crearEjercicio";
     }
 
-    @PostMapping("/crearEjercicio")
-    //public String crearEjercicio(@Valid Ejercicio ejercicio) {
-    public String crearEjercicio(EjercicioDTO ejercicioDTO) {
-
-        Ejercicio ejercicio = new Ejercicio();
-        Gif gif = new Gif();
-
-        ejercicioServicio.crearEjercicio(ejercicio);
-        return "redirect:/ejercicio/crearEjercicio";
-    }
+//    @PostMapping("/crearEjercicio")
+//    //public String crearEjercicio(@Valid Ejercicio ejercicio) {
+//    public String crearEjercicio(EjercicioDTO ejercicioDTO) {
+//
+//        Ejercicio ejercicio = new Ejercicio();
+//        Gif gif = new Gif();
+//
+//        ejercicioServicio.crearEjercicio(ejercicio);
+//        return "redirect:/ejercicio/crearEjercicio";
+//    }
 /*
     @PostMapping("/eliminarEjercicio")
     public String eliminarEjercicio(@Valid Ejercicio ejercicio) {
