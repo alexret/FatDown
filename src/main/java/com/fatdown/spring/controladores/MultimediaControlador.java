@@ -24,7 +24,7 @@ public class MultimediaControlador {
 
 	@GetMapping("/crearMultimedia")
 	public String creaEjericio(Model model, HttpSession session) {
-		return "multimedia/crearMultimedia";
+		return "crearMultimedia";
 	}
 
 	@PostMapping("/crearVideo")
