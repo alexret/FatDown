@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang=es xmlns:th="http://www.thymeleaf.org"
-	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
-<title>Fat Down</title>
-<meta charset="UTF-8">
-<meta name="description" content="Aplicación de fitness">
-<meta name="keywords" content="work out, gym, fitness, wellness" />
-<meta name="author"
-	content="Daniel Esteban, Alejandro Relaño & Amanda Segura" />
-<meta name="copyright"
-	content="Daniel Esteban, Alejandro Relaño & Amanda Segura" />
-<link rel="stylesheet" type="text/css"
-	th:href="@{/css/bootstrap.minSUPERHERO.css}" />
-<style th:inline="text">
+    <title>Fat Down</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="Aplicación de fitness">
+    <meta name="keywords" content="work out, gym, fitness, wellness" />
+    <meta name="author"
+          content="Daniel Esteban, Alejandro Relaño & Amanda Segura" />
+    <meta name="copyright"
+          content="Daniel Esteban, Alejandro Relaño & Amanda Segura" />
+    <link rel="stylesheet" type="text/css"
+          th:href="@{/css/bootstrap.minSUPERHERO.css}" />
+    <style th:inline="text">
 .wrapper {
 	width: 50%;
 	margin-right: auto;
@@ -45,62 +45,66 @@ span, label {
 }
 
 h1 {
-	color: #ff9900;
+	color: white;
 	text-align: center;
 }
 </style>
 </head>
 <body>
-	<!-- La navbar carga mal en este template el botón de ir al perfil de admin. ¿Por qué? -->
-	<nav th:replace="navbar_loader"></nav>
-	<header>
-		<!--Cabecera con logo en imágenes que presentan la página-->
-		<figure>
-			<img class="logo" th:src="@{/pictures/logo.gif}" />
-		</figure>
-		<br />
-	</header>
-	<h1>Creación de ejercicios</h1>
-	<br />
-	<div class="wrapper">
-		<form th:action="@{/ejercicio/crearEjercicio}" method="post">
-			<fieldset>
-				<div class="input-group">
-					<input name="nombreEjercicio" type="text"
-						aria-label="Nombre del ejercicio"
-						class="form-control form-control-lg"
-						placeholder="Nombre del ejercicio" required> <input
-						name="descripcionEjercicio" type="text"
-						aria-label="Descripcion del ejercicio"
-						class="form-control form-control-lg"
-						placeholder="Descripción del ejercicio" required>
+<nav th:replace="navbar_loader"></nav>
+<header>
+    <!--Cabecera con logo en imágenes que presentan la página-->
+    <figure>
+        <img class="logo" th:src="@{/pictures/logo.gif}" />
+    </figure>
+    <br />
+</header>
+<h1>¡Forma parte de la familia Fat Down!</h1>
+<br />
+<div class="wrapper">
+    <div class="progress">
+        <div class="progress-bar bg-info" role="progressbar"
+             style="width: 100%;" aria-valuenow="50" aria-valuemin="0"
+             aria-valuemax="100"></div>
+    </div>
+    <form th:action="@{/ejercicio/crearEjercicio}" method="post" enctype="multipart/form-data">
+        <fieldset>
+            <div class="input-group">
+                <input name="nombreEjercicio" type="text" aria-label="Nombre del ejercicio"
+                       class="form-control form-control-lg" placeholder="Nombre del ejercicio" required>
+                <input name="descripcionEjercicio" type="text" aria-label="Descripcion del ejercicio"
+                       class="form-control form-control-lg" placeholder="Descripcion del ejercicio"
+                       required>
 
-				</div>
+            </div>
+            <div class="form-group">
+                <input name="categoriaEjercicio" type="text" aria-label="Categoría"
+                       class="form-control form-control-lg" placeholder="Categoria"
+                       required>
 
-				<!-- Categoría: Mejor un select desplegable con las distintas opciones de categoría  -->
-				<!-- Tipo de ejercicio, ¿qué es? ¿Es la distinción entre duración o repetición? Mejor con un select desplegable de las dos opciones -->
-				<div class="form-group">
-					<input name="categoriaEjercicio" type="text" aria-label="Categoría"
-						class="form-control form-control-lg" placeholder="Categoría"
-						required> <input name="tipoEjercicio" type="text"
-						aria-label="Tipo" class="form-control form-control-lg"
-						placeholder="Tipo de ejercicio (con duración / con repetición)"
-						required>
-				</div>
+                <input name="tipoEjercicio" type="text" aria-label="Tipo"
+                       class="form-control form-control-lg" placeholder="Tipo"
+                       required>
+            </div>
 
-				<div class="form-group">
-					<input name="repeticionEjercicio" type="number"
-						aria-label="Repeticion" class="form-control form-control-lg"
-						placeholder="Repetición" required> <input
-						name="duracionEjercicio" type="number" aria-label="Duracion"
-						class="form-control form-control-lg" placeholder="Duración"
-						required> <input name="gif" type="file"
-						class="form-control form-control-lg" required>
-				</div>
-			</fieldset>
-			<button type="submit" class="btn btn-success btn-lg">Crear
-				ejercicio</button>
-		</form>
-	</div>
+            <div class="form-group">
+                <input name="repeticionEjercicio" type="number" aria-label="Repeticion"
+                       class="form-control form-control-lg" placeholder="Repeticion"
+                       required>
+
+                <input name="duracionEjercicio" type="number" aria-label="Duracion"
+                       class="form-control form-control-lg" placeholder="Duracion"
+                       required>
+
+                <input name="gif" type="file" aria-label="Duracion"
+                       class="form-control form-control-lg" placeholder="Duracion"
+                       required>
+            </div>
+            </fieldset>
+            <button type="submit" class="btn btn-success btn-lg">¡Dame
+                de alta!</button>
+        </fieldset>
+    </form>
+</div>
 </body>
 </html>

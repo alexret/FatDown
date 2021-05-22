@@ -65,7 +65,7 @@ public class Ejercicio implements Serializable {
     private Set<Rutina> rutina = new HashSet<>();
 
 	@OneToOne(mappedBy = "ejercicio", cascade = CascadeType.ALL)
-	private Gif gif;
+	private Gif gifNuevo;
 
 	public Ejercicio(String nombreEjercicio, String descripcionEjercicio, String categoriaEjercicio,
 			 String tipoEjercicio, String repeticionEjercicio, int duracionEjercicio,

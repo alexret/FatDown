@@ -6,9 +6,10 @@ import java.util.List;
 
 public interface  EjercicioServicio {
 
-    public Ejercicio crearEjercicio(Ejercicio ejercicio);
+    Ejercicio crearEjercicio(Ejercicio ejercicio);
 
-    public void borrarEjercicio(Long id);
+    void borrarEjercicio(Long id);
 
-    public List<Ejercicio> listarEjercicios();
+    List<Ejercicio> listarEjercicios();
+
 }
