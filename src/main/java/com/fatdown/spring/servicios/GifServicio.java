@@ -9,10 +9,10 @@ public interface GifServicio {
 
 	public Gif crearGif(Gif gif);
 
-	public Optional<Multimedia> obtenerGif(Long idGif);
+	public Optional<Gif> obtenerGif(Long idGif);
 
 	public void eliminarGif(Long idGif);
 
-	public Iterable<Multimedia> listarGif();
+	public Iterable<Gif> listarGif();
 
 }

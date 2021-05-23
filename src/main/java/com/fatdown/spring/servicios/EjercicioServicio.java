@@ -1,6 +1,8 @@
 package com.fatdown.spring.servicios;
 
 import com.fatdown.spring.entidades.Ejercicio;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 
@@ -10,6 +12,6 @@ public interface  EjercicioServicio {
 
     void borrarEjercicio(Long id);
 
-    List<Ejercicio> listarEjercicios();
+    Page<Ejercicio> listarEjerciciosPaginados(Pageable p);
 
 }

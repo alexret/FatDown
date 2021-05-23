@@ -5,6 +5,9 @@ import com.fatdown.spring.entidades.Gif;
 import com.fatdown.spring.servicios.EjercicioServicio;
 import com.fatdown.spring.servicios.GifServicio;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,9 +15,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.List;
 //import javax.validation.Valid;
 
 @Controller
@@ -35,11 +40,12 @@ public class EjercicioControlador {
 
     @PostMapping("/crearEjercicio")
     //public String crearEjercicio(@Valid Ejercicio ejercicio) {
-    public String crearEjercicio(Ejercicio ejercicio, @RequestParam("gif") MultipartFile file) throws IOException {
+    public String crearEjercicio(Ejercicio ejercicio, @RequestParam("subirGif") MultipartFile file) throws IOException {
 
         ejercicio = ejercicioServicio.crearEjercicio(ejercicio);
         byte[] image = file.getBytes();
         Gif gif = new Gif(ejercicio.getNombreEjercicio(), image, ejercicio);
+        gifServicio.crearGif(gif);
         return "redirect:/ejercicio/crearEjercicio";
     }
 /*
@@ -49,9 +55,14 @@ public class EjercicioControlador {
         return "redirect:/index";
     }
 */
-    @PostMapping("/listarEjercicios")
-    public String listarEjercicios() {
-        ejercicioServicio.listarEjercicios();
-        return "redirect:/index";
+    @GetMapping("/listarEjercicios")
+    public ModelAndView listarEjercicios() {
+        ModelAndView mav = new ModelAndView();
+        Pageable paging = PageRequest.of(0,10);
+        Page<Ejercicio> lEjercicios = ejercicioServicio.listarEjerciciosPaginados(paging);
+
+        mav.addObject("ejercicio", lEjercicios);
+        mav.setViewName("ejercicio/listarEjercicios");
+        return mav;
     }
 }

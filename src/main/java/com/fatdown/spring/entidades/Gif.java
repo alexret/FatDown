@@ -10,7 +10,7 @@ public class Gif extends Multimedia {
 	private static final long serialVersionUID = 1029253131656624666L;
 
 	@OneToOne
-	@JoinColumn(name = "id_ejercicio")
+	@JoinColumn(name = "idEjercicio")
 	private Ejercicio ejercicio;
 
 	public static long getSerialversionuid() {

@@ -33,7 +33,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 						"/js/**",
 						"/css/**",
 						"/pictures/**",
-						"/usuario/**").permitAll()
+						"/usuario/**",
+						"/imagenes/**").permitAll()
 				.antMatchers().hasAnyAuthority("registrado", "admin")
 				.antMatchers().hasAuthority("admin")
 				.anyRequest().authenticated()

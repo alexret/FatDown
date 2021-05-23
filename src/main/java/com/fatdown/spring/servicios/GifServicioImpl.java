@@ -24,7 +24,8 @@ public class GifServicioImpl implements GifServicio {
 	}
 
 	@Override
-	public Optional<Multimedia> obtenerGif(Long idGif) {
+	public Optional<Gif> obtenerGif(Long idGif) {
+
 		return gifRepository.findById(idGif);
 	}
 
@@ -34,7 +35,7 @@ public class GifServicioImpl implements GifServicio {
 	}
 
 	@Override
-	public Iterable<Multimedia> listarGif() {
+	public Iterable<Gif> listarGif() {
 		return gifRepository.findAll();
 	}
 
