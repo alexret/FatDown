@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.fatdown.spring.entidades.Imagen;
-import com.fatdown.spring.entidades.Multimedia;
 import com.fatdown.spring.repositorios.ImagenRepository;
 
 @Transactional
@@ -24,7 +23,7 @@ public class ImagenServicioImpl implements ImagenServicio {
 	}
 
 	@Override
-	public Optional<Multimedia> obtenerImagen(Long idImagen) {
+	public Optional<Imagen> obtenerImagen(Long idImagen) {
 		return imagenRepository.findById(idImagen);
 	}
 
@@ -34,7 +33,7 @@ public class ImagenServicioImpl implements ImagenServicio {
 	}
 
 	@Override
-	public Iterable<Multimedia> listarImagen() {
+	public Iterable<Imagen> listarImagen() {
 		return imagenRepository.findAll();
 	}
 

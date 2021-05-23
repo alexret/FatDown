@@ -21,14 +21,13 @@ public class Gif extends Multimedia {
 		super();
 	}
 
-	public Gif(long idMultimedia, String nombreMultimedia, byte[] multimedia, Ejercicio ejercicio) {
+	public Gif(long idMultimedia, String nombreMultimedia, byte[] multimedia) {
 		super(idMultimedia, nombreMultimedia, multimedia);
-		this.ejercicio = ejercicio;
+
 	}
 
-	public Gif(String nombreMultimedia, byte[] multimedia, Ejercicio ejercicio) {
+	public Gif(String nombreMultimedia, byte[] multimedia) {
 		super(nombreMultimedia, multimedia);
-		this.ejercicio = ejercicio;
 	}
 
 }

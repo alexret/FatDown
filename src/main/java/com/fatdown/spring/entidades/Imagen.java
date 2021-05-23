@@ -24,14 +24,13 @@ public class Imagen extends Multimedia {
 
 	}
 
-	public Imagen(long idMultimedia, String nombreMultimedia, byte[] multimedia, Consejo consejo) {
+	public Imagen(long idMultimedia, String nombreMultimedia, byte[] multimedia) {
 		super(idMultimedia, nombreMultimedia, multimedia);
-		this.consejo = consejo;
 
 	}
 
-	public Imagen(String nombreMultimedia, byte[] multimedia, Consejo consejo) {
+	public Imagen(String nombreMultimedia, byte[] multimedia) {
 		super(nombreMultimedia, multimedia);
-		this.consejo = consejo;
+
 	}
 }
