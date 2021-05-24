@@ -71,8 +71,8 @@ use FatDown;
                  descripcion_ejercicio varchar(50) not null,
                  categoria_ejercicio varchar(50) not null,
                  tipo_ejercicio varchar(50) not null,
-                 repeticion_ejercicio varchar(50) not null,
-                 duracion_ejercicio int not null,
+                 repeticion_ejercicio int,
+                 duracion_ejercicio int,
     	         primary key (id_ejercicio)
         ) ;
 
@@ -83,7 +83,7 @@ use FatDown;
                      id_ejercicio bigint not null,
                      primary key(id_rutina),
 		 constraint fk_rutina_usuario foreign key (id_usuario) references usuario (id_usuario) on delete cascade,
-		 constraint fk_rutina_ejercici foreign key (id_ejercicio) references ejercicio (id_ejercicio)
+		 constraint fk_rutina_ejercicio foreign key (id_ejercicio) references ejercicio (id_ejercicio)
 		  ) ;
 
         create table gif (
