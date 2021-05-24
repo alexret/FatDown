@@ -40,11 +40,11 @@ public class MultimediaControlador {
 	@Autowired
 	ImagenServicio imagenServicio;
 
-	// Método página para subir videos, gifs o imágenes
+	// Método página para subir videos
 
-	@GetMapping("/crearMultimedia")
+	@GetMapping("/subirVideo")
 	public String creaEjericio(Model model, HttpSession session) {
-		return "crearMultimedia";
+		return "subirVideo";
 	}
 
 	// Métodos de Video
@@ -52,7 +52,7 @@ public class MultimediaControlador {
 	@PostMapping("/crearVideo")
 	public String crearMultimedia(@RequestBody Video video) {
 		videoServicio.crearVideo(video);
-		return "redirect:/crearMultimedia";
+		return "redirect:/subirVideo";
 	}
 
 	@PostMapping("/eliminarVideo")
@@ -72,7 +72,7 @@ public class MultimediaControlador {
 	@PostMapping("/crearImagen")
 	public String crearMultimedia(@RequestBody Imagen imagen) {
 		imagenServicio.crearImagen(imagen);
-		return "redirect:/crearMultimedia";
+		return "redirect:/index";
 	}
 
 	@PostMapping("/eliminarImagen")
@@ -88,6 +88,8 @@ public class MultimediaControlador {
 	}
 
 	// Obtener Imagen de BBDD
+	
+	/*
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 		public @ResponseBody ResponseEntity getImageAsResponseEntity(@PathVariable String id) {
 
@@ -105,13 +107,13 @@ public class MultimediaControlador {
 				return new ResponseEntity(HttpStatus.NOT_FOUND);
 			}
 	}
-
+*/
 	// Métodos de Gif
 
 	@PostMapping("/crearGif")
 	public String crearGif(@RequestBody Gif gif) {
 		gifServicio.crearGif(gif);
-		return "redirect:/crearMultimedia";
+		return "redirect:/index";
 	}
 
 	@PostMapping("/eliminarGif")

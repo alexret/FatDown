@@ -29,5 +29,10 @@ public class Gif extends Multimedia {
 	public Gif(String nombreMultimedia, byte[] multimedia) {
 		super(nombreMultimedia, multimedia);
 	}
+	
+	public Gif(String nombreMultimedia, byte[] multimedia, Ejercicio ejercicio) {
+		super(nombreMultimedia, multimedia);
+		this.ejercicio = ejercicio;
+	}
 
 }
