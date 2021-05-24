@@ -10,8 +10,23 @@
 	content="Daniel Esteban, Alejandro Relaño & Amanda Segura" />
 <meta name="copyright"
 	content="Daniel Esteban, Alejandro Relaño & Amanda Segura" />
+<script th:src="@{/js/jquery-3.5.1.min.js}"></script>
+<script th:src="@{/js/jquery-ui.min.js}"></script>
 <link rel="stylesheet" type="text/css"
 	th:href="@{/css/bootstrap.minSUPERHERO.css}" />
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("#tipoEjercicio").change(function() {
+			if ($(this).val() == "Duracion") {
+				$("#repeticionEjercicio").prop("disabled", true);
+				$("#duracionEjercicio").prop("disabled", false);
+			} else {
+				$("#duracionEjercicio").prop("disabled", true);
+				$("#repeticionEjercicio").prop("disabled", false);
+			}
+		});
+	});
+</script>
 <style th:inline="text">
 .wrapper {
 	width: 50%;
@@ -51,7 +66,6 @@ h1 {
 </style>
 </head>
 <body>
-	<!-- La navbar carga mal en este template el botón de ir al perfil de admin. ¿Por qué? -->
 	<nav th:replace="navbar_loader"></nav>
 	<header>
 		<!--Cabecera con logo en imágenes que presentan la página-->
@@ -65,40 +79,59 @@ h1 {
 	<div class="wrapper">
 		<form th:action="@{/ejercicio/crearEjercicio}" method="post">
 			<fieldset>
-				<div class="input-group">
+				<div class="form-group">
 					<input name="nombreEjercicio" type="text"
 						aria-label="Nombre del ejercicio"
 						class="form-control form-control-lg"
-						placeholder="Nombre del ejercicio" required> <input
-						name="descripcionEjercicio" type="text"
-						aria-label="Descripcion del ejercicio"
-						class="form-control form-control-lg"
-						placeholder="Descripción del ejercicio" required>
+						placeholder="Nombre del ejercicio" required>
+				</div>
+				<div class="form-group">
+					<textarea class="form-control form-control-lg"
+						name="descripcionEjercicio" rows="3"
+						placeholder="Escribe aquí la descripción del ejercicio" required></textarea>
 
 				</div>
 
-				<!-- Categoría: Mejor un select desplegable con las distintas opciones de categoría  -->
-				<!-- Tipo de ejercicio, ¿qué es? ¿Es la distinción entre duración o repetición? Mejor con un select desplegable de las dos opciones -->
 				<div class="form-group">
-					<input name="categoriaEjercicio" type="text" aria-label="Categoría"
-						class="form-control form-control-lg" placeholder="Categoría"
-						required> <input name="tipoEjercicio" type="text"
-						aria-label="Tipo" class="form-control form-control-lg"
-						placeholder="Tipo de ejercicio (con duración / con repetición)"
+					<label for="exampleSelect1"
+						style="font-size: 18pt; color: #ff9900;">Categoría del
+						ejercicio</label> <select id="exampleSelect1" class="form-control"
+						name="categoriaEjercicio" required>
+						<option value="ABDOMINALES">ABDOMINALES</option>
+						<option value="PIERNAS">PIERNAS</option>
+						<option value="GLUTEOS">GLÚTEOS</option>
+						<option value="ESPALDA">ESPALDA</option>
+						<option value="BRAZOS">BRAZOS</option>
+						<option value="FULL_BODY">FULL BODY</option>
+					</select>
+				</div>
+				<div class="form-group">
+					<label for="tipoEjercicio" style="font-size: 18pt; color: #ff9900;">Tipo
+						de ejercicio (por tiempo / con repeticiones)</label> <select
+						id="tipoEjercicio" class="form-control" name="tipoEjercicio"
+						required>
+						<option disabled selected>Selecciona una de las
+							siguientes opciones</option>
+						<option value="Duracion">Por tiempo (duración
+							determinada)</option>
+						<option value="Repeticion">Con repeticiones (número
+							determinado)</option>
+					</select>
+				</div>
+
+				<div class="form-group">
+					<label style="font-size: 18pt; color: #ff9900;">Duración/Repeticiones</label>
+					<input id="repeticionEjercicio" name="repeticionEjercicio"
+						type="number" aria-label="Repeticion"
+						class="form-control form-control-lg" placeholder="Repeticiones del ejercicio"
+						required> <input id="duracionEjercicio"
+						name="duracionEjercicio" type="number" aria-label="Duracion"
+						class="form-control form-control-lg" placeholder="Duración del ejercicio"
 						required>
 				</div>
-
 				<div class="form-group">
-					<input name="repeticionEjercicio" type="number"
-						aria-label="Repeticion" class="form-control form-control-lg"
-						placeholder="Repetición" required> 
-						
-						<input
-						name="duracionEjercicio" type="number" aria-label="Duracion"
-						class="form-control form-control-lg" placeholder="Duración"
-						required> 
-						
-						<input name="gif" type="file"
+					<label style="font-size: 18pt; color: #ff9900;">Sube aquí
+						el GIF ilustrativo del ejercicio</label> <input name="gif" type="file"
 						class="form-control form-control-lg" required>
 				</div>
 			</fieldset>

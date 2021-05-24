@@ -4,6 +4,7 @@ import com.fatdown.spring.entidades.Ejercicio;
 import com.fatdown.spring.entidades.Gif;
 import com.fatdown.spring.servicios.EjercicioServicio;
 import com.fatdown.spring.servicios.GifServicio;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -37,6 +38,9 @@ public class EjercicioControlador {
     //public String crearEjercicio(@Valid Ejercicio ejercicio) {
     public String crearEjercicio(Ejercicio ejercicio, @RequestParam("subirGif") MultipartFile file) throws IOException {
 
+    	// Necesitamos ver cómo se recupera la cateoría del ejercicio
+    	// Y si al deshabilitar una de las dos opciones (duracion/repeticion)
+    	// la que no recoge la pone a null sin problemas
         ejercicio = ejercicioServicio.crearEjercicio(ejercicio);
         byte[] image = file.getBytes();
         Gif gif = new Gif(ejercicio.getNombreEjercicio(), image, ejercicio);
