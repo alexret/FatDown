@@ -80,6 +80,12 @@ h1 {
     <td style="text-align:center" th:text="${ejercicio.tipoEjercicio}"></td>
     <td style="text-align:center" th:text="${ejercicio.repeticionEjercicio}"></td>
     <td style="text-align:center" th:text="${ejercicio.duracionEjercicio}"></td>
+    <td>
+        <form th:action="@{/ejercicio/eliminarEjercicio/{id}(id=${ejercicio.idEjercicio})}" method="post">
+            <button type="submit">
+                Eliminar ejercicio</button>
+        </form>
+    </td>
 
 </tr>
 </tbody>

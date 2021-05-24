@@ -10,17 +10,12 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.util.List;
-//import javax.validation.Valid;
 
 @Controller
 @RequestMapping(value = "/ejercicio")
@@ -48,13 +43,15 @@ public class EjercicioControlador {
         gifServicio.crearGif(gif);
         return "redirect:/ejercicio/crearEjercicio";
     }
-/*
-    @PostMapping("/eliminarEjercicio")
-    public String eliminarEjercicio(@Valid Ejercicio ejercicio) {
-        ejercicioServicio.borrarEjercicio(ejercicio.getIdEjercicio());
-        return "redirect:/index";
+
+
+    @PostMapping("/eliminarEjercicio/{id}")
+    public String eliminarEjercicio(@PathVariable("id") long id) {
+        ejercicioServicio.borrarEjercicio(id);
+        return "redirect:/ejercicio/listarEjercicios";
     }
-*/
+
+
     @GetMapping("/listarEjercicios")
     public ModelAndView listarEjercicios() {
         ModelAndView mav = new ModelAndView();
