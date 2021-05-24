@@ -47,6 +47,12 @@ public abstract class Multimedia implements Serializable {
 
 	}
 
+	public Multimedia(String nombreMultimedia) {
+		super();
+		this.nombreMultimedia = nombreMultimedia;
+
+	}
+
 	public Multimedia(long idMultimedia, String nombreMultimedia, byte[] multimedia) {
 		super();
 		this.idMultimedia = idMultimedia;

@@ -7,7 +7,6 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.fatdown.spring.entidades.Multimedia;
 import com.fatdown.spring.entidades.Video;
 import com.fatdown.spring.repositorios.VideoRepository;
 
@@ -24,7 +23,7 @@ public class VideoServicioImpl implements VideoServicio {
 	}
 
 	@Override
-	public Optional<Multimedia> obtenerVideo(Long idVideo) {
+	public Optional<Video> obtenerVideo(Long idVideo) {
 		return videoRepository.findById(idVideo);
 	}
 
@@ -34,7 +33,7 @@ public class VideoServicioImpl implements VideoServicio {
 	}
 
 	@Override
-	public Iterable<Multimedia> listarVideo() {
+	public Iterable<Video> listarVideo() {
 		return videoRepository.findAll();
 	}
 

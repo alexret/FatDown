@@ -43,7 +43,7 @@ public class Video extends Multimedia {
 	}
 
 	public Video(long idMultimedia, String nombreMultimedia, byte[] multimedia, Categoria categoriaVideo,
-				 String linkVideo, Usuario usuario) {
+			String linkVideo, Usuario usuario) {
 		super(idMultimedia, nombreMultimedia, multimedia);
 		this.categoriaVideo = categoriaVideo;
 		this.linkVideo = linkVideo;
@@ -52,12 +52,18 @@ public class Video extends Multimedia {
 	}
 
 	public Video(String nombreMultimedia, byte[] multimedia, Categoria categoriaVideo, String linkVideo,
-                 Usuario usuario) {
+			Usuario usuario) {
 		super(nombreMultimedia, multimedia);
 		this.categoriaVideo = categoriaVideo;
 		this.linkVideo = linkVideo;
 		this.usuario = usuario;
 
+	}
+
+	public Video(String nombreMultimedia, Categoria categoriaVideo, String linkVideo) {
+		super(nombreMultimedia);
+		this.categoriaVideo = categoriaVideo;
+		this.linkVideo = linkVideo;
 	}
 
 	// Métodos
