@@ -1,5 +1,6 @@
 package com.fatdown.spring.entidades;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
@@ -15,6 +16,9 @@ public class Imagen extends Multimedia {
 		return serialVersionUID;
 	}
 
+	@Column(name = "MULTIMEDIA")
+	private byte[] multimedia;
+
 	@OneToOne
 	@JoinColumn(name = "id_consejo")
 	private Consejo consejo;
@@ -25,12 +29,22 @@ public class Imagen extends Multimedia {
 	}
 
 	public Imagen(long idMultimedia, String nombreMultimedia, byte[] multimedia) {
-		super(idMultimedia, nombreMultimedia, multimedia);
+		super(idMultimedia, nombreMultimedia);
+		this.multimedia = multimedia;
 
 	}
 
 	public Imagen(String nombreMultimedia, byte[] multimedia) {
-		super(nombreMultimedia, multimedia);
+		super(nombreMultimedia);
+		this.multimedia = multimedia;
 
+	}
+
+	public byte[] getMultimedia() {
+		return multimedia;
+	}
+
+	public void setMultimedia(byte[] multimedia) {
+		this.multimedia = multimedia;
 	}
 }

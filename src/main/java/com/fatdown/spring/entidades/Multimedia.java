@@ -26,25 +26,13 @@ public abstract class Multimedia implements Serializable {
 	@Column(name = "NOMBRE_MULTIMEDIA")
 	private String nombreMultimedia;
 
-	@Column(name = "MULTIMEDIA")
-	private byte[] multimedia;
+//	@Column(name = "MULTIMEDIA")
+//	private byte[] multimedia;
 
 	// Constructores
 
 	public Multimedia() {
 		super();
-	}
-
-	public Multimedia(byte[] multimedia) {
-		super();
-		this.multimedia = multimedia;
-	}
-
-	public Multimedia(String nombreMultimedia, byte[] multimedia) {
-		super();
-		this.nombreMultimedia = nombreMultimedia;
-		this.multimedia = multimedia;
-
 	}
 
 	public Multimedia(String nombreMultimedia) {
@@ -53,11 +41,10 @@ public abstract class Multimedia implements Serializable {
 
 	}
 
-	public Multimedia(long idMultimedia, String nombreMultimedia, byte[] multimedia) {
+	public Multimedia(long idMultimedia, String nombreMultimedia) {
 		super();
 		this.idMultimedia = idMultimedia;
 		this.nombreMultimedia = nombreMultimedia;
-		this.multimedia = multimedia;
 	}
 
 	// Getters & Setters
@@ -76,14 +63,6 @@ public abstract class Multimedia implements Serializable {
 
 	public void setNombreMultimedia(String nombreMultimedia) {
 		this.nombreMultimedia = nombreMultimedia;
-	}
-
-	public byte[] getMultimedia() {
-		return multimedia;
-	}
-
-	public void setMultimedia(byte[] multimedia) {
-		this.multimedia = multimedia;
 	}
 
 	public static long getSerialversionuid() {
@@ -116,8 +95,7 @@ public abstract class Multimedia implements Serializable {
 
 		if (idMultimedia != other.idMultimedia)
 			return false;
-		if (multimedia != other.multimedia)
-			return false;
+
 		if (nombreMultimedia == null) {
 			if (other.nombreMultimedia != null)
 				return false;

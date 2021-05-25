@@ -10,33 +10,24 @@
 	content="Daniel Esteban, Alejandro Relaño & Amanda Segura" />
 <meta name="copyright"
 	content="Daniel Esteban, Alejandro Relaño & Amanda Segura" />
+<script th:src="@{/js/jquery-3.5.1.min.js}"></script>
+<script th:src="@{/js/jquery-ui.min.js}"></script>
 <link rel="stylesheet" type="text/css"
 	th:href="@{/css/bootstrap.minSUPERHERO.css}" />
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("#tipoEjercicio").change(function() {
+			if ($(this).val() == "Duracion") {
+				$("#repeticionEjercicio").prop("disabled", true);
+				$("#duracionEjercicio").prop("disabled", false);
+			} else {
+				$("#duracionEjercicio").prop("disabled", true);
+				$("#repeticionEjercicio").prop("disabled", false);
+			}
+		});
+	});
+</script>
 <style th:inline="text">
-body {
-	background-image: url("/pictures/fondo.jpg");
-}
-
-.grid-container {
-	display: grid;
-	grid-template-columns: 35% 65%;
-	padding: 10px;
-}
-
-.grid-container1 {
-	display: grid;
-	grid-template-columns: auto auto;
-	text-align: center;
-}
-
-.coloreado1 {
-	background-color: #ffcc99;
-}
-
-.coloreado2 {
-	background-color: #ffcc99;
-}
-
 .wrapper {
 	width: 50%;
 	margin-right: auto;
@@ -49,80 +40,80 @@ body {
 	}
 }
 
+label {
+	font-size: 24pt;
+}
+
 .logo {
 	display: block;
 	margin-left: auto;
 	margin-right: auto;
-	width: 30%;
+	margin-top: 20px;
+	width: 10%;
 }
 
-.fondito {
-	margin: 2em;
-	background-color: rgb(255, 238, 230, 0.6);
-	border: 2px solid rgb(255, 153, 102);
+.boton {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	text-decoration: none;
+}
+
+h1 {
+	color: #ff9900;
+	text-align: center;
 }
 </style>
 </head>
 <body>
 	<nav th:replace="navbar_loader"></nav>
-	<div class="fondito">
-		<header>
-			<!-- Cabecera con logo en imágenes que presentan la página -->
-			<figure>
-				<img class="logo" th:src="@{/pictures/logo.gif}" />
-			</figure>
-		</header>
+	<header>
+		<!--Cabecera con logo en imágenes que presentan la página-->
+		<figure>
+			<img class="logo" th:src="@{/pictures/logo.gif}" />
+		</figure>
+		<br />
+	</header>
+	<h1>Creación de videos</h1>
+	<br />
+	<div class="wrapper">
 		<form th:action="@{/multimedia/crearVideo}" method="post">
-			<h1 class="text-center coloreado2"
-				style="margin-bottom: 30px; margin-top: 0px;">Sube un nuevo video</h1>
-			<div class="wrapper">
-				<div class="form-group" style="position: relative;">
-					<div class="form-group" style="position: relative;">
-						<label class="input-group-text">Nombre del producto</label> <input
-							type="text" class="form-control form-control-lg"
-							id="nombreproducto" placeholder="Guitarra, ukelele..."
-							name="nombreproducto" required />
-					</div>
-					<div class="form-group" style="position: relative;">
-						<label class="input-group-text">Descripci&oacute;n del
-							producto</label>
-						<textarea class="form-control form-control-lg"
-							id="descripcionproducto" rows="3" name="descripcionproducto"
-							placeholder="Instrumento de viento metal..." required></textarea>
-					</div>
-					<div class="form-group" style="position: relative;">
-						<label class="input-group-text">Precio</label>
-						<div class="form-group">
-							<div class="input-group mb-3">
-								<div class="input-group-prepend">
-									<span class="input-group-text">€</span>
-								</div>
-								<input type="number" id="quantity" aria-label="precioproducto"
-									class="form-control form-control-lg" name="precioproducto"
-									min="0" step="0.01" required />
-							</div>
-						</div>
-					</div>
-					<div class="form-group" style="position: relative;">
-						<label class="input-group-text">Porcentaje de descuento</label>
-						<div class="form-group">
-							<div class="input-group mb-3">
-								<div class="input-group-prepend">
-									<span class="input-group-text">%</span>
-								</div>
-								<input type="number" class="form-control form-control-lg"
-									aria-label="descuentoproducto" name="descuentoproducto" min="0"
-									max="100" step="1" required>
-							</div>
-						</div>
-					</div>
-					<div class="form-group">
-						<p style="font-size: 16pt;">&iquest;Est&aacute;s seguro de que
-							los datos son correctos?</p>
-						<button type="submit" value="Crear" class="btn btn-success btn-lg">Crear</button>
-					</div>
+			<fieldset>
+				<div class="form-group">
+					<input name="nombreMultimedia" type="text"
+						aria-label="Nombre del video" class="form-control form-control-lg"
+						placeholder="Nombre del video" required>
 				</div>
-			</div>
+
+				<div class="form-group">
+					<label for="exampleSelect1"
+						style="font-size: 18pt; color: #ff9900;">Categoría del
+						video</label> <select id="exampleSelect1" class="form-control"
+						name="categoriaVideo" required>
+						<option value="ABDOMINALES">ABDOMINALES</option>
+						<option value="PIERNAS">PIERNAS</option>
+						<option value="GLUTEOS">GLÚTEOS</option>
+						<option value="ESPALDA">ESPALDA</option>
+						<option value="BRAZOS">BRAZOS</option>
+						<option value="FULL_BODY">FULL BODY</option>
+					</select>
+				</div>
+
+				<div class="form-group">
+				<label for="exampleSelect1"
+						style="font-size: 18pt; color: #ff9900;">Link del
+						video</label>
+					<input name="linkVideo" type="text" aria-label="Link del video"
+						class="form-control form-control-lg"
+						placeholder="Link del video" required>
+
+				</div>
+
+
+				
+			</fieldset>
+			<button type="submit" class="btn btn-success btn-lg">Crear
+				video</button>
 		</form>
 	</div>
 </body>

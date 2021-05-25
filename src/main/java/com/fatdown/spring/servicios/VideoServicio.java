@@ -2,6 +2,9 @@ package com.fatdown.spring.servicios;
 
 import java.util.Optional;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+
 import com.fatdown.spring.entidades.Video;
 
 public interface VideoServicio {
@@ -12,6 +15,5 @@ public interface VideoServicio {
 
 	public void eliminarVideo(Long idVideo);
 
-	public Iterable<Video> listarVideo();
-
+	public Page<Video> listarVideosPaginados(Pageable p);
 }

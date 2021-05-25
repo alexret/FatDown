@@ -55,10 +55,9 @@ use FatDown;
     	create table video (
 	       	 id_multimedia bigint not null auto_increment,
 	         nombre_multimedia varchar(50) not null,
-	        -- multimedia longblob not null,
-	        categoria_video integer not null,
+	         categoria_video integer not null,
 	        link_video varchar (255) not null,
-	         id_usuario bigint not null,
+	         id_usuario bigint,
 	         primary key (id_multimedia),
 	         constraint fk_video_usuario
         foreign key (id_usuario) references usuario (id_usuario)

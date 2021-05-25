@@ -1,10 +1,15 @@
 package com.fatdown.spring.controladores;
 
+import java.io.IOException;
 import java.util.Optional;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.CacheControl;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -17,10 +22,15 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
+import com.fatdown.spring.entidades.Ejercicio;
 import com.fatdown.spring.entidades.Gif;
 import com.fatdown.spring.entidades.Imagen;
+import com.fatdown.spring.entidades.Usuario;
 import com.fatdown.spring.entidades.Video;
 import com.fatdown.spring.servicios.GifServicio;
 import com.fatdown.spring.servicios.ImagenServicio;
@@ -43,29 +53,35 @@ public class MultimediaControlador {
 	// Método página para subir videos
 
 	@GetMapping("/subirVideo")
-	public String creaEjericio(Model model, HttpSession session) {
+	public String creaVideo(Model model, HttpSession session) {
 		return "subirVideo";
 	}
 
 	// Métodos de Video
 
 	@PostMapping("/crearVideo")
-	public String crearMultimedia(@RequestBody Video video) {
+	public String crearVideo(Video video, HttpServletRequest request) {
+
 		videoServicio.crearVideo(video);
-		return "redirect:/subirVideo";
-	}
-
-	@PostMapping("/eliminarVideo")
-	public String eliminarVideo(Video video) {
-		videoServicio.eliminarVideo(video.getIdMultimedia());
 		return "redirect:/index";
 	}
 
-	@PostMapping("/listarVideos")
-	public String listarVideos() {
-		videoServicio.listarVideo();
-		return "redirect:/index";
-	}
+	@PostMapping("/eliminarVideo/{id}")
+    public String eliminarVideo(@PathVariable("id") long id) {
+        videoServicio.eliminarVideo(id);
+        return "redirect:/index";
+    }
+
+	@GetMapping("/listarVideos")
+    public ModelAndView listarVideos() {
+        ModelAndView mav = new ModelAndView();
+        Pageable paging = PageRequest.of(0,10);
+        Page<Video> lVideos = videoServicio.listarVideosPaginados(paging);
+
+        mav.addObject("video", lVideos);
+        mav.setViewName("/listaVideos");
+        return mav;
+    }
 
 	// Métodos de Imagen
 
@@ -88,26 +104,23 @@ public class MultimediaControlador {
 	}
 
 	// Obtener Imagen de BBDD
-	
+
 	/*
-	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-		public @ResponseBody ResponseEntity getImageAsResponseEntity(@PathVariable String id) {
-
-			try {
-				Optional<Imagen> optionalMultimedia = imagenServicio.obtenerImagen(Long.parseLong(id));
-				Imagen imagenObj = optionalMultimedia.get();
-				byte[] media = imagenObj.getMultimedia();
-				HttpHeaders headers = new HttpHeaders();
-				headers.setCacheControl(CacheControl.noCache().getHeaderValue());
-
-				ResponseEntity<byte[]> responseEntity = new ResponseEntity<>(media, headers, HttpStatus.OK);
-				return responseEntity;
-
-			} catch (Exception e) {
-				return new ResponseEntity(HttpStatus.NOT_FOUND);
-			}
-	}
-*/
+	 * @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+	 * public @ResponseBody ResponseEntity getImageAsResponseEntity(@PathVariable
+	 * String id) {
+	 * 
+	 * try { Optional<Imagen> optionalMultimedia =
+	 * imagenServicio.obtenerImagen(Long.parseLong(id)); Imagen imagenObj =
+	 * optionalMultimedia.get(); byte[] media = imagenObj.getMultimedia();
+	 * HttpHeaders headers = new HttpHeaders();
+	 * headers.setCacheControl(CacheControl.noCache().getHeaderValue());
+	 * 
+	 * ResponseEntity<byte[]> responseEntity = new ResponseEntity<>(media, headers,
+	 * HttpStatus.OK); return responseEntity;
+	 * 
+	 * } catch (Exception e) { return new ResponseEntity(HttpStatus.NOT_FOUND); } }
+	 */
 	// Métodos de Gif
 
 	@PostMapping("/crearGif")
