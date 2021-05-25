@@ -36,38 +36,17 @@ public class UsuarioControlador {
 	}
 
 	@PostMapping("/signup")
-	public String darseDeAlta(HttpServletRequest request) {
-		String nombreUsuario = request.getParameter("nombreusuario");
-		String apellidosUsuario = request.getParameter("apellidosusuario");
-		String passwordUsuario = request.getParameter("passwordusuario");
-		String emailUsuario = request.getParameter("emailusuario");
-
+	public String darseDeAlta(Usuario usuario, HttpServletRequest request) {
 		// Concatenamos la fecha en un solo String
 		String diaNacimiento = request.getParameter("dianacimientousuario");
 		String mesNacimiento = request.getParameter("mesnacimientousuario");
 		String anioNacimiento = request.getParameter("anionacimientousuario");
 		String concatenarFechaNac = diaNacimiento + "/" + mesNacimiento + "/" + anioNacimiento;
 
-		String numtarjetaUsuario = request.getParameter("numerotarjetausuario");
-		String titularUsuario = request.getParameter("titulartarjetausuario");
-		String codsegUsuario = request.getParameter("codigoseguridadtarjetausuario");
-		String direcfactUsuario = request.getParameter("direccionfacturacionusuario");
-
-		Usuario u = new Usuario();
-		u.setNombreUsuario(nombreUsuario);
-		//u.setUsername(nombreUsuario);
-		u.setApellidosUsuario(apellidosUsuario);
-		u.setPasswordUsuario(passwordUsuario);
-		u.setEmailUsuario(emailUsuario);
-		u.setFechanacUsuario(concatenarFechaNac);
-		u.setNumtarjetaUsuario(numtarjetaUsuario);
-		u.setTitularUsuario(titularUsuario);
-		u.setCodsegUsuario(codsegUsuario);
-		u.setDirecfactUsuario(direcfactUsuario);
-		Usuario usuario = usuarioServicio.crearUsuario(u);
+		usuario.setFechanacUsuario(concatenarFechaNac);
+		usuarioServicio.crearUsuario(usuario);
 
 		return "redirect:/index";
-		// return "redirect:/usuario/userid/" + usuario.getIdUsuario();
 	}
 
 	@GetMapping("/login")

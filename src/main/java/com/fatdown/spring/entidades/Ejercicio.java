@@ -66,30 +66,6 @@ public class Ejercicio implements Serializable {
 	@OneToOne(mappedBy = "ejercicio", cascade = CascadeType.ALL)
 	private Gif gif;
 
-	// Constructor vacío
-	public Ejercicio() {
-		super();
-	}
-
-	// Constructor con todos los campos y con ID
-	public Ejercicio(Long idEjercicio,
-			@NotNull(message = "El nombre del ejercicio no puede ser nulo") @NotBlank(message = "El nombre del ejercicio no puede estar vacío") String nombreEjercicio,
-			@NotNull(message = "La descripción del ejercicio no puede ser nulo") @NotBlank(message = "La descripción no puede estar vacía") String descripcionEjercicio,
-			@NotNull(message = "La categoría del ejercicio no puede ser nula") @NotBlank(message = "La categoría no puede estar vacía") Categoria categoriaEjercicio,
-			@NotNull(message = "El tipo de ejercicio no puede ser nulo") @NotBlank(message = "El tipo de ejercicio no puede estar vacío") String tipoEjercicio,
-			int repeticionEjercicio, int duracionEjercicio, Set<Rutina> rutina, Gif gif) {
-		super();
-		this.idEjercicio = idEjercicio;
-		this.nombreEjercicio = nombreEjercicio;
-		this.descripcionEjercicio = descripcionEjercicio;
-		this.categoriaEjercicio = categoriaEjercicio;
-		this.tipoEjercicio = tipoEjercicio;
-		this.repeticionEjercicio = repeticionEjercicio;
-		this.duracionEjercicio = duracionEjercicio;
-		this.rutina = rutina;
-		this.gif = gif;
-	}
-
 	// Constructor con todos los campos pero sin ID
 	public Ejercicio(String nombreEjercicio, String descripcionEjercicio, Categoria categoriaEjercicio,
 			 String tipoEjercicio, int repeticionEjercicio, int duracionEjercicio,
@@ -106,10 +82,10 @@ public class Ejercicio implements Serializable {
 	
 	// Constructor con todos los campos menos duracionEjercicio
 	public Ejercicio(
-			@NotNull(message = "El nombre del ejercicio no puede ser nulo") @NotBlank(message = "El nombre del ejercicio no puede estar vacío") String nombreEjercicio,
-			@NotNull(message = "La descripción del ejercicio no puede ser nulo") @NotBlank(message = "La descripción no puede estar vacía") String descripcionEjercicio,
-			@NotNull(message = "La categoría del ejercicio no puede ser nula") @NotBlank(message = "La categoría no puede estar vacía") Categoria categoriaEjercicio,
-			@NotNull(message = "El tipo de ejercicio no puede ser nulo") @NotBlank(message = "El tipo de ejercicio no puede estar vacío") String tipoEjercicio,
+			String nombreEjercicio,
+			String descripcionEjercicio,
+			Categoria categoriaEjercicio,
+			String tipoEjercicio,
 			int repeticionEjercicio, Set<Rutina> rutina, Gif gif) {
 		super();
 		this.nombreEjercicio = nombreEjercicio;
@@ -123,10 +99,10 @@ public class Ejercicio implements Serializable {
 	
 	// Constructor con todos los campos menos repeticionEjercicio
 	public Ejercicio(Long idEjercicio,
-			@NotNull(message = "El nombre del ejercicio no puede ser nulo") @NotBlank(message = "El nombre del ejercicio no puede estar vacío") String nombreEjercicio,
-			@NotNull(message = "La descripción del ejercicio no puede ser nulo") @NotBlank(message = "La descripción no puede estar vacía") String descripcionEjercicio,
-			@NotNull(message = "La categoría del ejercicio no puede ser nula") @NotBlank(message = "La categoría no puede estar vacía") Categoria categoriaEjercicio,
-			@NotNull(message = "El tipo de ejercicio no puede ser nulo") @NotBlank(message = "El tipo de ejercicio no puede estar vacío") String tipoEjercicio,
+			String nombreEjercicio,
+			String descripcionEjercicio,
+			Categoria categoriaEjercicio,
+			String tipoEjercicio,
 			int duracionEjercicio, Set<Rutina> rutina, Gif gif) {
 		super();
 		this.idEjercicio = idEjercicio;
