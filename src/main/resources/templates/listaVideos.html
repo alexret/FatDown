@@ -45,8 +45,14 @@ label {
 }
 
 h1 {
-	color: white;
+	color: #ff9900;
 	text-align: center;
+}
+
+td {
+	font-size: 1.4em;
+	text-align: center;
+	vertical-align: center;
 }
 </style>
 </head>
@@ -59,25 +65,37 @@ h1 {
 		</figure>
 		<br />
 	</header>
-	<tbody>
-		<tr th:each="video : ${video}">
+	<div class="card-body">
+		<table class="table table-hover">
+			<tbody>
+				<h1>Listado de videos</h1>
+				<tr th:each="video : ${video}">
 
-			<td style="text-align: center" th:text="${video.nombreMultimedia}"></td>
-			<td style="text-align: center" th:text="${video.categoriaVideo}"></td>
-			<td><iframe width="275" height="200" th:src=" ${video.linkVideo}"></iframe></td>
+					<td style="text-align: center" th:text="${video.nombreMultimedia}"></td>
+					<td style="text-align: center" th:text="${video.categoriaVideo}"></td>
+					<td><iframe width="275" height="200"
+							th:src=" ${video.linkVideo}"></iframe></td>
 
-			<td>
-				<form
-					th:action="@{/multimedia/eliminarVideo/{id}(id=${video.idMultimedia})}"
-					method="post">
-					<button type="submit">Eliminar video</button>
-				</form>
-			</td>
-			
-			</br>
+					<td>
+						<form
+							th:action="@{/multimedia/eliminarVideo/{id}(id=${video.idMultimedia})}"
+							method="post">
+							<button class="btn btn-danger btn-lg" type="submit">Eliminar
+								video</button>
+						</form> </br>
+						<form
+							th:action="@{/multimedia/eliminarVideo/{id}(id=${video.idMultimedia})}"
+							method="post">
+							<button class="btn btn-info btn-lg" type="submit">Guardar
+								video</button>
+						</form>
+					</td>
 
-		</tr>
-	</tbody>
+					</br>
 
+				</tr>
+			</tbody>
+		</table>
+	</div>
 </body>
 </html>
