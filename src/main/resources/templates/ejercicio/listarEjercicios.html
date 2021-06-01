@@ -62,17 +62,10 @@ h1 {
 <tbody>
 <tr th:each="ejercicio : ${ejercicio}">
     <td>
-        <div id="imagen_producto" th:if="${ejercicio.gif == null}">
-            <figure>
-                <img class="foto" th:src="@{/pictures/prueba.gif}" />
-            </figure>
-        </div>
-        <div id="imagen_producto" th:if="${ejercicio.gif!=null}">
-            <figure>
-                <img class="foto"
-                     th:src="@{/multimedia/{id}(id=${ejercicio.gif.idMultimedia})}" width="100" height="100"/>
-            </figure>
-        </div>
+        <figure>
+            <img class="foto"
+                 th:src="@{/multimedia/{id}(id=${ejercicio.gif.idMultimedia})}" width="100" height="100"/>
+        </figure>
     </td>
     <td style="text-align:center" th:text="${ejercicio.nombreEjercicio}"></td>
     <td style="text-align:center" th:text="${ejercicio.descripcionEjercicio}"></td>
