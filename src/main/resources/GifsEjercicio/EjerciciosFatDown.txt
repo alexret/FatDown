@@ -1,0 +1,72 @@
+-ABDOMINALES
+
+*nombreEjercicio "Bicicleta"; descripcionEjercicio "Boca arriba con las manos en la nuca y las piernas elevadas, 
+lleva los codos a tocar la rodilla de la pierna contraria, vuelve a la posición inicial y repite el movimiento a la inversa."; 
+categoriaEjercicio "ABDOMINALES", tipoEjercicio "repeticion", repeticionEjercicio "20", duracionEjercicio null.
+
+*nombreEjercicio "Plancha isométrica"; descripcionEjercicio "Acércate al suelo como si fueras a hacer una flexión, 
+con los codos doblados a 90 grados y ambos antebrazos apoyados en el suelo. Mantén tu cuerpo en línea recta 
+desde la parte superior de la cabeza hasta la punta de los talones."; 
+categoriaEjercicio "ABDOMINALES", tipoEjercicio "duracion", repeticionEjercicio null, duracionEjercicio "30".
+
+-PIERNAS
+
+*nombreEjercicio "Sentadilla"; descripcionEjercicio "Consiste en colocarse de pie, con los brazos delante, las piernas 
+extendidas en línea con los hombros y los dedos de los pies ligeramente hacia afuera. Luego dobla las rodillas como si fueras a sentarte, 
+empujando la pelvis hacia atrás y sin que las rodillas traspasen la punta del pie. Después levántate y repite."; 
+categoriaEjercicio "PIERNAS", tipoEjercicio "repeticion", repeticionEjercicio "20", duracionEjercicio null.
+
+*nombreEjercicio "Sentadilla isométrica"; descripcionEjercicio "Es muy parecida a una sentadilla, con la diferencia que,
+con la sentadilla isométrica debes apoyar tu espalda a la pared y luego bajar como si estuvieras sentándote en una silla, 
+manteniéndote en posición estática dependiendo de tu propia resistencia, luego progresivamente puedes ir aumentando el tiempo."; 
+categoriaEjercicio "PIERNAS", tipoEjercicio "duracion", repeticionEjercicio null, duracionEjercicio "30".
+
+-GLUTEOS
+
+*nombreEjercicio "Puente de glúteos"; descripcionEjercicio "Debes colocarte preferiblemente sobre una colchoneta de ejercicios, 
+boca arriba con los brazos a los lados y las rodillas dobladas hacia arriba. Toma aire y levanta la cadera, manteniendo 
+la espalda recta y contrayendo los glúteos. Mantente en esa posición firme durante 3 segundos y baja nuevamente."; 
+categoriaEjercicio "GLUTEOS", tipoEjercicio "repeticion", repeticionEjercicio "20", duracionEjercicio null.
+
+*nombreEjercicio "Patada trasera"; descripcionEjercicio "Ponte a cuatro patas, manteniendo el core apretado, 
+la espalda recta y la mirada al suelo. Levanta una pierna y realiza el gesto de pegar una patada hacia atrás y hacia arriba.
+No bajes la pierna y haz pequeños rebotes. Al mismo tiempo, lleva la mirada al frente. Luego cambia de pierna tras haber 
+transcurrido la mitad del tiempo."; 
+categoriaEjercicio "GLUTEOS", tipoEjercicio "duracion", repeticionEjercicio null, duracionEjercicio "40".
+
+-ESPALDA
+
+*nombreEjercicio "Peso muerto"; descripcionEjercicio "Puedes utilizar mancuernas para realizar este ejercicio si lo deseas. 
+Colócate en pie con las piernas separadas a la anchura de los hombros. Flexiona las rodillas manteniendo la espalda totalmente recta, 
+como si trataras de sentarte. Empieza a descender utilizando las caderas. Pon la espalda recta y mira hacia adelante en todo momento. 
+Para ascender, levanta los hombros y la cadera al mismo tiempo manteniendo la espalda erguida."; 
+categoriaEjercicio "ESPALDA", tipoEjercicio "repeticion", repeticionEjercicio "20", duracionEjercicio null.
+
+*nombreEjercicio "Superman"; descripcionEjercicio "Túmbate boca abajo. Estira los brazos hacia adelante, con las palmas hacia abajo.
+Levanta la parte superior del cuerpo y luego las piernas, formando un arco. Asegúrate de que las rodillas y el pecho 
+no tocan el suelo. Mantén la cabeza y el cuello neutrales. No estires demasiado el cuello y mantén la barbilla clavada."; 
+categoriaEjercicio "ESPALDA", tipoEjercicio "duracion", repeticionEjercicio null, duracionEjercicio "30".
+
+-BRAZOS
+
+*nombreEjercicio "Extensión de tríceps"; descripcionEjercicio "En posición de sentadilla, con los pies algo separados y rodillas ligeramente flexionadas 
+(también se puede realizar desde posición sentada), llevamos los brazos por detrás de la cabeza sujetando una de las mancuernas. 
+Desde la posición que vemos en la imagen, estiramos completamente los brazos hacia arriba y volvemos a encoger."; 
+categoriaEjercicio "BRAZOS", tipoEjercicio "repeticion", repeticionEjercicio "15", duracionEjercicio null.
+
+*nombreEjercicio "Curl de bíceps isométrico"; descripcionEjercicio "Con ambas manos, sujeta las mancuernas y mantén los brazos 
+flexionados de manera que los codos queden pegados al cuerpo. Los brazos deben quedar aguantando las mancuernas y haciendo fuerza 
+para sostenerlas con los brazos haciendo un ángulo de 90 grados."; 
+categoriaEjercicio "BRAZOS", tipoEjercicio "duracion", repeticionEjercicio null, duracionEjercicio "30".
+
+-FULL_BODY
+
+*nombreEjercicio "Burpees"; descripcionEjercicio "Partiendo de la posición vertical, bajar haciendo una sentadilla y apoyar las manos en el suelo 
+completamente; llevar los dos pies a la vez de un salto hacia atrás hasta colocarnos en posición horizontal; hacer un fondo (flexión) llegando a tocar el suelo 
+con el pecho; volver a la posición horizontal y con un salto hacia adelante colocar los pies a la altura de las manos y subir a la vertical; y terminar con un pequeño salto."; 
+categoriaEjercicio "FULL_BODY", tipoEjercicio "repeticion", repeticionEjercicio "15", duracionEjercicio null.
+
+*nombreEjercicio "Jumping Jacks"; descripcionEjercicio "Primero, sitúate de pie con los pies juntos y los brazos extendidos a lo largo del cuerpo.
+Luego, salta con las piernas y los pies a los lados, mientras levantas los brazos por encima de la cabeza. Posteriormente, sin hacer una pausa, 
+debes volver a la posición inicial bajando los brazos y saltando para volver a estar juntos."; 
+categoriaEjercicio "FULL_BODY", tipoEjercicio "duracion", repeticionEjercicio null, duracionEjercicio "30".
