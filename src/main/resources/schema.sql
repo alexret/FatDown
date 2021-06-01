@@ -67,7 +67,7 @@ use FatDown;
         	create table ejercicio (
     	       	 id_ejercicio bigint not null auto_increment,
     	         nombre_ejercicio varchar(50) not null,
-                 descripcion_ejercicio varchar(50) not null,
+                 descripcion_ejercicio varchar(255) not null,
                  categoria_ejercicio varchar(50) not null,
                  tipo_ejercicio varchar(50) not null,
                  repeticion_ejercicio int,
@@ -88,7 +88,7 @@ use FatDown;
         create table gif (
              id_multimedia bigint not null auto_increment,
              nombre_multimedia varchar(50) not null,
-             multimedia longblob not null,
+             multimedia longblob,
              id_ejercicio bigint not null,
              primary key (id_multimedia),
             constraint fk_gif_ejercicio	foreign key (id_ejercicio) references ejercicio (id_ejercicio) on update cascade
