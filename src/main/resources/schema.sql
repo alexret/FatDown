@@ -54,7 +54,7 @@ use FatDown;
 
     	create table video (
 	       	 id_multimedia bigint not null auto_increment,
-	         nombre_multimedia varchar(50) not null,
+	         nombre_multimedia varchar(255) not null,
 	         categoria_video integer not null,
 	        link_video varchar (255) not null,
 	         id_usuario bigint,
