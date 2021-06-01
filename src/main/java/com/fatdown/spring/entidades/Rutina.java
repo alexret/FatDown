@@ -1,9 +1,13 @@
 package com.fatdown.spring.entidades;
 
+import com.fatdown.spring.repositorios.EjercicioRepositorio;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
+import java.util.List;
+import java.util.Optional;
 
 @Entity
 @Table(name = "RUTINA")
@@ -29,7 +33,7 @@ public class Rutina implements Serializable {
     @ManyToOne
     @JoinColumn(name = "ID_EJERCICIO")
     private Ejercicio ejercicio;
-    
+
     public Rutina() {
 		super();
 	}

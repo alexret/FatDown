@@ -1,10 +1,11 @@
 package com.fatdown.spring.servicios;
 
 import com.fatdown.spring.entidades.Ejercicio;
+import com.fatdown.spring.entidades.Rutina;
 
 public interface RutinaServicio {
 
-    boolean addEjercicio(Ejercicio ejercicio);
+    Rutina addRutina(Rutina rutina);
 
-    void deleteEjercicio(Ejercicio ejercicio);
+    void deleteRutina(Rutina rutina);
 }
