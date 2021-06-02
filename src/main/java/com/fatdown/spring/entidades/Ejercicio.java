@@ -68,11 +68,16 @@ public class Ejercicio implements Serializable {
 
 	@OneToOne(mappedBy = "ejercicio", cascade = CascadeType.ALL)
 	private Gif gif;
+	
+	
+
+	public Ejercicio() {
+		super();
+	}
 
 	// Constructor con todos los campos pero sin ID
 	public Ejercicio(String nombreEjercicio, String descripcionEjercicio, Categoria categoriaEjercicio,
-			 String tipoEjercicio, int repeticionEjercicio, int duracionEjercicio,
-			Set<Rutina> rutina) {
+			String tipoEjercicio, int repeticionEjercicio, int duracionEjercicio, Set<Rutina> rutina) {
 		super();
 		this.nombreEjercicio = nombreEjercicio;
 		this.descripcionEjercicio = descripcionEjercicio;
@@ -82,14 +87,21 @@ public class Ejercicio implements Serializable {
 		this.duracionEjercicio = duracionEjercicio;
 		this.rutina = rutina;
 	}
-	
+
+	public Ejercicio(String nombreEjercicio, String descripcionEjercicio, Categoria categoriaEjercicio,
+			String tipoEjercicio, int repeticionEjercicio, int duracionEjercicio) {
+		super();
+		this.nombreEjercicio = nombreEjercicio;
+		this.descripcionEjercicio = descripcionEjercicio;
+		this.categoriaEjercicio = categoriaEjercicio;
+		this.tipoEjercicio = tipoEjercicio;
+		this.repeticionEjercicio = repeticionEjercicio;
+		this.duracionEjercicio = duracionEjercicio;
+	}
+
 	// Constructor con todos los campos menos duracionEjercicio
-	public Ejercicio(
-			String nombreEjercicio,
-			String descripcionEjercicio,
-			Categoria categoriaEjercicio,
-			String tipoEjercicio,
-			int repeticionEjercicio, Set<Rutina> rutina, Gif gif) {
+	public Ejercicio(String nombreEjercicio, String descripcionEjercicio, Categoria categoriaEjercicio,
+			String tipoEjercicio, int repeticionEjercicio, Set<Rutina> rutina, Gif gif) {
 		super();
 		this.nombreEjercicio = nombreEjercicio;
 		this.descripcionEjercicio = descripcionEjercicio;
@@ -99,14 +111,21 @@ public class Ejercicio implements Serializable {
 		this.rutina = rutina;
 		this.gif = gif;
 	}
-	
+
+	public Ejercicio(String nombreEjercicio, String descripcionEjercicio, Categoria categoriaEjercicio,
+			String tipoEjercicio, int repeticionEjercicio, Gif gif) {
+		super();
+		this.nombreEjercicio = nombreEjercicio;
+		this.descripcionEjercicio = descripcionEjercicio;
+		this.categoriaEjercicio = categoriaEjercicio;
+		this.tipoEjercicio = tipoEjercicio;
+		this.repeticionEjercicio = repeticionEjercicio;
+		this.gif = gif;
+	}
+
 	// Constructor con todos los campos menos repeticionEjercicio
-	public Ejercicio(Long idEjercicio,
-			String nombreEjercicio,
-			String descripcionEjercicio,
-			Categoria categoriaEjercicio,
-			String tipoEjercicio,
-			int duracionEjercicio, Set<Rutina> rutina, Gif gif) {
+	public Ejercicio(Long idEjercicio, String nombreEjercicio, String descripcionEjercicio,
+			Categoria categoriaEjercicio, String tipoEjercicio, int duracionEjercicio, Set<Rutina> rutina, Gif gif) {
 		super();
 		this.idEjercicio = idEjercicio;
 		this.nombreEjercicio = nombreEjercicio;
@@ -186,7 +205,14 @@ public class Ejercicio implements Serializable {
 		return serialVersionUID;
 	}
 
-    
+	public Gif getGif() {
+		return gif;
+	}
 
+	public void setGif(Gif gif) {
+		this.gif = gif;
+	}
+	
+	
 
 }
