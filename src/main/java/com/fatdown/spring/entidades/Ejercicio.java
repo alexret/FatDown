@@ -58,9 +58,12 @@ public class Ejercicio implements Serializable {
     private int duracionEjercicio;
 
     // Relación OneToMany
-    @OneToMany(mappedBy="ejercicio",
-            cascade = { CascadeType.PERSIST, CascadeType.MERGE },
+    @OneToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE },
             orphanRemoval=true)
+	@JoinTable(
+			name = "rutina_ejercicio",
+			joinColumns = @JoinColumn(name = "idEjercicio"),
+			inverseJoinColumns = @JoinColumn(name = "idRutina"))
     private Set<Rutina> rutina = new HashSet<>();
 
 	@OneToOne(mappedBy = "ejercicio", cascade = CascadeType.ALL)
