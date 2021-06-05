@@ -79,7 +79,7 @@ public class MultimediaControlador {
         Page<Video> lVideos = videoServicio.listarVideosPaginados(paging);
 
         mav.addObject("video", lVideos);
-        mav.setViewName("/listaVideos");
+        mav.setViewName("/listarVideos");
         return mav;
     }
 
