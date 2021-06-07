@@ -15,21 +15,19 @@
 <link rel="stylesheet" type="text/css"
 	th:href="@{/css/bootstrap.minSUPERHERO.css}" />
 <script type="text/javascript">
-	$(document).ready(function() {
-		$("#tipoEjercicio").change(function() {
-			if ($(this).val() == "Duracion") {
-// 				$("#repeticionEjercicio").prop("disabled", true);
-//				$("#duracionEjercicio").prop("disabled", false);
-				$("#repeticionEjercicio").css("display", "none");
-				$("#duracionEjercicio").css("display", "block");
-			} else {
-// 				$("#duracionEjercicio").prop("disabled", true);
-// 				$("#repeticionEjercicio").prop("disabled", false);
-				$("#duracionEjercicio").css("display", "none");
-				$("#repeticionEjercicio").css("display", "block");
-			}
-		});
+$(document).ready(function() {
+	$("#tipoEjercicio").change(function() {
+		if ($(this).val() == "Duracion") {
+			$("#duracionEjercicio").prop("disabled", false);
+			$("#repeticionEjercicio").css("display", "none");
+			$("#duracionEjercicio").css("display", "block");
+		} else {
+			$("#repeticionEjercicio").prop("disabled", false);
+			$("#duracionEjercicio").css("display", "none");
+			$("#repeticionEjercicio").css("display", "block");
+		}
 	});
+});
 </script>
 <style th:inline="text">
 .wrapper {
@@ -66,6 +64,10 @@ label {
 h1 {
 	color: #ff9900;
 	text-align: center;
+}
+
+.inputvisible {
+	visibility: visible;
 }
 </style>
 </head>
@@ -115,7 +117,7 @@ h1 {
 						de ejercicio (por tiempo / con repeticiones)</label> <select
 						id="tipoEjercicio" class="form-control" name="tipoEjercicio"
 						required>
-						<option disabled selected>Selecciona una de las
+						<option disabled selected value="none">Selecciona una de las
 							siguientes opciones</option>
 						<option value="Duracion">Por tiempo (duración
 							determinada)</option>
@@ -129,12 +131,12 @@ h1 {
 					<input id="repeticionEjercicio" name="repeticionEjercicio"
 						type="number" aria-label="Repeticion"
 						class="form-control form-control-lg"
-						placeholder="Repeticiones del ejercicio" min="5" max="30" required>
+						placeholder="Repeticiones del ejercicio" min="5" max="30" disabled required>
 					<input id="duracionEjercicio" name="duracionEjercicio"
 						type="number" aria-label="Duracion"
 						class="form-control form-control-lg"
-						placeholder="Duración del ejercicio (en segundos)" min="10" max="90"
-						required>
+						placeholder="Duración del ejercicio (en segundos)" min="10"
+						max="90" disabled required>
 				</div>
 				<div class="form-group">
 					<label style="font-size: 18pt; color: #ff9900;">Sube aquí
