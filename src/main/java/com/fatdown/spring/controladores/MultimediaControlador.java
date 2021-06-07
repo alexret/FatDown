@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.http.CacheControl;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -68,38 +67,21 @@ public class MultimediaControlador {
 	}
 
 	@PostMapping("/eliminarVideo/{id}")
-	public String eliminarVideo(@PathVariable("id") long id) {
-		videoServicio.eliminarVideo(id);
-		return "redirect:/index";
-	}
+    public String eliminarVideo(@PathVariable("id") long id) {
+        videoServicio.eliminarVideo(id);
+        return "redirect:/index";
+    }
 
 	@GetMapping("/listarVideos")
-	public ModelAndView listarVideos() {
+    public ModelAndView listarVideos() {
+        ModelAndView mav = new ModelAndView();
+        Pageable paging = PageRequest.of(0,10);
+        Page<Video> lVideos = videoServicio.listarVideosPaginados(paging);
 
-		ModelAndView mav = new ModelAndView();
-
-		// Se crean 10 pageables con 10 items cada una ordenadas por la categoría
-		Pageable pagina1 = PageRequest.of(0, 40, Sort.by("categoriaVideo").ascending());
-		Pageable pagina2 = PageRequest.of(1, 10, Sort.by("categoriaVideo").ascending());
-		Pageable pagina3 = PageRequest.of(2, 10, Sort.by("categoriaVideo").ascending());
-		Pageable pagina4 = PageRequest.of(3, 10, Sort.by("categoriaVideo").ascending());
-
-		// Se usa el servicio para devolver las páginas con los objetos pageables
-		// creados
-		Page<Video> primera = videoServicio.listarVideosPaginados(pagina1);
-		Page<Video> segunda = videoServicio.listarVideosPaginados(pagina2);
-		Page<Video> tercera = videoServicio.listarVideosPaginados(pagina3);
-		Page<Video> cuarta = videoServicio.listarVideosPaginados(pagina4);
-
-		// Se agregan al modelo las páginas
-		mav.addObject("video", primera);
-		mav.addObject("segunda", segunda);
-		mav.addObject("tercera", tercera);
-		mav.addObject("cuarta", cuarta);
-
-		mav.setViewName("/listaVideos");
-		return mav;
-	}
+        mav.addObject("video", lVideos);
+        mav.setViewName("/listarVideos");
+        return mav;
+    }
 
 	// Métodos de Imagen
 

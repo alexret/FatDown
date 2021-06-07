@@ -19,9 +19,9 @@ public class Imagen extends Multimedia {
 	@Column(name = "MULTIMEDIA")
 	private byte[] multimedia;
 
-	@OneToOne
-	@JoinColumn(name = "id_consejo")
-	private Consejo consejo;
+//	@OneToOne
+//	@JoinColumn(name = "id_consejo")
+//	private Consejo consejo;
 
 	public Imagen() {
 		super();

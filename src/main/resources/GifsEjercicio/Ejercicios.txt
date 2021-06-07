@@ -1,0 +1,65 @@
+-- EJERCICIOS
+
+-- Abdominales (con gif de función load_file)
+insert into ejercicio (id_ejercicio, nombre_ejercicio, descripcion_ejercicio, categoria_ejercicio, tipo_ejercicio, repeticion_ejercicio, duracion_ejercicio) values (1, 'Bicicleta', 'Boca arriba con las manos en la nuca y las piernas elevadas, 
+lleva los codos a tocar la rodilla de la pierna contraria, vuelve a la posición inicial y repite el movimiento a la inversa.', 'ABDOMINALES', 'Repeticion', 20, 0);
+insert into gif (id_multimedia, nombre_multimedia, multimedia, id_ejercicio) values (1, 'Abdominales_Bicicleta', load_file('C:\Users\Mandi\Desktop\GifsEjercicio\Abdominales_Bicicleta.gif'), 1);
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+insert into ejercicio (id_ejercicio, nombre_ejercicio, descripcion_ejercicio, categoria_ejercicio, tipo_ejercicio, repeticion_ejercicio, duracion_ejercicio) values (2, 'Plancha isométrica', 'Acércate al suelo como si fueras a hacer una flexión, 
+con los codos doblados a 90 grados y ambos antebrazos apoyados en el suelo. Mantén tu cuerpo en línea recta 
+desde la parte superior de la cabeza hasta la punta de los talones.', 'ABDOMINALES', 'Duracion', 0, 30);
+insert into gif (id_multimedia, nombre_multimedia, multimedia, id_ejercicio) values (2, 'Abdominales_PlanchaIsometrica',,2);
+
+-- Piernas
+insert into ejercicio (id_ejercicio, nombre_ejercicio, descripcion_ejercicio, categoria_ejercicio, tipo_ejercicio, repeticion_ejercicio, duracion_ejercicio) values (3, 'Sentadilla', 'Consiste en colocarse de pie, con los brazos delante, las piernas 
+extendidas en línea con los hombros y los dedos de los pies ligeramente hacia afuera. Luego dobla las rodillas como si fueras a sentarte, 
+empujando la pelvis hacia atrás y sin que las rodillas traspasen la punta del pie. Después levántate y repite.', 'PIERNAS', 'Repeticion', 20, 0);
+insert into gif (id_multimedia, nombre_multimedia, multimedia, id_ejercicio) values (3, 'Piernas_Sentadilla',,3);
+insert into ejercicio (id_ejercicio, nombre_ejercicio, descripcion_ejercicio, categoria_ejercicio, tipo_ejercicio, repeticion_ejercicio, duracion_ejercicio) values (4, 'Sentadilla isométrica', 'Es muy parecida a una sentadilla, con la diferencia que,
+con la sentadilla isométrica debes apoyar tu espalda a la pared y luego bajar como si estuvieras sentándote en una silla, 
+manteniéndote en posición estática dependiendo de tu propia resistencia, luego progresivamente puedes ir aumentando el tiempo.', 'PIERNAS', 'Duracion', 0, 30);
+insert into gif (id_multimedia, nombre_multimedia, multimedia, id_ejercicio) values (4, 'Piernas_SentadillaIsometrica',,4);
+
+-- Gluteos
+insert into ejercicio (id_ejercicio, nombre_ejercicio, descripcion_ejercicio, categoria_ejercicio, tipo_ejercicio, repeticion_ejercicio, duracion_ejercicio) values (5, 'Puente de glúteos', 'Debes colocarte preferiblemente sobre una colchoneta de ejercicios, 
+boca arriba con los brazos a los lados y las rodillas dobladas hacia arriba. Toma aire y levanta la cadera, manteniendo 
+la espalda recta y contrayendo los glúteos. Mantente en esa posición firme durante 3 segundos y baja nuevamente.', 'GLUTEOS', 'Repeticion', 0, null);
+insert into gif (id_multimedia, nombre_multimedia, multimedia, id_ejercicio) values (5, 'Gluteos_PuenteDeGluteos',,5);
+insert into ejercicio (id_ejercicio, nombre_ejercicio, descripcion_ejercicio, categoria_ejercicio, tipo_ejercicio, repeticion_ejercicio, duracion_ejercicio) values (6, 'Patada trasera', 'Ponte a cuatro patas, manteniendo el core apretado, 
+la espalda recta y la mirada al suelo. Levanta una pierna y realiza el gesto de pegar una patada hacia atrás y hacia arriba.
+No bajes la pierna y haz pequeños rebotes. Al mismo tiempo, lleva la mirada al frente. Luego cambia de pierna tras haber 
+transcurrido la mitad del tiempo.', 'GLUTEOS', 'Duracion', 0, 40);
+insert into gif (id_multimedia, nombre_multimedia, multimedia, id_ejercicio) values (6, 'Gluteos_PatadaTrasera',,6);
+
+-- Espalda
+insert into ejercicio (id_ejercicio, nombre_ejercicio, descripcion_ejercicio, categoria_ejercicio, tipo_ejercicio, repeticion_ejercicio, duracion_ejercicio) values (7, 'Peso muerto', 'Puedes utilizar mancuernas para realizar este ejercicio si lo deseas. 
+Colócate en pie con las piernas separadas a la anchura de los hombros. Flexiona las rodillas manteniendo la espalda totalmente recta, 
+como si trataras de sentarte. Empieza a descender utilizando las caderas. Pon la espalda recta y mira hacia adelante en todo momento. 
+Para ascender, levanta los hombros y la cadera al mismo tiempo manteniendo la espalda erguida.', 'ESPALDA', 'Repeticion', 20, 0);
+insert into gif (id_multimedia, nombre_multimedia, multimedia, id_ejercicio) values (7, 'Espalda_PesoMuerto',,7);
+insert into ejercicio (id_ejercicio, nombre_ejercicio, descripcion_ejercicio, categoria_ejercicio, tipo_ejercicio, repeticion_ejercicio, duracion_ejercicio) values (8, 'Superman', 'Túmbate boca abajo. Estira los brazos hacia adelante, con las palmas hacia abajo.
+Levanta la parte superior del cuerpo y luego las piernas, formando un arco. Asegúrate de que las rodillas y el pecho 
+no tocan el suelo. Mantén la cabeza y el cuello neutrales. No estires demasiado el cuello y mantén la barbilla clavada.', 'ESPALDA', 'Duracion', 0, 30);
+insert into gif (id_multimedia, nombre_multimedia, multimedia, id_ejercicio) values (8, 'Espalda_Superman',,8);
+
+-- Brazos
+insert into ejercicio (id_ejercicio, nombre_ejercicio, descripcion_ejercicio, categoria_ejercicio, tipo_ejercicio, repeticion_ejercicio, duracion_ejercicio) values (9, 'Extensión de tríceps', 'En posición de sentadilla, con los pies algo separados y rodillas ligeramente flexionadas 
+(también se puede realizar desde posición sentada), llevamos los brazos por detrás de la cabeza sujetando una de las mancuernas. 
+Desde la posición que vemos en la imagen, estiramos completamente los brazos hacia arriba y volvemos a encoger.', 'BRAZOS', 'Repeticion', 15, 0);
+insert into gif (id_multimedia, nombre_multimedia, multimedia, id_ejercicio) values (9, 'Brazos_ExtensionDeTriceps',,9);
+insert into ejercicio (id_ejercicio, nombre_ejercicio, descripcion_ejercicio, categoria_ejercicio, tipo_ejercicio, repeticion_ejercicio, duracion_ejercicio) values (10, 'Curl de bíceps isométrico', 'Con ambas manos, sujeta las mancuernas y mantén los brazos 
+flexionados de manera que los codos queden pegados al cuerpo. Los brazos deben quedar aguantando las mancuernas y haciendo fuerza 
+para sostenerlas con los brazos haciendo un ángulo de 90 grados.', 'BRAZOS', 'Duracion', 0, 30);
+insert into gif (id_multimedia, nombre_multimedia, multimedia, id_ejercicio) values (10, 'Brazos_CurlDeBicepsIsometrico',,10);
+
+-- FullBody
+insert into ejercicio (id_ejercicio, nombre_ejercicio, descripcion_ejercicio, categoria_ejercicio, tipo_ejercicio, repeticion_ejercicio, duracion_ejercicio) values (11, 'Burpees', 'Partiendo de la posición vertical, bajar haciendo una sentadilla y apoyar las manos en el suelo 
+completamente; llevar los dos pies a la vez de un salto hacia atrás hasta colocarnos en posición horizontal; hacer un fondo (flexión) llegando a tocar el suelo 
+con el pecho; volver a la posición horizontal y con un salto hacia adelante colocar los pies a la altura de las manos y subir a la vertical; y terminar con un pequeño salto.', 'FULL_BODY', 'Repeticion', 15, 0);
+insert into gif (id_multimedia, nombre_multimedia, multimedia, id_ejercicio) values (11, 'FullBody_Burpee',,11);
+insert into ejercicio (id_ejercicio, nombre_ejercicio, descripcion_ejercicio, categoria_ejercicio, tipo_ejercicio, repeticion_ejercicio, duracion_ejercicio) values (12, 'Jumping Jacks', 'Primero, sitúate de pie con los pies juntos y los brazos extendidos a lo largo del cuerpo.
+Luego, salta con las piernas y los pies a los lados, mientras levantas los brazos por encima de la cabeza. Posteriormente, sin hacer una pausa, 
+debes volver a la posición inicial bajando los brazos y saltando para volver a estar juntos.', 'FULL_BODY', 'Duracion', 0, 30);
+insert into gif (id_multimedia, nombre_multimedia, multimedia, id_ejercicio) values (12, 'FullBody_JumpingJack',,12);

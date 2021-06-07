@@ -18,11 +18,15 @@
 	$(document).ready(function() {
 		$("#tipoEjercicio").change(function() {
 			if ($(this).val() == "Duracion") {
-				$("#repeticionEjercicio").prop("disabled", true);
-				$("#duracionEjercicio").prop("disabled", false);
+// 				$("#repeticionEjercicio").prop("disabled", true);
+//				$("#duracionEjercicio").prop("disabled", false);
+				$("#repeticionEjercicio").css("display", "none");
+				$("#duracionEjercicio").css("display", "block");
 			} else {
-				$("#duracionEjercicio").prop("disabled", true);
-				$("#repeticionEjercicio").prop("disabled", false);
+// 				$("#duracionEjercicio").prop("disabled", true);
+// 				$("#repeticionEjercicio").prop("disabled", false);
+				$("#duracionEjercicio").css("display", "none");
+				$("#repeticionEjercicio").css("display", "block");
 			}
 		});
 	});
@@ -77,7 +81,8 @@ h1 {
 	<h1>Creación de ejercicios</h1>
 	<br />
 	<div class="wrapper">
-		<form th:action="@{/ejercicio/crearEjercicio}" method="post" enctype="multipart/form-data">
+		<form th:action="@{/ejercicio/crearEjercicio}" method="post"
+			enctype="multipart/form-data">
 			<fieldset>
 				<div class="form-group">
 					<input name="nombreEjercicio" type="text"
@@ -123,16 +128,18 @@ h1 {
 					<label style="font-size: 18pt; color: #ff9900;">Duración/Repeticiones</label>
 					<input id="repeticionEjercicio" name="repeticionEjercicio"
 						type="number" aria-label="Repeticion"
-						class="form-control form-control-lg" placeholder="Repeticiones del ejercicio"
-						required> <input id="duracionEjercicio"
-						name="duracionEjercicio" type="number" aria-label="Duracion"
-						class="form-control form-control-lg" placeholder="Duración del ejercicio (segundos)"
+						class="form-control form-control-lg"
+						placeholder="Repeticiones del ejercicio" min="5" max="30" required>
+					<input id="duracionEjercicio" name="duracionEjercicio"
+						type="number" aria-label="Duracion"
+						class="form-control form-control-lg"
+						placeholder="Duración del ejercicio (en segundos)" min="10" max="90"
 						required>
 				</div>
 				<div class="form-group">
 					<label style="font-size: 18pt; color: #ff9900;">Sube aquí
-						el GIF ilustrativo del ejercicio</label> <input name="subirGif" type="file"
-						class="form-control form-control-lg" required>
+						el GIF ilustrativo del ejercicio</label> <input name="subirGif"
+						type="file" class="form-control form-control-lg" required>
 				</div>
 			</fieldset>
 			<button type="submit" class="btn btn-success btn-lg">Crear

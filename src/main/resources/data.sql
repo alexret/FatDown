@@ -63,6 +63,26 @@ insert into video (id_multimedia, nombre_multimedia, categoria_video, link_video
 insert into video (id_multimedia, nombre_multimedia, categoria_video, link_video) values (129,'Los mejores ejercicios para el cuerpo en casa | 6 minutos', 5, 'https://www.youtube.com/embed/Ga_3N8Pgcno');
 insert into video (id_multimedia, nombre_multimedia, categoria_video, link_video) values (130,'Rutina de ejercicios full body para tonificar', 5, 'https://www.youtube.com/embed/wWCphTqdFkw');
 
+-- IMAGENES
+
+-- CONSEJOS
+
+-- Homer pesa
+insert into consejo (id_consejo, nombre_consejo, descripcion_consejo) values (1, 'h_pesa', '¡Una buena postura importa tanto como la actitud!');
+-- Homer pecho
+insert into consejo (id_consejo, nombre_consejo, descripcion_consejo) values (2, 'h_pecho', 'Hacer los ejercicio de forma correcta nunca debe doler');
+-- Homer espejo
+insert into consejo (id_consejo, nombre_consejo, descripcion_consejo) values (3, 'h_mirror', '¡No pierdas de vista tus metas y los resultados llegarán!');
+-- Homer relax
+insert into consejo (id_consejo, nombre_consejo, descripcion_consejo) values (4, 'h_relax', 'Saber cuando descansar te ayudará a seguir progresando');
+-- Homer runner
+insert into consejo (id_consejo, nombre_consejo, descripcion_consejo) values (5, 'h_runner', 'Medir tus constantes y tiempos puede facilitar el seguimiento');
+-- Homer maraton
+insert into consejo (id_consejo, nombre_consejo, descripcion_consejo) values (6, 'h_maraton', '¡Recuerda que la mejora es una carrera de fondo, no tires la toalla!');
+-- Homer push
+insert into consejo (id_consejo, nombre_consejo, descripcion_consejo) values (7, 'h_push', 'Pedir ayuda o supervisión es una ayuda para nuevos ejercicios');
+
+
 -- EJERCICIOS
 
 -- Abdominales

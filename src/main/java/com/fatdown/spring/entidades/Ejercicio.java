@@ -13,11 +13,11 @@ import javax.validation.constraints.NotNull;
 import com.fatdown.spring.enums.Categoria;
 
 /* @ de lombok para que se autogenere el constructor y los getter y setter*/
-@Getter
-@Setter
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
+//@Getter
+//@Setter
+//@Builder
+//@NoArgsConstructor
+//@AllArgsConstructor
 @Entity
 @Table(name = "EJERCICIO")
 public class Ejercicio implements Serializable {
@@ -64,8 +64,6 @@ public class Ejercicio implements Serializable {
 	@OneToOne(mappedBy = "ejercicio", cascade = CascadeType.ALL)
 	private Gif gif;
 	
-	
-
 	public Ejercicio() {
 		super();
 	}
@@ -207,7 +205,5 @@ public class Ejercicio implements Serializable {
 	public void setGif(Gif gif) {
 		this.gif = gif;
 	}
-	
-	
 
 }
