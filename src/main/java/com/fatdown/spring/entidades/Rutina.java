@@ -88,8 +88,16 @@ public class Rutina implements Serializable {
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
-	
-	
+
+	@Override
+	public String toString() {
+		return "Rutina{" +
+				"idRutina=" + idRutina +
+				", nombreRutina='" + nombreRutina + '\'' +
+				", usuario=" + usuario +
+				", ejercicio=" + ejercicio +
+				'}';
+	}
 }
 
 

@@ -77,8 +77,9 @@ public class RutinaControlador {
             ejercicioAux.add(ejercicio.get());
         }
 //
-       rutina.setEjercicio(ejercicioAux);
-
+        rutina.setEjercicio(ejercicioAux);
+        System.out.println(ejercicioAux.hashCode());
+        
         rutinaServicio.addRutina(rutina);
         return "redirect:/index";
     }

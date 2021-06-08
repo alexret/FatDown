@@ -62,8 +62,6 @@ h1 {
 <tbody>
 <tr th:each="ejercicio : ${ejercicio}">
     <form th:action="@{/rutina/addEjercicio/{id}(id=${ejercicio.idEjercicio})}" method="post">
-    <td> Inserte el nombre de la rutina: <input name="nombre" type="text"
-                                                placeholder="Nombre de la rutina" id="nombre" required></td>
     <td>
         <div id="imagen_producto" th:if="${ejercicio.gif!=null}">
             <figure>
@@ -87,6 +85,11 @@ h1 {
     </form>
 </tr>
 </tbody>
-
+<form th:action="@{/rutina/crearRutina}" method="post">
+    <td> Inserte el nombre de la rutina: <input name="nombre" type="text"
+                                                placeholder="Nombre de la rutina" id="nombre" required></td>
+    <button type="submit" name="ejercicio">
+        Crear rutina</button>
+</form>
 </body>
 </html>
