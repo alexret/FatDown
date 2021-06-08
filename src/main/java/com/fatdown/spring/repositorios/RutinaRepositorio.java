@@ -8,5 +8,5 @@ import java.util.List;
 
 public interface RutinaRepositorio extends CrudRepository<Rutina, Long> {
 
-    List<Rutina> findByUsuario(Long id);
+    List<Rutina> findByUsuario(Usuario usuario);
 }

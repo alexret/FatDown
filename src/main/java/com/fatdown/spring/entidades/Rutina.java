@@ -1,13 +1,11 @@
 package com.fatdown.spring.entidades;
 
-import com.fatdown.spring.repositorios.EjercicioRepositorio;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
-import java.util.List;
-import java.util.Optional;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "RUTINA")
@@ -15,9 +13,10 @@ public class Rutina implements Serializable {
 
     private static final long serialVersionUID = -8548755844378572452L;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID_RUTINA")
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Basic(optional = false)
+	@Column(name = "ID_RUTINA", unique = true, nullable = false)
     private Long idRutina;
 
     // Datos
@@ -30,22 +29,21 @@ public class Rutina implements Serializable {
 	@JoinColumn(name = "ID_USUARIO")
 	private Usuario usuario;
 
-    @ManyToOne
-    @JoinColumn(name = "ID_EJERCICIO")
-    private Ejercicio ejercicio;
+	@ManyToMany(mappedBy = "rutina")
+    private Set<Ejercicio> ejercicio = new HashSet<>();
 
     public Rutina() {
 		super();
 	}
 
-	public Rutina(String nombreRutina, Usuario usuario, Ejercicio ejercicio) {
+	public Rutina(String nombreRutina, Usuario usuario, Set<Ejercicio> ejercicio) {
 		super();
 		this.nombreRutina = nombreRutina;
 		this.usuario = usuario;
 		this.ejercicio = ejercicio;
 	}
 
-	public Rutina(Long idRutina, String nombreRutina, Usuario usuario, Ejercicio ejercicio) {
+	public Rutina(Long idRutina, String nombreRutina, Usuario usuario, Set<Ejercicio> ejercicio) {
 		super();
 		this.idRutina = idRutina;
 		this.nombreRutina = nombreRutina;
@@ -79,11 +77,11 @@ public class Rutina implements Serializable {
 		this.nombreRutina = nombreRutina;
 	}
 
-	public Ejercicio getEjercicio() {
+	public Set<Ejercicio>  getEjercicio() {
 		return ejercicio;
 	}
 
-	public void setEjercicio(Ejercicio ejercicio) {
+	public void setEjercicio(Set<Ejercicio> ejercicio) {
 		this.ejercicio = ejercicio;
 	}
 

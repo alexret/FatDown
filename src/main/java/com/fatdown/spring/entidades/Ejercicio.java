@@ -58,8 +58,7 @@ public class Ejercicio implements Serializable {
     private int duracionEjercicio;
 
     // Relación OneToMany
-    @OneToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE },
-            orphanRemoval=true)
+    @ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
 	@JoinTable(
 			name = "rutina_ejercicio",
 			joinColumns = @JoinColumn(name = "idEjercicio"),

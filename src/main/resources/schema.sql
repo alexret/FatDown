@@ -81,9 +81,8 @@ use FatDown;
                      id_usuario bigint not null,
                      id_ejercicio bigint not null,
                      primary key(id_rutina),
-		 constraint fk_rutina_usuario foreign key (id_usuario) references usuario (id_usuario) on delete cascade,
-		 constraint fk_rutina_ejercicio foreign key (id_ejercicio) references ejercicio (id_ejercicio)
-		  ) ;
+		 constraint fk_rutina_usuario foreign key (id_usuario) references usuario (id_usuario)
+		 on delete cascade) ;
 
         create table gif (
              id_multimedia bigint not null auto_increment,
@@ -93,3 +92,16 @@ use FatDown;
              primary key (id_multimedia),
             constraint fk_gif_ejercicio	foreign key (id_ejercicio) references ejercicio (id_ejercicio) on update cascade
       ) ;
+
+          create table rutina_ejercicio (
+             id_ejercicio bigint not null,
+              id_rutina bigint not null,
+              primary key (id_ejercicio, id_rutina),
+              constraint fk_ejercicio_rutina
+              foreign key (id_ejercicio) references ejercicio (id_ejercicio)
+      		on delete cascade,
+              constraint fk_ejercicio_rutina_2
+              foreign key (id_rutina) references rutina (id_rutina)
+              on delete cascade
+
+          ) ;

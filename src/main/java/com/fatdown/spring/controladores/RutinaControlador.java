@@ -17,7 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
-import java.util.Optional;
+import java.util.*;
 
 
 @Controller
@@ -45,24 +45,59 @@ public class RutinaControlador {
     }
 
     @PostMapping("/addEjercicio/{id}")
-    @ResponseBody
-    public String addEjercicio(@PathVariable("id") long id,
-                               @RequestParam(value = "nombre", required = false) String nombre,
-                               HttpSession session) {
+    public String addEjercicio(@PathVariable("id") long id, HttpSession session) {
 
-        Rutina rutina = new Rutina();
-        Optional<Usuario> usuario = usuarioRepository.findById((Long) session.getAttribute("idUsuario"));
         Ejercicio ejercicio = ejercicioServicio.buscarPorId(id).get();
-        rutina.setNombreRutina(nombre);
-        rutina.setEjercicio(ejercicio);
-        rutina.setUsuario(usuario.get());
-        rutinaServicio.addRutina(rutina);
+
+        // Valor por defecto es 5
+        Set<Ejercicio> lEjercicio = (Set<Ejercicio>) session.getAttribute("tuRutina");
+
+        lEjercicio.add(ejercicio);
+
+        session.setAttribute("tuRutina", lEjercicio);
+
         return "redirect:/rutina/listarEjercicios";
     }
+
+    @PostMapping("/crearRutina")
+    public String crearRutina(@RequestParam(value = "nombre", required = false) String nombre,
+                              HttpSession session){
+        Rutina rutina = new Rutina();
+        Optional<Usuario> usuario = usuarioRepository.findById((Long) session.getAttribute("idUsuario"));
+        Set<Ejercicio> lEjercicio = (Set<Ejercicio>) session.getAttribute("tuRutina");
+        Set<Ejercicio> ejercicioAux = new HashSet<Ejercicio>();
+
+
+        rutina.setNombreRutina(nombre);
+        rutina.setUsuario(usuario.get());
+
+        for (Ejercicio e : lEjercicio) {
+            Optional<Ejercicio> ejercicio = ejercicioServicio.buscarPorId(e.getIdEjercicio());
+//            rutina.setEjercicio(lEjercicio.get(i));
+            ejercicioAux.add(ejercicio.get());
+        }
+//
+       rutina.setEjercicio(ejercicioAux);
+
+        rutinaServicio.addRutina(rutina);
+        return "redirect:/index";
+    }
+
 
     @PostMapping("/deleteEjercicio")
     public String deleteEjercicio(@Valid Rutina rutina) {
         rutinaServicio.deleteRutina(rutina);
         return "redirect:/rutina/addEjercicio";
+    }
+
+    @GetMapping("/getRutina")
+    public ModelAndView getRutina(HttpSession session) {
+        ModelAndView mav = new ModelAndView();
+        Optional<Usuario> usuario = usuarioRepository.findById((Long) session.getAttribute("idUsuario"));
+        List<Rutina> lRutina = rutinaServicio.getRutinas(usuario.get());
+
+        mav.addObject("rutina", lRutina);
+        mav.setViewName("rutina/listarRutinas");
+        return mav;
     }
 }

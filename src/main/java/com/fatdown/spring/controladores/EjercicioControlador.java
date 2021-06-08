@@ -41,7 +41,9 @@ public class EjercicioControlador {
     	// Necesitamos ver cómo se recupera la cateoría del ejercicio
     	// Y si al deshabilitar una de las dos opciones (duracion/repeticion)
     	// la que no recoge la pone a null sin problemas
+
         ejercicio = ejercicioServicio.crearEjercicio(ejercicio);
+
         byte[] image = file.getBytes();
         Gif gif = new Gif(ejercicio.getNombreEjercicio(), image, ejercicio);
         gifServicio.crearGif(gif);

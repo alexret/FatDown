@@ -1,9 +1,7 @@
 package com.fatdown.spring.seguridad;
 
 import java.io.IOException;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
@@ -11,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.fatdown.spring.entidades.Ejercicio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
@@ -30,6 +29,8 @@ public class AuthenticationSuccessHandlerImpl implements AuthenticationSuccessHa
 
 	private RedirectStrategy redirectStrategy = new DefaultRedirectStrategy();
 
+	private final int VALORPORDEFECTO = 5;
+
 	@Override
 	public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
 			Authentication authentication) throws IOException {
@@ -39,8 +40,10 @@ public class AuthenticationSuccessHandlerImpl implements AuthenticationSuccessHa
 		HttpSession session = request.getSession();
 		// El UserDetails busca por username. ¿En login debe ser el name=username aunque sea emailUsuario para que lo encuentre?
 		Usuario authUser = usuarioServicio.buscarPorEmailUsuario(userDetails.getUsername());
+		Set<Ejercicio> crearRutina = new HashSet<>();
 		session.setAttribute("nombre", authUser.getNombreUsuario());
 		session.setAttribute("idUsuario", authUser.getIdUsuario());
+		session.setAttribute("tuRutina", crearRutina);
 
 		boolean esRegistrado = false;
 		boolean esAdmin = false;
