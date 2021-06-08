@@ -68,7 +68,8 @@ td {
 	<div class="card-body">
 		<table class="table table-hover">
 			<tbody>
-				<h1>Listado de videos</h1>
+				<h1>Listado de vídeos</h1>
+				<br/>
 				<tr th:each="video : ${video}">
 
 					<td style="text-align: center" th:text="${video.nombreMultimedia}"></td>
@@ -91,7 +92,7 @@ td {
 						</form>
 					</td>
 
-					<br/>
+					
 
 				</tr>
 			</tbody>

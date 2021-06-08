@@ -1,6 +1,5 @@
 package com.fatdown.spring.controladores;
 
-import java.io.IOException;
 import java.util.Optional;
 
 import javax.servlet.http.HttpServletRequest;
@@ -22,15 +21,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.fatdown.spring.entidades.Ejercicio;
 import com.fatdown.spring.entidades.Gif;
 import com.fatdown.spring.entidades.Imagen;
-import com.fatdown.spring.entidades.Usuario;
 import com.fatdown.spring.entidades.Video;
 import com.fatdown.spring.servicios.GifServicio;
 import com.fatdown.spring.servicios.ImagenServicio;
@@ -103,24 +98,7 @@ public class MultimediaControlador {
 		return "redirect:/index";
 	}
 
-	// Obtener Imagen de BBDD
-
-	/*
-	 * @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	 * public @ResponseBody ResponseEntity getImageAsResponseEntity(@PathVariable
-	 * String id) {
-	 * 
-	 * try { Optional<Imagen> optionalMultimedia =
-	 * imagenServicio.obtenerImagen(Long.parseLong(id)); Imagen imagenObj =
-	 * optionalMultimedia.get(); byte[] media = imagenObj.getMultimedia();
-	 * HttpHeaders headers = new HttpHeaders();
-	 * headers.setCacheControl(CacheControl.noCache().getHeaderValue());
-	 * 
-	 * ResponseEntity<byte[]> responseEntity = new ResponseEntity<>(media, headers,
-	 * HttpStatus.OK); return responseEntity;
-	 * 
-	 * } catch (Exception e) { return new ResponseEntity(HttpStatus.NOT_FOUND); } }
-	 */
+	
 	// Métodos de Gif
 
 	@PostMapping("/crearGif")

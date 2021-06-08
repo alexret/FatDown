@@ -17,6 +17,7 @@
 	width: 50%;
 	margin-right: auto;
 	margin-left: auto;
+	margin-bottom: 2em;
 }
 
 @media ( max-width : 600px) {
@@ -45,7 +46,7 @@ span, label {
 }
 
 h1 {
-	color: white;
+	color: #ff9900;
 	text-align: center;
 }
 </style>
@@ -69,7 +70,7 @@ h1 {
 		</div>
 		<form th:action="@{/usuario/signup}" method="post">
 			<fieldset>
-				<legend>Háblanos de ti</legend>
+				<legend style="color: #ff9900;">Háblanos de ti</legend>
 				<div class="input-group">
 					<div class="input-group-prepend">
 						<span class="input-group-text">Nombre y apellidos</span>
@@ -132,7 +133,7 @@ h1 {
 						aria-valuemax="100"></div>
 				</div>
 				<fieldset>
-					<legend>Información para tus pedidos</legend>
+					<legend style="color: #ff9900;">Información para tus pedidos</legend>
 					<div class="form-group">
 						<label>Número de tarjeta de crédito/débito</label> <input
 							type="text" class="form-control form-control-lg"
@@ -142,9 +143,8 @@ h1 {
 							compartas tus datos de pago con nadie!</small>
 					</div>
 					<div class="form-group">
-						<label>Titular de la tarjeta</label> <input
-							name="titularUsuario" type="text"
-							class="form-control form-control-lg" required>
+						<label>Titular de la tarjeta</label> <input name="titularUsuario"
+							type="text" class="form-control form-control-lg" required>
 					</div>
 					<div class="form-group">
 						<label>Código de seguridad de la tarjeta</label> <input

@@ -35,8 +35,8 @@
 	text-decoration: none;
 }
 
-
 h1 {
+	color: #ff9900;
 	text-align: center;
 }
 
@@ -49,6 +49,7 @@ img {
 }
 
 #myCarousel {
+	margin-top: 2em;
 	width: 65%;
 	display: block;
 	margin-left: auto;
@@ -66,11 +67,7 @@ img {
 
 		<a name="arriba" href=#abajo class="boton"><button type="button"
 				class="btn btn-warning boton btn-sm">Ir abajo</button></a><br />
-		<div class="progress">
-			<div class="progress-bar bg-info" role="progressbar"
-				style="width: 100%;" aria-valuenow="50" aria-valuemin="0"
-				aria-valuemax="100"></div>
-		</div>
+
 
 		<!-- CAROUSEL -->
 
@@ -94,8 +91,8 @@ img {
 						<img th:src="@{/pictures/homer/h_pesa.jpg}" alt="Pesas"
 							style="width: 100%;">
 						<div class="carousel-caption" th:each="consejo : ${consejos}">
-						<div th:if="${consejo.nombreConsejo == 'h_pesa'}">
-							<h2 th:text="${consejo.descripcionConsejo}"></h2>
+							<div th:if="${consejo.nombreConsejo == 'h_pesa'}">
+								<h2 th:text="${consejo.descripcionConsejo}"></h2>
 							</div>
 						</div>
 					</div>
@@ -104,8 +101,8 @@ img {
 						<img th:src="@{/pictures/homer/h_mirror.jpg}" alt="Espejo"
 							style="width: 100%;">
 						<div class="carousel-caption" th:each="consejo : ${consejos}">
-						<div th:if="${consejo.nombreConsejo == 'h_mirror'}">
-							<h2 th:text="${consejo.descripcionConsejo}"></h2>
+							<div th:if="${consejo.nombreConsejo == 'h_mirror'}">
+								<h2 th:text="${consejo.descripcionConsejo}"></h2>
 							</div>
 						</div>
 					</div>
@@ -114,8 +111,8 @@ img {
 						<img th:src="@{/pictures/homer/h_pecho.jpg}" alt="Pecho"
 							style="width: 100%;">
 						<div class="carousel-caption" th:each="consejo : ${consejos}">
-						<div th:if="${consejo.nombreConsejo == 'h_pecho'}">
-							<h2 th:text="${consejo.descripcionConsejo}"></h2>
+							<div th:if="${consejo.nombreConsejo == 'h_pecho'}">
+								<h2 th:text="${consejo.descripcionConsejo}"></h2>
 							</div>
 						</div>
 					</div>
@@ -123,8 +120,8 @@ img {
 						<img th:src="@{/pictures/homer/h_maraton.jpg}" alt="Maraton"
 							style="width: 100%;">
 						<div class="carousel-caption" th:each="consejo : ${consejos}">
-						<div th:if="${consejo.nombreConsejo == 'h_maraton'}">
-							<h2 th:text="${consejo.descripcionConsejo}"></h2>
+							<div th:if="${consejo.nombreConsejo == 'h_maraton'}">
+								<h2 th:text="${consejo.descripcionConsejo}"></h2>
 							</div>
 						</div>
 					</div>
@@ -132,8 +129,8 @@ img {
 						<img th:src="@{/pictures/homer/h_relax.png}" alt="Relax"
 							style="width: 100%;">
 						<div class="carousel-caption" th:each="consejo : ${consejos}">
-						<div th:if="${consejo.nombreConsejo == 'h_relax'}">
-							<h2 th:text="${consejo.descripcionConsejo}"></h2>
+							<div th:if="${consejo.nombreConsejo == 'h_relax'}">
+								<h2 th:text="${consejo.descripcionConsejo}"></h2>
 							</div>
 						</div>
 					</div>
@@ -141,8 +138,8 @@ img {
 						<img th:src="@{/pictures/homer/h_push.jpg}" alt="Push"
 							style="width: 100%;">
 						<div class="carousel-caption" th:each="consejo : ${consejos}">
-						<div th:if="${consejo.nombreConsejo == 'h_push'}">
-							<h2 th:text="${consejo.descripcionConsejo}"></h2>
+							<div th:if="${consejo.nombreConsejo == 'h_push'}">
+								<h2 th:text="${consejo.descripcionConsejo}"></h2>
 							</div>
 						</div>
 					</div>
@@ -150,8 +147,8 @@ img {
 						<img th:src="@{/pictures/homer/h_runner.png}" alt="Runner"
 							style="width: 100%;">
 						<div class="carousel-caption" th:each="consejo : ${consejos}">
-						<div th:if="${consejo.nombreConsejo == 'h_runner'}">
-							<h2 th:text="${consejo.descripcionConsejo}"></h2>
+							<div th:if="${consejo.nombreConsejo == 'h_runner'}">
+								<h2 th:text="${consejo.descripcionConsejo}"></h2>
 							</div>
 						</div>
 					</div>
@@ -179,6 +176,5 @@ img {
 		<a name="abajo" href=#arriba class="boton"><button type="button"
 				class="btn btn-warning boton btn-sm">Ir arriba</button></a>
 	</footer>
-	</div>
 </body>
 </html>
