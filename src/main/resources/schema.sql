@@ -47,9 +47,9 @@ use FatDown;
 	       	 id_multimedia bigint not null auto_increment,
 	         nombre_multimedia varchar(50) not null,
 	         multimedia longblob not null,
-	         id_consejo bigint not null,
-	         primary key (id_multimedia),
-			constraint fk_imagen_consejo foreign key (id_consejo) references consejo (id_consejo) on update cascade
+	        -- id_consejo bigint not null,
+	         primary key (id_multimedia)
+			--constraint fk_imagen_consejo foreign key (id_consejo) references consejo (id_consejo) on update cascade
     ) ;
 
     	create table video (

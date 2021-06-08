@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang=es xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+<title>Fat Down</title>
+<meta charset="UTF-8">
+<meta name="description" content="Aplicación de fitness">
+<meta name="keywords" content="work out, gym, fitness, wellness" />
+<meta name="author"
+	content="Daniel Esteban, Alejandro Relaño & Amanda Segura" />
+<meta name="copyright"
+	content="Daniel Esteban, Alejandro Relaño & Amanda Segura" />
+<link rel="stylesheet" type="text/css"
+	th:href="@{/css/bootstrap.minSUPERHERO.css}" />
+<style th:inline="text">
+.wrapper {
+	width: 50%;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+@media ( max-width : 600px) {
+	.wrapper {
+		width: 100%;
+	}
+}
+
+label {
+	font-size: 24pt;
+}
+
+.logo {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 20px;
+	width: 10%;
+}
+
+.boton {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	text-decoration: none;
+}
+
+h1 {
+	color: #ff9900;
+	text-align: center;
+}
+
+td {
+	font-size: 1.4em;
+	text-align: center;
+	vertical-align: center;
+}
+</style>
+</head>
+<body>
+	<nav th:replace="navbar_loader"></nav>
+	<header>
+		<!--Cabecera con logo en imágenes que presentan la página-->
+		<figure>
+			<img class="logo" th:src="@{/pictures/logo.gif}" />
+		</figure>
+		<br />
+	</header>
+	<div class="card-body">
+		<h1>Listado de videos</h1>
+		</br>
+		<table class="table table-hover">
+			<tbody>
+
+				<tr th:each="video : ${video}">
+
+					<td style="text-align: center" th:text="${video.nombreMultimedia}"></td>
+					<td style="text-align: center" th:text="${video.categoriaVideo}"></td>
+					<td><iframe width="275" height="200"
+							th:src=" ${video.linkVideo}"></iframe></td>
+
+					<td>
+						<form
+							th:action="@{/multimedia/eliminarVideo/{id}(id=${video.idMultimedia})}"
+							method="post">
+							<button class="btn btn-danger btn-lg" type="submit">Eliminar
+								video</button>
+						</form> </br>
+						<form
+							th:action="@{/multimedia/eliminarVideo/{id}(id=${video.idMultimedia})}"
+							method="post">
+							<button class="btn btn-info btn-lg" type="submit">Guardar
+								video</button>
+						</form>
+					</td>
+
+
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>
