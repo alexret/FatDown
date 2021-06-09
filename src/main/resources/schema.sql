@@ -65,21 +65,21 @@ use FatDown;
 
     ) ;
         	create table ejercicio (
-    	       	 id_ejercicio bigint not null auto_increment,
+    	       	 ID_EJERCICIO bigint not null auto_increment,
     	         nombre_ejercicio varchar(50) not null,
                  descripcion_ejercicio varchar(255) not null,
                  categoria_ejercicio varchar(50) not null,
                  tipo_ejercicio varchar(50) not null,
                  repeticion_ejercicio int,
                  duracion_ejercicio int,
-    	         primary key (id_ejercicio)
+    	         primary key (ID_EJERCICIO)
         ) ;
 
       create table rutina (
         	       	 id_rutina bigint not null auto_increment,
         	         nombre_rutina varchar(50) not null,
                      id_usuario bigint not null,
-                     id_ejercicio bigint not null,
+                     ID_EJERCICIO bigint not null,
                      primary key(id_rutina),
 		 constraint fk_rutina_usuario foreign key (id_usuario) references usuario (id_usuario)
 		 on delete cascade) ;
@@ -88,17 +88,17 @@ use FatDown;
              id_multimedia bigint not null auto_increment,
              nombre_multimedia varchar(50) not null,
              multimedia longblob,
-             id_ejercicio bigint not null,
+             ID_EJERCICIO bigint not null,
              primary key (id_multimedia),
-            constraint fk_gif_ejercicio	foreign key (id_ejercicio) references ejercicio (id_ejercicio) on update cascade
+            constraint fk_gif_ejercicio	foreign key (ID_EJERCICIO) references ejercicio (ID_EJERCICIO) on update cascade
       ) ;
 
           create table rutina_ejercicio (
-             id_ejercicio bigint not null,
+             ID_EJERCICIO bigint not null,
               id_rutina bigint not null,
-              primary key (id_ejercicio, id_rutina),
+              primary key (ID_EJERCICIO, id_rutina),
               constraint fk_ejercicio_rutina
-              foreign key (id_ejercicio) references ejercicio (id_ejercicio)
+              foreign key (ID_EJERCICIO) references ejercicio (ID_EJERCICIO)
       		on delete cascade,
               constraint fk_ejercicio_rutina_2
               foreign key (id_rutina) references rutina (id_rutina)

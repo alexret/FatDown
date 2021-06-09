@@ -67,10 +67,10 @@ public class MultimediaControlador {
         return "redirect:/index";
     }
 
-	@GetMapping("/listarVideos")
-    public ModelAndView listarVideos() {
+	@GetMapping("listarVideos/{pagina}")
+    public ModelAndView listarVideos(@PathVariable("pagina") int pagina) {
         ModelAndView mav = new ModelAndView();
-        Pageable paging = PageRequest.of(0,10);
+        Pageable paging = PageRequest.of(pagina,10);
         Page<Video> lVideos = videoServicio.listarVideosPaginados(paging);
 
         mav.addObject("video", lVideos);
