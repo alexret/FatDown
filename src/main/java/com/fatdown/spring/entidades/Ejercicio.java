@@ -1,23 +1,15 @@
 package com.fatdown.spring.entidades;
 
-import lombok.*;
+import com.fatdown.spring.enums.Categoria;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 
-import com.fatdown.spring.enums.Categoria;
-
-/* @ de lombok para que se autogenere el constructor y los getter y setter*/
-//@Getter
-//@Setter
-//@Builder
-//@NoArgsConstructor
-//@AllArgsConstructor
 @Entity
 @Table(name = "EJERCICIO")
 public class Ejercicio implements Serializable {
@@ -61,8 +53,8 @@ public class Ejercicio implements Serializable {
     @ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
 	@JoinTable(
 			name = "rutina_ejercicio",
-			joinColumns = @JoinColumn(name = "idEjercicio"),
-			inverseJoinColumns = @JoinColumn(name = "idRutina"))
+			joinColumns = @JoinColumn(name = "ID_EJERCICIO"),
+			inverseJoinColumns = @JoinColumn(name = "ID_RUTINA"))
     private Set<Rutina> rutina = new HashSet<>();
 
 	@OneToOne(mappedBy = "ejercicio", cascade = CascadeType.ALL)
@@ -134,80 +126,88 @@ public class Ejercicio implements Serializable {
 		this.gif = gif;
 	}
 
-	public Long getIdEjercicio() {
-		return idEjercicio;
-	}
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
 
-	public void setIdEjercicio(Long idEjercicio) {
-		this.idEjercicio = idEjercicio;
-	}
+    public Long getIdEjercicio() {
+        return idEjercicio;
+    }
 
-	public String getNombreEjercicio() {
-		return nombreEjercicio;
-	}
+    public void setIdEjercicio(Long idEjercicio) {
+        this.idEjercicio = idEjercicio;
+    }
 
-	public void setNombreEjercicio(String nombreEjercicio) {
-		this.nombreEjercicio = nombreEjercicio;
-	}
+    public String getNombreEjercicio() {
+        return nombreEjercicio;
+    }
 
-	public String getDescripcionEjercicio() {
-		return descripcionEjercicio;
-	}
+    public void setNombreEjercicio(String nombreEjercicio) {
+        this.nombreEjercicio = nombreEjercicio;
+    }
 
-	public void setDescripcionEjercicio(String descripcionEjercicio) {
-		this.descripcionEjercicio = descripcionEjercicio;
-	}
+    public String getDescripcionEjercicio() {
+        return descripcionEjercicio;
+    }
 
-	public Categoria getCategoriaEjercicio() {
-		return categoriaEjercicio;
-	}
+    public void setDescripcionEjercicio(String descripcionEjercicio) {
+        this.descripcionEjercicio = descripcionEjercicio;
+    }
 
-	public void setCategoriaEjercicio(Categoria categoriaEjercicio) {
-		this.categoriaEjercicio = categoriaEjercicio;
-	}
+    public Categoria getCategoriaEjercicio() {
+        return categoriaEjercicio;
+    }
 
-	public String getTipoEjercicio() {
-		return tipoEjercicio;
-	}
+    public void setCategoriaEjercicio(Categoria categoriaEjercicio) {
+        this.categoriaEjercicio = categoriaEjercicio;
+    }
 
-	public void setTipoEjercicio(String tipoEjercicio) {
-		this.tipoEjercicio = tipoEjercicio;
-	}
+    public String getTipoEjercicio() {
+        return tipoEjercicio;
+    }
 
-	public int getRepeticionEjercicio() {
-		return repeticionEjercicio;
-	}
+    public void setTipoEjercicio(String tipoEjercicio) {
+        this.tipoEjercicio = tipoEjercicio;
+    }
 
-	public void setRepeticionEjercicio(int repeticionEjercicio) {
-		this.repeticionEjercicio = repeticionEjercicio;
-	}
+    public int getRepeticionEjercicio() {
+        return repeticionEjercicio;
+    }
 
-	public int getDuracionEjercicio() {
-		return duracionEjercicio;
-	}
+    public void setRepeticionEjercicio(int repeticionEjercicio) {
+        this.repeticionEjercicio = repeticionEjercicio;
+    }
 
-	public void setDuracionEjercicio(int duracionEjercicio) {
-		this.duracionEjercicio = duracionEjercicio;
-	}
+    public int getDuracionEjercicio() {
+        return duracionEjercicio;
+    }
 
-	public Set<Rutina> getRutina() {
-		return rutina;
-	}
+    public void setDuracionEjercicio(int duracionEjercicio) {
+        this.duracionEjercicio = duracionEjercicio;
+    }
 
-	public void setRutina(Set<Rutina> rutina) {
-		this.rutina = rutina;
-	}
+    public Set<Rutina> getRutina() {
+        return rutina;
+    }
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
+    public void setRutina(Set<Rutina> rutina) {
+        this.rutina = rutina;
+    }
 
-	public Gif getGif() {
-		return gif;
-	}
+    public Gif getGif() {
+        return gif;
+    }
 
-	public void setGif(Gif gif) {
-		this.gif = gif;
-	}
+    public void setGif(Gif gif) {
+        this.gif = gif;
+    }
 
+    public void anadirRutina(Rutina rutina) {
+        this.rutina.add(rutina);
+        rutina.getEjercicio().add(this);
+    }
+
+    public void deleteRutina(Rutina rutina) {
+        this.rutina.remove(rutina) ;
+    }
 }

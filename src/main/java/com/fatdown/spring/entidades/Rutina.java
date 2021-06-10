@@ -52,13 +52,9 @@ public class Rutina implements Serializable {
 	}
 
 	// Getters y setters
-    
-    public Usuario getUsuario() {
-		return usuario;
-	}
 
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
+	public static long getSerialVersionUID() {
+		return serialVersionUID;
 	}
 
 	public Long getIdRutina() {
@@ -77,7 +73,15 @@ public class Rutina implements Serializable {
 		this.nombreRutina = nombreRutina;
 	}
 
-	public Set<Ejercicio>  getEjercicio() {
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+
+	public Set<Ejercicio> getEjercicio() {
 		return ejercicio;
 	}
 
@@ -85,18 +89,13 @@ public class Rutina implements Serializable {
 		this.ejercicio = ejercicio;
 	}
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
+	public void anadirEjercicio(Ejercicio ejercicio) {
+		this.ejercicio.add(ejercicio);
+		ejercicio.getRutina().add(this);
 	}
 
-	@Override
-	public String toString() {
-		return "Rutina{" +
-				"idRutina=" + idRutina +
-				", nombreRutina='" + nombreRutina + '\'' +
-				", usuario=" + usuario +
-				", ejercicio=" + ejercicio +
-				'}';
+	public void deleteEjercicio(Ejercicio ejercicio) {
+		this.ejercicio.remove(ejercicio) ;
 	}
 }
 
