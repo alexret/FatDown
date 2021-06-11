@@ -29,8 +29,12 @@ public class Rutina implements Serializable {
 	@JoinColumn(name = "ID_USUARIO")
 	private Usuario usuario;
 
-	@ManyToMany(mappedBy = "rutina")
-    private Set<Ejercicio> ejercicio = new HashSet<>();
+	@ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+	@JoinTable(
+			name = "rutina_ejercicio",
+			joinColumns = @JoinColumn(name = "ID_RUTINA"),
+			inverseJoinColumns = @JoinColumn(name = "ID_EJERCICIO"))
+	private Set<Ejercicio> ejercicio = new HashSet<>();
 
     public Rutina() {
 		super();
