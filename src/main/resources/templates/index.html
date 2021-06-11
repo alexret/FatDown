@@ -55,6 +55,10 @@ img {
 	margin-left: auto;
 	margin-right: auto;
 }
+
+.hojas {
+	text-align: center;
+}
 </style>
 </head>
 <body>
@@ -167,12 +171,30 @@ img {
 			</div>
 		</div>
 
-
 		<br />
+
 	</header>
-	<section></section>
-	<!--Pie de página que permite regresar al principio-->
-	<footer>
+
+
+	<section class="hojas">
+		<p>Haz click en la imagen para descargarla:
+		<p>
+			<a href="/pictures/Motivación_FatDown.png"
+				download="Motivacion_FatDown.png"> <img
+				th:src="@{/pictures/Motivación_FatDown.png}" alt="Motivacion">
+			</a>
+	</section>
+
+	<section class="hojas">
+		<p>
+			Haz click en la imagen para descargarla:
+			<p>
+<a href="/pictures/Rutina_FatDown.png" download="Rutina_FatDown.png">
+  <img th:src="@{/pictures/Rutina_FatDown.png}" alt="Rutina">
+</a>
+	
+	</section>
+	<!--Pie de página que permite regresar al principio--><fo oter>
 		<a name="abajo" href=#arriba class="boton"><button type="button"
 				class="btn btn-warning boton btn-sm">Ir arriba</button></a>
 	</footer>
