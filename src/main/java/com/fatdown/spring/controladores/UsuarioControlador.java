@@ -1,14 +1,13 @@
 package com.fatdown.spring.controladores;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 import javax.persistence.Column;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import com.fatdown.spring.entidades.Rutina;
+import com.fatdown.spring.servicios.RutinaServicio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -20,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.fatdown.spring.servicios.UsuarioServicio;
 import com.fatdown.spring.entidades.Usuario;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 @RequestMapping(value = "/usuario")
@@ -27,6 +27,9 @@ public class UsuarioControlador {
 	
 	@Autowired
 	private UsuarioServicio usuarioServicio;
+
+	@Autowired
+	RutinaServicio rutinaServicio;
 	
 	// Métodos get y post
 
@@ -85,15 +88,23 @@ public class UsuarioControlador {
 	}
 
 	@GetMapping("/userid/{idUsuario}")
-	public String usuarioid(Model model, HttpSession session, @PathVariable("idUsuario") long idUsuario) {
+	public ModelAndView usuarioid(Model model, HttpSession session, @PathVariable("idUsuario") long idUsuario) {
 		// Se recoge el input de la búsqueda de la session
 		// y se usa el servicio para buscar en la tabla
+		ModelAndView mav = new ModelAndView();
 		Usuario resultadoURL = usuarioServicio.obtenerUsuario(idUsuario);
 		model.addAttribute("usuario", resultadoURL);
 
 		long idUsuarioSESSION = (long) session.getAttribute("idUsuario");
-		model.addAttribute("idUsuarioSESSION", idUsuarioSESSION);
+		mav.addObject("idUsuarioSESSION", idUsuarioSESSION);
 
-		return "userid";
+		Usuario usuario = usuarioServicio.obtenerUsuario(idUsuario);
+		List<Rutina> lRutina = rutinaServicio.getRutinas(usuario);
+
+		mav.addObject("rutina", lRutina);
+
+		mav.setViewName("userid");
+		return mav;
 	}
+
 }

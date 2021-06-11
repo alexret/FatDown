@@ -40,7 +40,7 @@ public class RutinaControlador {
         Page<Ejercicio> lEjercicios = ejercicioServicio.listarEjerciciosPaginados(paging);
 
         mav.addObject("ejercicio", lEjercicios);
-        mav.setViewName("rutina/crearRutina");
+        mav.setViewName("ejercicio/listarEjercicios");
         return mav;
     }
 
@@ -82,14 +82,4 @@ public class RutinaControlador {
         return "redirect:/rutina/addEjercicio";
     }
 
-    @GetMapping("/getRutina")
-    public ModelAndView getRutina(HttpSession session) {
-        ModelAndView mav = new ModelAndView();
-        Optional<Usuario> usuario = usuarioRepository.findById((Long) session.getAttribute("idUsuario"));
-        List<Rutina> lRutina = rutinaServicio.getRutinas(usuario.get());
-
-        mav.addObject("rutina", lRutina);
-        mav.setViewName("rutina/listarRutinas");
-        return mav;
-    }
 }

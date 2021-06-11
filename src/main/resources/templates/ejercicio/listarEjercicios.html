@@ -100,6 +100,7 @@ img {
 	<div th:each="ejercicio : ${ejercicio}"
 		class="card text-white bg-primary mb-3"
 		style="width: 50%; margin-right: auto; margin-left: auto;">
+		<form th:action="@{/rutina/addEjercicio/{id}(id=${ejercicio.idEjercicio})}" method="post">
 		<div class="card-header" th:text="${ejercicio.nombreEjercicio}"></div>
 		<div class="card-body grid-container">
 			<div>
@@ -120,7 +121,23 @@ img {
 				</figure>
 			</div>
 		</div>
+
+		<div>
+			<button type="submit" name="ejercicio">
+				Añadir a rutina</button>
+
+		</div>
+		</form>
+
 	</div>
+
+	<form th:action="@{/rutina/crearRutina}" method="post">
+		<td> Inserte el nombre de la rutina: <input name="nombre" type="text"
+													placeholder="Nombre de la rutina" id="nombre" required></td>
+		<button type="submit" name="ejercicio">
+			Crear rutina</button>
+	</form>
+
 	<!-- 	<tbody> -->
 	<!-- 		<tr th:each="ejercicio : ${ejercicio}"> -->
 	<!-- 			<td> -->

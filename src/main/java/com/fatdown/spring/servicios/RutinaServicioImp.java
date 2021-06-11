@@ -48,6 +48,7 @@ public class RutinaServicioImp implements RutinaServicio {
                 throw new Exception("Ha ocurrido un error");
         }
         rutina.setEjercicio(ejercicioAux);
+        session.setAttribute("tuRutina", new HashSet<Ejercicio>());
         return rutinaRepositorio.save(rutina);
     }
 

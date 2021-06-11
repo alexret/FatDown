@@ -78,11 +78,11 @@ td:first-child {
 						<td class="coloreado1">Apellidos:</td>
 						<td th:text="${usuario.apellidosUsuario}" />
 					</tr>
-					<tr
-						th:if="${ (idUsuarioSESSION == usuario.idUsuario) or #authorization.expression('hasAuthority(''admin'')')} ">
-						<td class="coloreado1">Contraseña:</td>
-						<td th:text="${usuario.passwordUsuario}" />
-					</tr>
+<!--					<tr-->
+<!--						th:if="${ (idUsuarioSESSION == usuario.idUsuario) or #authorization.expression('hasAuthority(''admin'')')} ">-->
+<!--						<td class="coloreado1">Contraseña:</td>-->
+<!--						<td th:text="${usuario.passwordUsuario}" />-->
+<!--					</tr>-->
 					<tr>
 						<td class="coloreado1">Email:</td>
 						<td th:text="${usuario.emailUsuario}" />
@@ -127,28 +127,42 @@ td:first-child {
 		<div style="clear: both;"></div>
 
 		<!-- 			Utilizaremos este método para listar rutinas creadas y vídeos favoritos -->
-		<!-- 			<div th:if="${ (idUsuarioSESSION == usuario.idUsuario) or #authorization.expression('hasAuthority(''admin'')')} "   -->
-		<!-- 			class="card text-white bg-success mb-3 tabla" style="width: 80%;"> -->
-		<!-- 				<div class="card-header">&iexcl;Aquí están tus compras!</div> -->
-		<!-- 				<div class="card-body"> -->
-		<!-- 					<h4 th:if="${compras.empty}" class="card-title">Todavía no hay -->
-		<!-- 						pedidos realizados</h4> -->
-		<!-- 					<p class="card-text"> -->
-		<!-- 					<table class="table table-hover"> -->
-		<!-- 						<tbody th:each="compra: ${compras}"> -->
-		<!-- 							<tr class="table-primary"> -->
-		<!-- 								<td class="celdas"><span -->
-		<!-- 									th:text="'Compra '+${compra.idCompra}"></span></td> -->
-		<!-- 								<td class="celdas"><span style="background-color: #ffff33;" -->
-		<!-- 									th:text="'Precio: '+${compra.precioCompra}"></span></td> -->
-		<!-- 								<td class="celdas"><a -->
-		<!-- 									th:href="@{/compra/compraid/{id}(id=${compra.idCompra})}" -->
-		<!-- 									class="btn btn-info">Ver la compra</a></td> -->
-		<!-- 							</tr> -->
-		<!-- 						</tbody> -->
-		<!-- 					</table> -->
-		<!-- 				</div> -->
-		<!-- 			</div> -->
+		 			<div th:if="${ (idUsuarioSESSION == usuario.idUsuario) or #authorization.expression('hasAuthority(''admin'')')} "
+		 			class="card text-white bg-success mb-3 tabla" style="width: 80%;">
+		 				<div class="card-header">&iexcl;Aquí están tus rutinas!</div>
+		 				<div class="card-body">
+<!--		 					<h4 th:if="${compras.empty}" class="card-title">Todavía no hay-->
+<!--		 						pedidos realizados</h4>-->
+		 					<p class="card-text">
+		 					<table class="table table-hover">
+		 						<tbody th:each="rutina: ${rutina}">
+		 							<tr class="table-primary">
+		 								<td class="celdas"><span
+		 									th:text="'Nombre Rutina '+${rutina.nombreRutina}"></span></td>
+									</tr>
+									<tr class="table-primary" th:each="ejercicio: ${rutina.ejercicio}">
+										<td class="celdas"><span
+											th:text="'Nombre ejercicio '+${ejercicio.nombreEjercicio}"></span></td>
+										<td class="celdas"><span
+												th:text="'Nombre ejercicio '+${ejercicio.descripcionEjercicio}"></span></td>
+										<td class="celdas"><span
+												th:text="'Nombre ejercicio '+${ejercicio.categoriaEjercicio}"></span></td>
+										<td class="celdas"><span
+												th:text="'Nombre ejercicio '+${ejercicio.tipoEjercicio}"></span></td>
+										<td class="celdas"><span
+												th:text="'Nombre ejercicio '+${ejercicio.repeticionEjercicio}"></span></td>
+										<td class="celdas"><span
+												th:text="'Nombre ejercicio '+${ejercicio.duracionEjercicio}"></span></td>
+<!--		 								<td class="celdas"><span style="background-color: #ffff33;"-->
+<!--		 									th:text="'Precio: '+${rutina.ejercicio.nombreEjercicio}"></span></td>-->
+<!--		 								<td class="celdas"><a-->
+<!--		 									th:href="@{/compra/compraid/{id}(id=${compra.idCompra})}"-->
+<!--		 									class="btn btn-info">Ver la compra</a></td>-->
+		 							</tr>
+		 						</tbody>
+		 					</table>
+		 				</div>
+		 			</div>
 	</section>
 </body>
 </html>
