@@ -21,9 +21,9 @@
 		<div class="navbar-collapse" id="navbarColor03">
 			<ul class="navbar-nav mr-auto">
 
-<!-- Aquí está el logo en la navbar, pero queda mal. Hay que modificar el logo para que salga solo la llama y ponerlo a la izquierda pegado -->
-<!-- 				<li class="navbar-brand"><img class="logo" -->
-<!-- 					th:src="@{/pictures/logo.gif}" /></li> -->
+				<!-- Aquí está el logo en la navbar, pero queda mal. Hay que modificar el logo para que salga solo la llama y ponerlo a la izquierda pegado -->
+				<!-- 				<li class="navbar-brand"><img class="logo" -->
+				<!-- 					th:src="@{/pictures/logo.gif}" /></li> -->
 
 				<!-- Botón para ir a inicio -->
 
@@ -42,8 +42,8 @@
 				<li class="nav-item" style="margin: 10px;"><form
 						th:action="@{/usuario/signup}" method="get">
 						<button type="submit"
-							class="btn btn-outline-warning btn-lg nav-link">Date
-							de alta</button>
+							class="btn btn-outline-warning btn-lg nav-link">Date de
+							alta</button>
 					</form></li>
 
 
@@ -56,6 +56,29 @@
 							class="btn btn-outline-success btn-lg nav-link">Inicia
 							sesión</button>
 					</form></li>
+
+				<!-- Botón para ir a lista de ejercicios -->
+
+
+				<li class="nav-item" style="margin: 10px;">
+					<form th:action="@{/ejercicio/listarEjercicios}" method="get">
+						<button type="submit"
+							class="btn btn-outline-warning btn-lg nav-link">¡Todos
+							los ejercicios!</button>
+					</form>
+				</li>
+
+				<!-- Botón para ir a lista de videos -->
+
+
+				<li class="nav-item" style="margin: 10px;">
+					<form th:action="@{/multimedia/listarVideos/0}" method="get">
+						<button type="submit"
+							class="btn btn-outline-primary btn-lg nav-link">¡Todos
+							los vídeos!</button>
+					</form>
+				</li>
+
 
 
 			</ul>
