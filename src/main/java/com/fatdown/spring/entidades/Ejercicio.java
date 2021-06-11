@@ -186,9 +186,19 @@ public class Ejercicio implements Serializable {
         this.duracionEjercicio = duracionEjercicio;
     }
 
-    public Set<Rutina> getRutina() {
-        return rutina;
-    }
+	public void setRutina(Set<Rutina> rutina) {
+		this.rutina = rutina;
+	}
+	
+	public void anadirRutina(Rutina rutina) {
+		this.rutina.add(rutina);
+		rutina.getEjercicio().add(this);
+	}
+	
+	public void deleteRutina(Rutina rutina) {
+		this.rutina.remove(rutina) ;
+	}
+
 
     public void setRutina(Set<Rutina> rutina) {
         this.rutina = rutina;

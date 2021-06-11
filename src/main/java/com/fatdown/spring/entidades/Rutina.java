@@ -88,6 +88,16 @@ public class Rutina implements Serializable {
 	public void setEjercicio(Set<Ejercicio> ejercicio) {
 		this.ejercicio = ejercicio;
 	}
+	
+	public boolean anadirEjercicio(Ejercicio ejercicio) {
+		ejercicio.anadirRutina(this);
+		return getEjercicio().add(ejercicio);
+	}
+
+	public void eliminarEjercicio(Ejercicio ejercicio) {
+		this.ejercicio.remove(ejercicio);
+		ejercicio.getRutina().remove(this);
+	}
 
 	public void anadirEjercicio(Ejercicio ejercicio) {
 		this.ejercicio.add(ejercicio);
