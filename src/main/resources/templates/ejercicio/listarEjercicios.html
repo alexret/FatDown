@@ -19,7 +19,7 @@
 	margin-left: auto;
 }
 
-@media (max-width : 600px) {
+@media ( max-width : 600px) {
 	.wrapper {
 		width: 100%;
 	}
@@ -51,8 +51,17 @@ label {
 }
 
 h1 {
-	color: white;
+	color: #ff9900;
 	text-align: center;
+}
+
+#warning {
+	text-align: center;
+}
+
+#warning img {
+	margin: 2em;;
+	
 }
 
 h5 {
@@ -67,9 +76,8 @@ h5 {
 }
 
 img {
-	margin-right: 2%; 
+	margin-right: 2%;
 }
-
 </style>
 </head>
 <body>
@@ -81,16 +89,26 @@ img {
 		</figure>
 		<br />
 	</header>
+
+	<div id="warning" th:if="${ejercicio.empty}">
+		<h1>No hay ejercicios todavía</h1>
+		<img th:src="@{/pictures/ep.jpg}" alt="Working in progress!"
+			style="width: 60%;">
+		<h1>¡Nuestros entrenadores están trabajando en ello!</h1>
+	</div>
+
 	<div th:each="ejercicio : ${ejercicio}"
 		class="card text-white bg-primary mb-3"
 		style="width: 50%; margin-right: auto; margin-left: auto;">
 		<div class="card-header" th:text="${ejercicio.nombreEjercicio}"></div>
 		<div class="card-body grid-container">
 			<div>
-				<h4 class="card-title" th:text="${ejercicio.categoriaEjercicio}" style="font-size: 18pt; color: navy; text-shadow: 1.5px 1px #ffcc99; font-weight: bold;"></h4>
+				<h4 class="card-title" th:text="${ejercicio.categoriaEjercicio}"
+					style="font-size: 18pt; color: navy; text-shadow: 1.5px 1px #ffcc99; font-weight: bold;"></h4>
 				<h5 th:if="${ejercicio.repeticionEjercicio == 0}"
 					th:text="${'Segundos de duración: ' + ejercicio.duracionEjercicio}">
-				</h5> <h5 th:if="${ejercicio.duracionEjercicio == 0}"
+				</h5>
+				<h5 th:if="${ejercicio.duracionEjercicio == 0}"
 					th:text="${'Número de repeticiones: ' + ejercicio.repeticionEjercicio}"></h5>
 				<p class="card-text" th:text="${ejercicio.descripcionEjercicio}"></p>
 			</div>

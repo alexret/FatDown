@@ -36,7 +36,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 						"/usuario/**",
 						"/imagenes/**",
 						"/ejercicio/listarEjercicios",
-						"/multimedia/listarVideos",
+						"/multimedia/listarVideos/**",
 						"/multimedia/listarImagenes",
 						"/multimedia/listarGifs").permitAll()
 				.antMatchers().hasAnyAuthority("registrado", "admin")

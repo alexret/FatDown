@@ -69,7 +69,7 @@ td {
 		<table class="table table-hover">
 			<tbody>
 				<h1>Listado de vídeos</h1>
-				<br/>
+				<br />
 				<tr th:each="video : ${video}">
 
 					<td style="text-align: center" th:text="${video.nombreMultimedia}"></td>
@@ -78,13 +78,14 @@ td {
 							th:src=" ${video.linkVideo}"></iframe></td>
 
 					<td>
-						<form
+						<form sec:authorize="hasAuthority('admin')"
 							th:action="@{/multimedia/eliminarVideo/{id}(id=${video.idMultimedia})}"
 							method="post">
 							<button class="btn btn-danger btn-lg" type="submit">Eliminar
 								video</button>
 						</form> </br>
 						<form
+							sec:authorize="hasAuthority('registrado') || hasAuthority('admin')"
 							th:action="@{/multimedia/eliminarVideo/{id}(id=${video.idMultimedia})}"
 							method="post">
 							<button class="btn btn-info btn-lg" type="submit">Guardar
@@ -92,11 +93,33 @@ td {
 						</form>
 					</td>
 
-					
+
 
 				</tr>
 			</tbody>
 		</table>
+	</div>
+
+	<div class="pagina">
+		<ul class="pagination">
+			<!-- 			<li class="page-item disabled"><a class="page-link" href="#">&laquo;</a> -->
+			<!-- 			</li> -->
+			<li class="page-item"><a
+				th:href="@{/multimedia/listarVideos/{pagina}(pagina=0)}"
+				class="page-link" href="#">1</a></li>
+			<li class="page-item"><a
+				th:href="@{/multimedia/listarVideos/{pagina}(pagina=1)}"
+				class="page-link" href="#">2</a></li>
+			<li class="page-item"><a
+				th:href="@{/multimedia/listarVideos/{pagina}(pagina=2)}"
+				class="page-link" href="#">3</a></li>
+			<li class="page-item"><a
+				th:href="@{/multimedia/listarVideos/{pagina}(pagina=3)}"
+				class="page-link" href="#">4</a></li>
+
+			<!-- 			<li class="page-item"><a th:href="@{/multimedia/listarVideos/{pagina}(pagina=4)}" class="page-link" href="#">&raquo;</a> -->
+			</li>
+		</ul>
 	</div>
 </body>
 </html>
