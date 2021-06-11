@@ -18,7 +18,8 @@ public class Ejercicio implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID_EJERCICIO")
+    @Basic(optional = false)
+    @Column(name = "ID_EJERCICIO", unique = true, nullable = false)
     private Long idEjercicio;
 
     // Datos
@@ -49,85 +50,82 @@ public class Ejercicio implements Serializable {
     @Column(name = "DURACION_EJERCICIO")
     private int duracionEjercicio;
 
+
     // Relación OneToMany
     @ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
-	@JoinTable(
-			name = "rutina_ejercicio",
-			joinColumns = @JoinColumn(name = "ID_EJERCICIO"),
-			inverseJoinColumns = @JoinColumn(name = "ID_RUTINA"))
+    @JoinTable(
+            name = "rutina_ejercicio",
+            joinColumns = @JoinColumn(name = "idEjercicio"),
+            inverseJoinColumns = @JoinColumn(name = "idRutina"))
     private Set<Rutina> rutina = new HashSet<>();
 
-	@OneToOne(mappedBy = "ejercicio", cascade = CascadeType.ALL)
-	private Gif gif;
-	
-	public Ejercicio() {
-		super();
-	}
+    @OneToOne(mappedBy = "ejercicio", cascade = CascadeType.ALL)
+    private Gif gif;
 
-	// Constructor con todos los campos pero sin ID
-	public Ejercicio(String nombreEjercicio, String descripcionEjercicio, Categoria categoriaEjercicio,
-			String tipoEjercicio, int repeticionEjercicio, int duracionEjercicio, Set<Rutina> rutina) {
-		super();
-		this.nombreEjercicio = nombreEjercicio;
-		this.descripcionEjercicio = descripcionEjercicio;
-		this.categoriaEjercicio = categoriaEjercicio;
-		this.tipoEjercicio = tipoEjercicio;
-		this.repeticionEjercicio = repeticionEjercicio;
-		this.duracionEjercicio = duracionEjercicio;
-		this.rutina = rutina;
-	}
+    public Ejercicio() {
+        super();
+    }
 
-	public Ejercicio(String nombreEjercicio, String descripcionEjercicio, Categoria categoriaEjercicio,
-			String tipoEjercicio, int repeticionEjercicio, int duracionEjercicio) {
-		super();
-		this.nombreEjercicio = nombreEjercicio;
-		this.descripcionEjercicio = descripcionEjercicio;
-		this.categoriaEjercicio = categoriaEjercicio;
-		this.tipoEjercicio = tipoEjercicio;
-		this.repeticionEjercicio = repeticionEjercicio;
-		this.duracionEjercicio = duracionEjercicio;
-	}
+    // Constructor con todos los campos pero sin ID
+    public Ejercicio(String nombreEjercicio, String descripcionEjercicio, Categoria categoriaEjercicio,
+                     String tipoEjercicio, int repeticionEjercicio, int duracionEjercicio, Set<Rutina> rutina) {
+        super();
+        this.nombreEjercicio = nombreEjercicio;
+        this.descripcionEjercicio = descripcionEjercicio;
+        this.categoriaEjercicio = categoriaEjercicio;
+        this.tipoEjercicio = tipoEjercicio;
+        this.repeticionEjercicio = repeticionEjercicio;
+        this.duracionEjercicio = duracionEjercicio;
+        this.rutina = rutina;
+    }
 
-	// Constructor con todos los campos menos duracionEjercicio
-	public Ejercicio(String nombreEjercicio, String descripcionEjercicio, Categoria categoriaEjercicio,
-			String tipoEjercicio, int repeticionEjercicio, Set<Rutina> rutina, Gif gif) {
-		super();
-		this.nombreEjercicio = nombreEjercicio;
-		this.descripcionEjercicio = descripcionEjercicio;
-		this.categoriaEjercicio = categoriaEjercicio;
-		this.tipoEjercicio = tipoEjercicio;
-		this.repeticionEjercicio = repeticionEjercicio;
-		this.rutina = rutina;
-		this.gif = gif;
-	}
+    public Ejercicio(String nombreEjercicio, String descripcionEjercicio, Categoria categoriaEjercicio,
+                     String tipoEjercicio, int repeticionEjercicio, int duracionEjercicio) {
+        super();
+        this.nombreEjercicio = nombreEjercicio;
+        this.descripcionEjercicio = descripcionEjercicio;
+        this.categoriaEjercicio = categoriaEjercicio;
+        this.tipoEjercicio = tipoEjercicio;
+        this.repeticionEjercicio = repeticionEjercicio;
+        this.duracionEjercicio = duracionEjercicio;
+    }
 
-	public Ejercicio(String nombreEjercicio, String descripcionEjercicio, Categoria categoriaEjercicio,
-			String tipoEjercicio, int repeticionEjercicio, Gif gif) {
-		super();
-		this.nombreEjercicio = nombreEjercicio;
-		this.descripcionEjercicio = descripcionEjercicio;
-		this.categoriaEjercicio = categoriaEjercicio;
-		this.tipoEjercicio = tipoEjercicio;
-		this.repeticionEjercicio = repeticionEjercicio;
-		this.gif = gif;
-	}
+    // Constructor con todos los campos menos duracionEjercicio
+    public Ejercicio(String nombreEjercicio, String descripcionEjercicio, Categoria categoriaEjercicio,
+                     String tipoEjercicio, int repeticionEjercicio, Set<Rutina> rutina, Gif gif) {
+        super();
+        this.nombreEjercicio = nombreEjercicio;
+        this.descripcionEjercicio = descripcionEjercicio;
+        this.categoriaEjercicio = categoriaEjercicio;
+        this.tipoEjercicio = tipoEjercicio;
+        this.repeticionEjercicio = repeticionEjercicio;
+        this.rutina = rutina;
+        this.gif = gif;
+    }
 
-	// Constructor con todos los campos menos repeticionEjercicio
-	public Ejercicio(Long idEjercicio, String nombreEjercicio, String descripcionEjercicio,
-			Categoria categoriaEjercicio, String tipoEjercicio, int duracionEjercicio, Set<Rutina> rutina, Gif gif) {
-		super();
-		this.idEjercicio = idEjercicio;
-		this.nombreEjercicio = nombreEjercicio;
-		this.descripcionEjercicio = descripcionEjercicio;
-		this.categoriaEjercicio = categoriaEjercicio;
-		this.tipoEjercicio = tipoEjercicio;
-		this.duracionEjercicio = duracionEjercicio;
-		this.rutina = rutina;
-		this.gif = gif;
-	}
+    public Ejercicio(String nombreEjercicio, String descripcionEjercicio, Categoria categoriaEjercicio,
+                     String tipoEjercicio, int repeticionEjercicio, Gif gif) {
+        super();
+        this.nombreEjercicio = nombreEjercicio;
+        this.descripcionEjercicio = descripcionEjercicio;
+        this.categoriaEjercicio = categoriaEjercicio;
+        this.tipoEjercicio = tipoEjercicio;
+        this.repeticionEjercicio = repeticionEjercicio;
+        this.gif = gif;
+    }
 
-    public static long getSerialVersionUID() {
-        return serialVersionUID;
+    // Constructor con todos los campos menos repeticionEjercicio
+    public Ejercicio(Long idEjercicio, String nombreEjercicio, String descripcionEjercicio,
+                     Categoria categoriaEjercicio, String tipoEjercicio, int duracionEjercicio, Set<Rutina> rutina, Gif gif) {
+        super();
+        this.idEjercicio = idEjercicio;
+        this.nombreEjercicio = nombreEjercicio;
+        this.descripcionEjercicio = descripcionEjercicio;
+        this.categoriaEjercicio = categoriaEjercicio;
+        this.tipoEjercicio = tipoEjercicio;
+        this.duracionEjercicio = duracionEjercicio;
+        this.rutina = rutina;
+        this.gif = gif;
     }
 
     public Long getIdEjercicio() {
@@ -186,30 +184,12 @@ public class Ejercicio implements Serializable {
         this.duracionEjercicio = duracionEjercicio;
     }
 
-	public void setRutina(Set<Rutina> rutina) {
-		this.rutina = rutina;
-	}
-	
-	public void anadirRutina(Rutina rutina) {
-		this.rutina.add(rutina);
-		rutina.getEjercicio().add(this);
-	}
-	
-	public void deleteRutina(Rutina rutina) {
-		this.rutina.remove(rutina) ;
-	}
-
+    public Set<Rutina> getRutina() {
+        return rutina;
+    }
 
     public void setRutina(Set<Rutina> rutina) {
         this.rutina = rutina;
-    }
-
-    public Gif getGif() {
-        return gif;
-    }
-
-    public void setGif(Gif gif) {
-        this.gif = gif;
     }
 
     public void anadirRutina(Rutina rutina) {
@@ -219,5 +199,18 @@ public class Ejercicio implements Serializable {
 
     public void deleteRutina(Rutina rutina) {
         this.rutina.remove(rutina) ;
+    }
+
+
+    public static long getSerialversionuid() {
+        return serialVersionUID;
+    }
+
+    public Gif getGif() {
+        return gif;
+    }
+
+    public void setGif(Gif gif) {
+        this.gif = gif;
     }
 }

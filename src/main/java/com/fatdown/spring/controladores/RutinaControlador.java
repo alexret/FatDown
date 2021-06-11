@@ -45,41 +45,33 @@ public class RutinaControlador {
     }
 
     @PostMapping("/addEjercicio/{id}")
-    public String addEjercicio(@PathVariable("id") long id, HttpSession session) {
+    public String addEjercicio(@PathVariable("id") long id, HttpSession session) throws Exception {
 
-        Ejercicio ejercicio = ejercicioServicio.buscarPorId(id).get();
+        Ejercicio ejercicio;
+        Optional<Ejercicio> aux = ejercicioServicio.buscarPorId(id);
 
-        // Valor por defecto es 5
-        Set<Ejercicio> lEjercicio = (Set<Ejercicio>) session.getAttribute("tuRutina");
+        if(aux.isPresent()) {
 
-        lEjercicio.add(ejercicio);
+            ejercicio = aux.get();
 
-        session.setAttribute("tuRutina", lEjercicio);
+            // Valor por defecto es 5
+            Set<Ejercicio> lEjercicio = (Set<Ejercicio>) session.getAttribute("tuRutina");
 
-        return "redirect:/rutina/listarEjercicios";
+            lEjercicio.add(ejercicio);
+
+            session.setAttribute("tuRutina", lEjercicio);
+
+            return "redirect:/rutina/listarEjercicios";
+        }
+        else
+            throw new Exception("Ha ocurrido un error");
     }
 
     @PostMapping("/crearRutina")
     public String crearRutina(@RequestParam(value = "nombre", required = false) String nombre,
-                              HttpSession session){
-        Rutina rutina = new Rutina();
-        Optional<Usuario> usuario = usuarioRepository.findById((Long) session.getAttribute("idUsuario"));
-        Set<Ejercicio> lEjercicio = (Set<Ejercicio>) session.getAttribute("tuRutina");
-        Set<Ejercicio> ejercicioAux = new HashSet<Ejercicio>();
-
-
-        rutina.setNombreRutina(nombre);
-        rutina.setUsuario(usuario.get());
-
-        for (Ejercicio e : lEjercicio) {
-            Optional<Ejercicio> ejercicio = ejercicioServicio.buscarPorId(e.getIdEjercicio());
-//            rutina.setEjercicio(lEjercicio.get(i));
-            ejercicioAux.add(ejercicio.get());
-        }
-//
-        rutina.setEjercicio(ejercicioAux);
+                              HttpSession session) throws Exception {
         
-        rutinaServicio.addRutina(rutina);
+        rutinaServicio.addRutina(nombre, session);
         return "redirect:/index";
     }
 

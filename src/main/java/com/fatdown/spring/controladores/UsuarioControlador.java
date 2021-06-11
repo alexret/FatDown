@@ -37,14 +37,8 @@ public class UsuarioControlador {
 
 	@PostMapping("/signup")
 	public String darseDeAlta(Usuario usuario, HttpServletRequest request) {
-		// Concatenamos la fecha en un solo String
-		String diaNacimiento = request.getParameter("dianacimientousuario");
-		String mesNacimiento = request.getParameter("mesnacimientousuario");
-		String anioNacimiento = request.getParameter("anionacimientousuario");
-		String concatenarFechaNac = diaNacimiento + "/" + mesNacimiento + "/" + anioNacimiento;
 
-		usuario.setFechanacUsuario(concatenarFechaNac);
-		usuarioServicio.crearUsuario(usuario);
+		usuarioServicio.crearUsuario(usuario, request);
 
 		return "redirect:/index";
 	}

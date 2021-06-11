@@ -1,5 +1,6 @@
 package com.fatdown.spring.servicios;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,7 +39,15 @@ public class UsuarioServicioImpl implements UsuarioServicio {
 	}
 
 	@Override
-	public Usuario crearUsuario(Usuario usuario) {
+	public Usuario crearUsuario(Usuario usuario, HttpServletRequest request) {
+		// Concatenamos la fecha en un solo String
+		String diaNacimiento = request.getParameter("dianacimientousuario");
+		String mesNacimiento = request.getParameter("mesnacimientousuario");
+		String anioNacimiento = request.getParameter("anionacimientousuario");
+		String concatenarFechaNac = diaNacimiento + "/" + mesNacimiento + "/" + anioNacimiento;
+
+		usuario.setFechanacUsuario(concatenarFechaNac);
+
 		usuario.setPasswordUsuario(bCryptPasswordEncoder.encode(usuario.getPasswordUsuario()));
 		Rol r = rolRepository.findById(2).orElse(null);
 		usuario.anadirRol(r);

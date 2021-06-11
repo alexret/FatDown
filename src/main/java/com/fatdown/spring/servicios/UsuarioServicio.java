@@ -2,9 +2,11 @@ package com.fatdown.spring.servicios;
 
 import com.fatdown.spring.entidades.Usuario;
 
+import javax.servlet.http.HttpServletRequest;
+
 public interface UsuarioServicio {
 
-	Usuario crearUsuario(Usuario usuario);
+	Usuario crearUsuario(Usuario usuario, HttpServletRequest request);
 	
 	void eliminarUsuario(long idUsuario);
 
