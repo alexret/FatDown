@@ -1,11 +1,13 @@
 package com.fatdown.spring.entidades;
 
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.FetchType;
+import javax.persistence.ManyToMany;
 
 import com.fatdown.spring.enums.Categoria;
 
@@ -31,10 +33,10 @@ public class Video extends Multimedia {
 	@Column(name = "LINK_VIDEO")
 	private String linkVideo;
 
-	// OneToMany Usuario - poseída
-	@ManyToOne
-	@JoinColumn(name = "ID_USUARIO")
-	private Usuario usuario;
+	// ManyToMany Usuario - poseída
+	@ManyToMany
+	(mappedBy = "videos", fetch = FetchType.EAGER)
+	private Set<Usuario> usuarios;
 
 	// Constructores
 
@@ -43,20 +45,20 @@ public class Video extends Multimedia {
 	}
 
 	public Video(long idMultimedia, String nombreMultimedia, Categoria categoriaVideo,
-			String linkVideo, Usuario usuario) {
+			String linkVideo, Set<Usuario> usuarios) {
 		super(idMultimedia, nombreMultimedia);
 		this.categoriaVideo = categoriaVideo;
 		this.linkVideo = linkVideo;
-		this.usuario = usuario;
+		this.usuarios = usuarios;
 
 	}
 
 	public Video(String nombreMultimedia, Categoria categoriaVideo, String linkVideo,
-			Usuario usuario) {
+			Set<Usuario> usuarios) {
 		super(nombreMultimedia);
 		this.categoriaVideo = categoriaVideo;
 		this.linkVideo = linkVideo;
-		this.usuario = usuario;
+		this.usuarios = usuarios;
 
 	}
 
@@ -88,12 +90,21 @@ public class Video extends Multimedia {
 		return serialVersionUID;
 	}
 
-	public Usuario getUsuario() {
-		return usuario;
+	public Set<Usuario> getUsuarios() {
+		return usuarios;
 	}
 
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
+	public void setUsuarios(Set<Usuario> usuario) {
+		usuarios = usuario;
+	}
+	
+	public void anadirUsuario(Usuario usuario) {
+		this.usuarios.add(usuario);
+		usuario.getVideos().add(this);
+	}
+	
+	public void deleteUsuario(Usuario usuario) {
+		this.usuarios.remove(usuario) ;
 	}
 
 }

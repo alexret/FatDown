@@ -104,3 +104,14 @@ use FatDown;
 		 constraint fk_rutina_ejercicio_1 foreign key (id_rutina) references rutina (id_rutina) on delete cascade,
 		 constraint fk_rutina_ejercicio_2 foreign key (ID_EJERCICIO) references ejercicio (ID_EJERCICIO)
 	);
+	
+		create table usuario_video (
+		     id_usuario bigint not null,
+		     id_multimedia bigint,
+		     primary key (
+		      id_usuario,
+		      id_multimedia
+		     ),
+			 constraint fk_usuario_video_1 foreign key (id_usuario) references usuario (id_usuario) on delete cascade,
+			 constraint fk_usuario_video_2 foreign key (id_multimedia) references video (id_multimedia)
+		);

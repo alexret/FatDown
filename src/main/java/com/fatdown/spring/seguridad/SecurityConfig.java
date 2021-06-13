@@ -39,7 +39,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 						"/multimedia/listarVideos/**",
 						"/multimedia/listarImagenes",
 						"/multimedia/listarGifs").permitAll()
-				.antMatchers().hasAnyAuthority("registrado", "admin")
+				.antMatchers("/multimedia/anadirFavorito/**").hasAnyAuthority("registrado", "admin")
 				.antMatchers("/ejercicio/**", "/multimedia/**").hasAuthority("admin")
 				.anyRequest().authenticated()
 			.and()

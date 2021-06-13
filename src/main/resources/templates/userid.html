@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang=es xmlns:th="http://www.thymeleaf.org"
-	  xmlns:sec="http://www.thymeleaf.org/extras/spring-security" xmlns="http://www.w3.org/1999/html">
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+	xmlns="http://www.w3.org/1999/html">
 <head>
 <title>Fat Down</title>
 <meta charset="UTF-8">
@@ -26,7 +27,7 @@ legend {
 }
 
 .coloreado1 {
-	background-color:#ffcc99;
+	background-color: #ffcc99;
 }
 
 .coloreado2 {
@@ -60,8 +61,9 @@ td:first-child {
 		</figure>
 	</header>
 	<section>
-<!-- 	Revisar este template -->
-		<h1 class="text-center" style="color:#ff9900;">Perfil del usuario</h1>
+		<!-- 	Revisar este template -->
+		<h1 class="text-center" style="color: #ff9900;">Perfil del
+			usuario</h1>
 		<div class="tablas">
 			<fieldset>
 				<legend style="font-weight: bold;">Datos personales</legend>
@@ -78,11 +80,11 @@ td:first-child {
 						<td class="coloreado1">Apellidos:</td>
 						<td th:text="${usuario.apellidosUsuario}" />
 					</tr>
-<!--					<tr-->
-<!--						th:if="${ (idUsuarioSESSION == usuario.idUsuario) or #authorization.expression('hasAuthority(''admin'')')} ">-->
-<!--						<td class="coloreado1">Contraseña:</td>-->
-<!--						<td th:text="${usuario.passwordUsuario}" />-->
-<!--					</tr>-->
+					<!--					<tr-->
+					<!--						th:if="${ (idUsuarioSESSION == usuario.idUsuario) or #authorization.expression('hasAuthority(''admin'')')} ">-->
+					<!--						<td class="coloreado1">Contraseña:</td>-->
+					<!--						<td th:text="${usuario.passwordUsuario}" />-->
+					<!--					</tr>-->
 					<tr>
 						<td class="coloreado1">Email:</td>
 						<td th:text="${usuario.emailUsuario}" />
@@ -99,9 +101,8 @@ td:first-child {
 		<div class="tablas">
 			<fieldset
 				th:if="${ (idUsuarioSESSION == usuario.idUsuario) or #authorization.expression('hasAuthority(''admin'')')} ">
-				<legend
-					style="font-weight: bold;">Datos
-					de pago y facturación</legend>
+				<legend style="font-weight: bold;">Datos de pago y
+					facturación</legend>
 				<table class="table table-bordered tabla" style="width: 70%">
 					<tr>
 						<td class="coloreado2">Número de tarjeta de crédito/débito:</td>
@@ -127,50 +128,84 @@ td:first-child {
 		<div style="clear: both;"></div>
 
 		<!-- 			Utilizaremos este método para listar rutinas creadas y vídeos favoritos -->
-		 			<div th:if="${ (idUsuarioSESSION == usuario.idUsuario) or #authorization.expression('hasAuthority(''admin'')')} "
-		 			class="card text-white bg-success mb-3 tabla" style="width: 80%;">
-		 				<div class="card-header">&iexcl;Aquí están tus rutinas!</div>
-		 				<div class="card-body">
-<!--		 					<h4 th:if="${compras.empty}" class="card-title">Todavía no hay-->
-<!--		 						pedidos realizados</h4>-->
-		 					<p class="card-text">
-		 					<table class="table table-hover">
+		<div
+			th:if="${ (idUsuarioSESSION == usuario.idUsuario) or #authorization.expression('hasAuthority(''admin'')')} "
+			class="card text-white bg-success mb-3 tabla" style="width: 80%;">
+			<div class="card-header">&iexcl;Aquí están tus rutinas!</div>
+			<div class="card-body">
+				<!--		 					<h4 th:if="${compras.empty}" class="card-title">Todavía no hay-->
+				<!--		 						pedidos realizados</h4>-->
+				<p class="card-text">
+				<table class="table table-hover">
 
-		 						<tbody th:each="rutina: ${rutina}">
-		 							<tr class="table-primary">
-		 								<td class="celdas"><span
-		 									th:text="'Nombre Rutina '+${rutina.nombreRutina}"></span></td>
-									</tr>
-									<form>
-									<tr class="table-primary" th:each="ejercicio: ${rutina.ejercicio}">
-										<td class="celdas"><span
-											th:text="'Nombre ejercicio '+${ejercicio.nombreEjercicio}"></span></td>
-										<td class="celdas"><span
-												th:text="'Nombre ejercicio '+${ejercicio.descripcionEjercicio}"></span></td>
-										<td class="celdas"><span
-												th:text="'Nombre ejercicio '+${ejercicio.categoriaEjercicio}"></span></td>
-										<td class="celdas"><span
-												th:text="'Nombre ejercicio '+${ejercicio.tipoEjercicio}"></span></td>
-										<td class="celdas"><span
-												th:text="'Nombre ejercicio '+${ejercicio.repeticionEjercicio}"></span></td>
-										<td class="celdas"><span
-												th:text="'Nombre ejercicio '+${ejercicio.duracionEjercicio}"></span></td>
-										<td class="celdas"> <button type="button" id="bBorrarRutina"
-												class="btn btn-primary" th:value="${rutina.idRutina}">
-											<i class="far fa-trash-alt"></i> Borrar rutina
-										</button>
-										</td>
-										</form>
-<!--		 								<td class="celdas"><span style="background-color: #ffff33;"-->
-<!--		 									th:text="'Precio: '+${rutina.ejercicio.nombreEjercicio}"></span></td>-->
-<!--		 								<td class="celdas"><a-->
-<!--		 									th:href="@{/compra/compraid/{id}(id=${compra.idCompra})}"-->
-<!--		 									class="btn btn-info">Ver la compra</a></td>-->
-		 							</tr>
-		 						</tbody>
-							</table>
-		 				</div>
-		 			</div>
+					<tbody th:each="rutina: ${rutina}">
+						<tr class="table-primary">
+							<td class="celdas"><span
+								th:text="'Nombre Rutina '+${rutina.nombreRutina}"></span></td>
+						</tr>
+						<form>
+							<tr class="table-primary"
+								th:each="ejercicio: ${rutina.ejercicio}">
+								<td class="celdas"><span
+									th:text="'Nombre ejercicio '+${ejercicio.nombreEjercicio}"></span></td>
+								<td class="celdas"><span
+									th:text="'Nombre ejercicio '+${ejercicio.descripcionEjercicio}"></span></td>
+								<td class="celdas"><span
+									th:text="'Nombre ejercicio '+${ejercicio.categoriaEjercicio}"></span></td>
+								<td class="celdas"><span
+									th:text="'Nombre ejercicio '+${ejercicio.tipoEjercicio}"></span></td>
+								<td class="celdas"><span
+									th:text="'Nombre ejercicio '+${ejercicio.repeticionEjercicio}"></span></td>
+								<td class="celdas"><span
+									th:text="'Nombre ejercicio '+${ejercicio.duracionEjercicio}"></span></td>
+								<td class="celdas">
+									<button type="button" id="bBorrarRutina"
+										class="btn btn-primary" th:value="${rutina.idRutina}">
+										<i class="far fa-trash-alt"></i> Borrar rutina
+									</button>
+								</td>
+						</form>
+						<!--		 								<td class="celdas"><span style="background-color: #ffff33;"-->
+						<!--		 									th:text="'Precio: '+${rutina.ejercicio.nombreEjercicio}"></span></td>-->
+						<!--		 								<td class="celdas"><a-->
+						<!--		 									th:href="@{/compra/compraid/{id}(id=${compra.idCompra})}"-->
+						<!--		 									class="btn btn-info">Ver la compra</a></td>-->
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+
+		<!--    Videos favoritos -->
+		<div
+			th:if="${ (idUsuarioSESSION == usuario.idUsuario) or #authorization.expression('hasAuthority(''admin'')')} "
+			class="card text-white bg-info mb-3 tabla" style="width: 80%;">
+			<div class="card-header">Videos favoritos</div>
+			<div class="card-body">
+				<p class="card-text">
+				<table class="table table-hover">
+
+					<tbody th:each="video: ${videos}">
+						<tr class="table-primary">
+							<td style="text-align: center"
+								th:text="${video.nombreMultimedia}"></td>
+							<td style="text-align: center" th:text="${video.categoriaVideo}"></td>
+							<td><iframe width="275" height="200"
+									th:src=" ${video.linkVideo}"></iframe></td>
+
+							<td>
+								<form sec:authorize="hasAuthority('admin')"
+									th:action="@{/multimedia/eliminarVideo/{id}(id=${video.idMultimedia})}"
+									method="post">
+									<button class="btn btn-danger btn-lg" type="submit">Eliminar
+										video</button>
+								</form>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
 	</section>
 </body>
 </html>

@@ -26,9 +26,11 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.fatdown.spring.entidades.Gif;
 import com.fatdown.spring.entidades.Imagen;
+import com.fatdown.spring.entidades.Usuario;
 import com.fatdown.spring.entidades.Video;
 import com.fatdown.spring.servicios.GifServicio;
 import com.fatdown.spring.servicios.ImagenServicio;
+import com.fatdown.spring.servicios.UsuarioServicio;
 import com.fatdown.spring.servicios.VideoServicio;
 
 @Controller
@@ -44,6 +46,9 @@ public class MultimediaControlador {
 
 	@Autowired
 	ImagenServicio imagenServicio;
+	
+	@Autowired
+	UsuarioServicio usuarioServicio;
 
 	// Método página para subir videos
 
@@ -62,21 +67,39 @@ public class MultimediaControlador {
 	}
 
 	@PostMapping("/eliminarVideo/{id}")
-    public String eliminarVideo(@PathVariable("id") long id) {
-        videoServicio.eliminarVideo(id);
-        return "redirect:/index";
-    }
+	public String eliminarVideo(@PathVariable("id") long id) {
+		videoServicio.eliminarVideo(id);
+		return "redirect:/index";
+	}
 
 	@GetMapping("listarVideos/{pagina}")
-    public ModelAndView listarVideos(@PathVariable("pagina") int pagina) {
-        ModelAndView mav = new ModelAndView();
-        Pageable paging = PageRequest.of(pagina,10);
-        Page<Video> lVideos = videoServicio.listarVideosPaginados(paging);
+	public ModelAndView listarVideos(@PathVariable("pagina") int pagina) {
+		ModelAndView mav = new ModelAndView();
+		Pageable paging = PageRequest.of(pagina, 10);
+		Page<Video> lVideos = videoServicio.listarVideosPaginados(paging);
 
-        mav.addObject("video", lVideos);
-        mav.setViewName("/listarVideos");
-        return mav;
-    }
+		mav.addObject("video", lVideos);
+		mav.setViewName("/listarVideos");
+		return mav;
+	}
+
+	@PostMapping("/anadirFavorito/{id}")
+	public String anadirFavorito(HttpServletRequest request, @PathVariable("id") long id) {
+
+		// Se recupera el usuario de la sesión actual
+		Usuario usuario = usuarioServicio.obtenerUsuario((Long)request.getSession().getAttribute("idUsuario"));
+
+		// Se obtiene el video del id que se ha pasado
+		Video video = videoServicio.obtenerVideo(id);
+		
+		// Se agrega el video al set de videos del usuario
+		usuario.anadirVideos(video);
+		
+		// Se actualiza el usuario
+		usuarioServicio.crearUsuario(usuario);
+
+		return "redirect:/multimedia/listarVideos/1";
+	}
 
 	// Métodos de Imagen
 
@@ -98,7 +121,6 @@ public class MultimediaControlador {
 		return "redirect:/index";
 	}
 
-	
 	// Métodos de Gif
 
 	@PostMapping("/crearGif")

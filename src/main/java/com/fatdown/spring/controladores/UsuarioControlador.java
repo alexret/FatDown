@@ -1,25 +1,26 @@
 package com.fatdown.spring.controladores;
 
-import java.util.*;
+import java.util.List;
+import java.util.Set;
 
-import javax.persistence.Column;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import com.fatdown.spring.entidades.Rutina;
-import com.fatdown.spring.servicios.RutinaServicio;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import com.fatdown.spring.servicios.UsuarioServicio;
-import com.fatdown.spring.entidades.Usuario;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.fatdown.spring.entidades.Rutina;
+import com.fatdown.spring.entidades.Usuario;
+import com.fatdown.spring.entidades.Video;
+import com.fatdown.spring.servicios.RutinaServicio;
+import com.fatdown.spring.servicios.UsuarioServicio;
+import com.fatdown.spring.servicios.VideoServicio;
 
 @Controller
 @RequestMapping(value = "/usuario")
@@ -30,6 +31,9 @@ public class UsuarioControlador {
 
 	@Autowired
 	RutinaServicio rutinaServicio;
+	
+	@Autowired
+	private VideoServicio videoServicio;
 	
 	// Métodos get y post
 
@@ -102,6 +106,10 @@ public class UsuarioControlador {
 		List<Rutina> lRutina = rutinaServicio.getRutinas(usuario);
 
 		mav.addObject("rutina", lRutina);
+		
+		// Videos favoritos
+		Set<Video> videos = videoServicio.listarVideosUsuario(usuario);
+		mav.addObject("videos", videos); 
 
 		mav.setViewName("userid");
 		return mav;

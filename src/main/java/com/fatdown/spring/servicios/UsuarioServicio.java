@@ -8,6 +8,8 @@ public interface UsuarioServicio {
 
 	Usuario crearUsuario(Usuario usuario, HttpServletRequest request);
 	
+	Usuario crearUsuario(Usuario usuario);
+	
 	void eliminarUsuario(long idUsuario);
 
 	Usuario obtenerUsuario(long idUsuario);

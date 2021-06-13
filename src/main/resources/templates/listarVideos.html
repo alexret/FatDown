@@ -86,7 +86,7 @@ td {
 						</form> </br>
 						<form
 							sec:authorize="hasAuthority('registrado') || hasAuthority('admin')"
-							th:action="@{/multimedia/eliminarVideo/{id}(id=${video.idMultimedia})}"
+							th:action="@{/multimedia/anadirFavorito/{id}(id=${video.idMultimedia})}"
 							method="post">
 							<button class="btn btn-info btn-lg" type="submit">Guardar
 								video</button>

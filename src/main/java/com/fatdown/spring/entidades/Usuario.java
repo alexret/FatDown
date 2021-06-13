@@ -78,9 +78,9 @@ public class Usuario implements Serializable {
 	@OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
 	private Set<Rutina> rutinas = new HashSet<>();
 
-	// Relación OneToMany Video - propietaria
-
-	@OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
+	// Relación ManyToMany Video - propietaria
+	@ManyToMany(fetch = FetchType.EAGER, cascade = { CascadeType.MERGE, CascadeType.PERSIST })
+	@JoinTable(name = "USUARIO_VIDEO", joinColumns = @JoinColumn(name = "ID_USUARIO"), inverseJoinColumns = @JoinColumn(name = "ID_MULTIMEDIA"))
 	private Set<Video> videos = new HashSet<>();
 
 	// Constructores
@@ -303,7 +303,7 @@ public class Usuario implements Serializable {
 	}
 
 	public boolean anadirVideos(Video video) {
-		video.setUsuario(this);
+		video.anadirUsuario(this);
 		return getVideos().add(video);
 	}
 

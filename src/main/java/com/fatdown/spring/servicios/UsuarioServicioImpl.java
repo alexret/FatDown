@@ -53,6 +53,15 @@ public class UsuarioServicioImpl implements UsuarioServicio {
 		usuario.anadirRol(r);
 		return usuarioRepository.save(usuario);
 	}
+	
+	@Override
+	public Usuario crearUsuario(Usuario usuario) {		
+
+		usuario.setPasswordUsuario(bCryptPasswordEncoder.encode(usuario.getPasswordUsuario()));
+		Rol r = rolRepository.findById(2).orElse(null);
+		usuario.anadirRol(r);
+		return usuarioRepository.save(usuario);
+	}
 
 	@Override
 	public void eliminarUsuario(long idUsuario) {
