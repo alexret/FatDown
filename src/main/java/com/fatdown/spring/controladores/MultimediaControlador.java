@@ -98,7 +98,7 @@ public class MultimediaControlador {
 		// Se actualiza el usuario
 		usuarioServicio.crearUsuario(usuario);
 
-		return "redirect:/multimedia/listarVideos/1";
+		return "redirect:/multimedia/listarVideos/0";
 	}
 
 	// Métodos de Imagen

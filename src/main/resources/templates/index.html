@@ -44,7 +44,7 @@ h2 {
 	text-shadow: 2px 2px 2px #00000F;
 }
 
-img {
+#myCarousel img {
 	max-height: 380px;
 }
 
@@ -56,8 +56,23 @@ img {
 	margin-right: auto;
 }
 
-.hojas {
+.grid-container {
+	display: grid;
+	grid-template-columns: 50% 50%;
+	padding: 10px;
+}
+
+.descarga {
+	margin-right: auto;
+	margin-left: auto;
 	text-align: center;
+}
+
+.descarga h2 {
+	font-weight: bold;
+	text-shadow: 1.5px 1px black;
+	color: #3dadff;
+	margin: 2em;
 }
 </style>
 </head>
@@ -175,26 +190,33 @@ img {
 
 	</header>
 
+	<div class="progress">
+		<div class="progress-bar bg-info" role="progressbar"
+			style="width: 100%;" aria-valuenow="50" aria-valuemin="0"
+			aria-valuemax="100"></div>
+	</div>
 
-	<section class="hojas">
-		<p>Haz click en la imagen para descargarla:
-		<p>
+	<h1 style="margin-top: 30px;">¡Consigue tus objetivos y mantente
+		motivado!</h1>
+	<div class="grid-container">
+		<div class="descarga">
+			<h2>Haz click en la imagen para descargarla</h2>
 			<a href="/pictures/Motivación_FatDown.png"
 				download="Motivacion_FatDown.png"> <img
 				th:src="@{/pictures/Motivación_FatDown.png}" alt="Motivacion">
 			</a>
-	</section>
+		</div>
+		<div class="descarga">
+			<h2>Haz click en la imagen para descargarla</h2>
+			<a href="/pictures/Rutina_FatDown.png" download="Rutina_FatDown.png">
+				<img th:src="@{/pictures/Rutina_FatDown.png}" alt="Rutina">
+			</a>
+		</div>
+	</div>
 
-	<section class="hojas">
-		<p>
-			Haz click en la imagen para descargarla:
-			<p>
-<a href="/pictures/Rutina_FatDown.png" download="Rutina_FatDown.png">
-  <img th:src="@{/pictures/Rutina_FatDown.png}" alt="Rutina">
-</a>
-	
-	</section>
-	<!--Pie de página que permite regresar al principio--><fo oter>
+
+	<!--Pie de página que permite regresar al principio-->
+	<footer>
 		<a name="abajo" href=#arriba class="boton"><button type="button"
 				class="btn btn-warning boton btn-sm">Ir arriba</button></a>
 	</footer>

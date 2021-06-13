@@ -50,6 +50,12 @@ td:first-child {
 	margin-right: auto;
 	box-sizing: border-box;
 }
+
+.card-header {
+	font-size: 22pt;
+	font-weight: bold;
+	text-align: center;
+}
 </style>
 </head>
 <body>
@@ -80,11 +86,6 @@ td:first-child {
 						<td class="coloreado1">Apellidos:</td>
 						<td th:text="${usuario.apellidosUsuario}" />
 					</tr>
-					<!--					<tr-->
-					<!--						th:if="${ (idUsuarioSESSION == usuario.idUsuario) or #authorization.expression('hasAuthority(''admin'')')} ">-->
-					<!--						<td class="coloreado1">Contraseña:</td>-->
-					<!--						<td th:text="${usuario.passwordUsuario}" />-->
-					<!--					</tr>-->
 					<tr>
 						<td class="coloreado1">Email:</td>
 						<td th:text="${usuario.emailUsuario}" />
@@ -127,79 +128,75 @@ td:first-child {
 		</div>
 		<div style="clear: both;"></div>
 
-		<!-- 			Utilizaremos este método para listar rutinas creadas y vídeos favoritos -->
+		<!-- 			Listamos rutinas creadas y vídeos favoritos -->
 		<div
 			th:if="${ (idUsuarioSESSION == usuario.idUsuario) or #authorization.expression('hasAuthority(''admin'')')} "
-			class="card text-white bg-success mb-3 tabla" style="width: 80%;">
-			<div class="card-header">&iexcl;Aquí están tus rutinas!</div>
+			class="card text-white bg-secondary mb-3 tabla" style="width: 80%;">
+			<div class="card-header">Aquí están tus rutinas personalizadas</div>
 			<div class="card-body">
-				<!--		 					<h4 th:if="${compras.empty}" class="card-title">Todavía no hay-->
-				<!--		 						pedidos realizados</h4>-->
+				<h4 th:if="${rutina.empty}" class="card-title">Todavía no has
+					creado ninguna rutina</h4>
 				<p class="card-text">
 				<table class="table table-hover">
 
 					<tbody th:each="rutina: ${rutina}">
 						<tr class="table-primary">
-							<td class="celdas"><span
-								th:text="'Nombre Rutina '+${rutina.nombreRutina}"></span></td>
+							<td colspan="2"
+								style="font-size: 18pt; font-weight: bold; background-color: #F9B169;"><span
+								th:text="'Tu rutina '+${rutina.nombreRutina}"></span></td>
+							<td style="background-color: #F9B169;">
+								<button type="button" id="bBorrarRutina" class="btn btn-danger"
+									th:value="${rutina.idRutina}">
+									<i class="far fa-trash-alt"></i> Borrar rutina
+								</button>
+							</td>
 						</tr>
 						<form>
 							<tr class="table-primary"
 								th:each="ejercicio: ${rutina.ejercicio}">
-								<td class="celdas"><span
-									th:text="'Nombre ejercicio '+${ejercicio.nombreEjercicio}"></span></td>
-								<td class="celdas"><span
-									th:text="'Nombre ejercicio '+${ejercicio.descripcionEjercicio}"></span></td>
-								<td class="celdas"><span
-									th:text="'Nombre ejercicio '+${ejercicio.categoriaEjercicio}"></span></td>
-								<td class="celdas"><span
-									th:text="'Nombre ejercicio '+${ejercicio.tipoEjercicio}"></span></td>
-								<td class="celdas"><span
-									th:text="'Nombre ejercicio '+${ejercicio.repeticionEjercicio}"></span></td>
-								<td class="celdas"><span
-									th:text="'Nombre ejercicio '+${ejercicio.duracionEjercicio}"></span></td>
-								<td class="celdas">
-									<button type="button" id="bBorrarRutina"
-										class="btn btn-primary" th:value="${rutina.idRutina}">
-										<i class="far fa-trash-alt"></i> Borrar rutina
-									</button>
-								</td>
+								<td
+									style="font-size: 14pt; font-weight: bold; text-shadow: 1.5px 1px black; color: #3dadff;"><span
+									th:text="'Nombre del ejercicio: '+${ejercicio.nombreEjercicio}"></span></td>
+								<td
+									style="font-size: 12pt; color: navy; text-shadow: 1.5px 1px #ffcc99; font-weight: bold;"><span
+									th:text="'Categoría: '+${ejercicio.categoriaEjercicio}"></span></td>
+								<td th:if="${ejercicio.duracionEjercicio == 0}"
+									style="text-shadow: 1.5px 1px black;"><span
+									th:text="'Repeticiones del ejercicio: '+${ejercicio.repeticionEjercicio}"></span></td>
+								<td th:if="${ejercicio.repeticionEjercicio == 0}"
+									style="text-shadow: 1.5px 1px black;"><span
+									th:text="'Duracion del ejercicio (en segundos): '+${ejercicio.duracionEjercicio}"></span></td>
 						</form>
-						<!--		 								<td class="celdas"><span style="background-color: #ffff33;"-->
-						<!--		 									th:text="'Precio: '+${rutina.ejercicio.nombreEjercicio}"></span></td>-->
-						<!--		 								<td class="celdas"><a-->
-						<!--		 									th:href="@{/compra/compraid/{id}(id=${compra.idCompra})}"-->
-						<!--		 									class="btn btn-info">Ver la compra</a></td>-->
-						</tr>
 					</tbody>
 				</table>
 			</div>
 		</div>
 
 
-		<!--    Videos favoritos -->
+		<!--    Vídeos favoritos -->
 		<div
 			th:if="${ (idUsuarioSESSION == usuario.idUsuario) or #authorization.expression('hasAuthority(''admin'')')} "
-			class="card text-white bg-info mb-3 tabla" style="width: 80%;">
-			<div class="card-header">Videos favoritos</div>
+			class="card text-white bg-secondary mb-3 tabla" style="width: 80%;">
+			<div class="card-header">Aquí están tus vídeos favoritos</div>
 			<div class="card-body">
+				<h4 th:if="${videos.empty}" class="card-title">Todavía no
+					tienes vídeos favoritos</h4>
 				<p class="card-text">
 				<table class="table table-hover">
 
 					<tbody th:each="video: ${videos}">
 						<tr class="table-primary">
-							<td style="text-align: center"
+							<td style="font-size: 14pt; font-weight: bold; text-shadow: 1.5px 1px black; color: #3dadff; text-align: center;"
 								th:text="${video.nombreMultimedia}"></td>
 							<td style="text-align: center" th:text="${video.categoriaVideo}"></td>
 							<td><iframe width="275" height="200"
 									th:src=" ${video.linkVideo}"></iframe></td>
 
 							<td>
-								<form sec:authorize="hasAuthority('admin')"
-									th:action="@{/multimedia/eliminarVideo/{id}(id=${video.idMultimedia})}"
+								<form th:action="@{/multimedia/eliminarVideo/{id}(id=${video.idMultimedia})}"
 									method="post">
 									<button class="btn btn-danger btn-lg" type="submit">Eliminar
-										video</button>
+										vídeo</button>
 								</form>
 						</tr>
 					</tbody>
