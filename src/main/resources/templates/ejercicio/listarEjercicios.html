@@ -78,6 +78,14 @@ h5 {
 img {
 	margin-right: 2%;
 }
+    <script type="text/javascript">
+        $(function () {
+            $("#nombreCategoria").live("change keyup", function () {
+                $("#filtro").submit();
+            });
+        });
+    </script>
+</head>
 </style>
 </head>
 <body>
@@ -96,7 +104,18 @@ img {
 			style="width: 60%;">
 		<h1>¡Nuestros entrenadores están trabajando en ello!</h1>
 	</div>
-
+	<form id="filtro" th:action="@{/rutina/filtrarEjercicio}" method="post">
+		<select id="categoriaEjercicio" class="form-control"
+				name="categoriaEjercicio" onchange="this.form.submit();">
+			<option disabled selected value> -- Selecciona un valor -- </option>
+			<option value="ABDOMINALES">ABDOMINALES</option>
+			<option value="PIERNAS">PIERNAS</option>
+			<option value="GLUTEOS">GLÚTEOS</option>
+			<option value="ESPALDA">ESPALDA</option>
+			<option value="BRAZOS">BRAZOS</option>
+			<option value="FULL_BODY">FULL BODY</option>
+		</select>
+	</form>
 	<div th:each="ejercicio : ${ejercicio}"
 		class="card text-white bg-primary mb-3"
 		style="width: 50%; margin-right: auto; margin-left: auto;">

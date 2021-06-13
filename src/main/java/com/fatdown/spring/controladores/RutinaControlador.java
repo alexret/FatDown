@@ -3,6 +3,7 @@ package com.fatdown.spring.controladores;
 import com.fatdown.spring.entidades.Ejercicio;
 import com.fatdown.spring.entidades.Rutina;
 import com.fatdown.spring.entidades.Usuario;
+import com.fatdown.spring.enums.Categoria;
 import com.fatdown.spring.repositorios.UsuarioRepository;
 import com.fatdown.spring.servicios.EjercicioServicio;
 import com.fatdown.spring.servicios.RutinaServicio;
@@ -38,6 +39,16 @@ public class RutinaControlador {
         ModelAndView mav = new ModelAndView();
         Pageable paging = PageRequest.of(0,10);
         Page<Ejercicio> lEjercicios = ejercicioServicio.listarEjerciciosPaginados(paging);
+
+        mav.addObject("ejercicio", lEjercicios);
+        mav.setViewName("ejercicio/listarEjercicios");
+        return mav;
+    }
+
+    @PostMapping("/filtrarEjercicio")
+    public ModelAndView listarEjercicioPorCategoria(@RequestParam(name = "categoriaEjercicio") Categoria nombre) {
+        ModelAndView mav = new ModelAndView();
+        List<Ejercicio> lEjercicios = ejercicioServicio.buscarPorCategoriaEjercicio(nombre);
 
         mav.addObject("ejercicio", lEjercicios);
         mav.setViewName("ejercicio/listarEjercicios");

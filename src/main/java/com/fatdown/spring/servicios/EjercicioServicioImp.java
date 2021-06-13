@@ -1,6 +1,7 @@
 package com.fatdown.spring.servicios;
 
 import com.fatdown.spring.entidades.Ejercicio;
+import com.fatdown.spring.enums.Categoria;
 import com.fatdown.spring.repositorios.EjercicioPageableRepositorio;
 import com.fatdown.spring.repositorios.EjercicioRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,6 +40,11 @@ public class EjercicioServicioImp implements EjercicioServicio {
     public Page<Ejercicio> listarEjerciciosPaginados(Pageable p) {
 
         return ejercicioPageableRepositorio.findAll(p);
+    }
+
+    @Override
+    public List<Ejercicio> buscarPorCategoriaEjercicio(Categoria categoria) {
+        return ejercicioRepositorio.findByCategoriaEjercicio(categoria);
     }
 
     @Override
