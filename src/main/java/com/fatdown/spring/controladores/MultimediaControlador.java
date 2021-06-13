@@ -142,7 +142,7 @@ public class MultimediaControlador {
 	}
 
 	// Obtener Gif de BBDD
-	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
+	@RequestMapping(value = "/recuperarGif/{id}", method = RequestMethod.GET)
 	public @ResponseBody ResponseEntity getGifAsResponseEntity(@PathVariable String id) {
 
 		try {

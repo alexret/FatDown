@@ -67,7 +67,7 @@ use FatDown;
         	create table ejercicio (
     	       	 ID_EJERCICIO bigint not null auto_increment,
     	         nombre_ejercicio varchar(50) not null,
-                 descripcion_ejercicio varchar(255) not null,
+                 descripcion_ejercicio varchar(2000) not null,
                  categoria_ejercicio varchar(50) not null,
                  tipo_ejercicio varchar(50) not null,
                  repeticion_ejercicio int,
