@@ -63,4 +63,9 @@ public class RutinaServicioImp implements RutinaServicio {
 
         return rutinaRepositorio.findByUsuario(usuario);
     }
+
+    @Override
+    public Optional<Rutina> buscarRutina(Long id) {
+        return rutinaRepositorio.findById(id);
+    }
 }

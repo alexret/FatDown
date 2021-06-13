@@ -6,6 +6,7 @@ import com.fatdown.spring.entidades.Usuario;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
+import java.util.Optional;
 
 public interface RutinaServicio {
 
@@ -14,4 +15,6 @@ public interface RutinaServicio {
     void deleteRutina(Rutina rutina);
 
     List<Rutina> getRutinas(Usuario usuario);
+
+    Optional<Rutina> buscarRutina(Long id);
 }

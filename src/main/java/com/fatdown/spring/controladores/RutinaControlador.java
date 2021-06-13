@@ -1,5 +1,6 @@
 package com.fatdown.spring.controladores;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fatdown.spring.entidades.Ejercicio;
 import com.fatdown.spring.entidades.Rutina;
 import com.fatdown.spring.entidades.Usuario;
@@ -11,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -30,9 +32,6 @@ public class RutinaControlador {
 
     @Autowired
     EjercicioServicio ejercicioServicio;
-
-    @Autowired
-    UsuarioRepository usuarioRepository;
 
     @GetMapping("/listarEjercicios")
     public ModelAndView listarEjercicios() {
@@ -87,10 +86,15 @@ public class RutinaControlador {
     }
 
 
-    @PostMapping("/deleteEjercicio")
-    public String deleteEjercicio(@Valid Rutina rutina) {
-        rutinaServicio.deleteRutina(rutina);
-        return "redirect:/rutina/addEjercicio";
+    @PostMapping(value = "/borrarRutina", consumes = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    public boolean  borrarRutina(@RequestBody JsonNode values) {
+        JsonNode aux = values.findValue("idRutina");
+        Optional<Rutina> auxRutina = rutinaServicio.buscarRutina(aux.asLong()   );
+        if(auxRutina.isPresent())
+            rutinaServicio.deleteRutina(auxRutina.get());
+
+        return true;
     }
 
 }

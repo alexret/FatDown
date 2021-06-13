@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang=es xmlns:th="http://www.thymeleaf.org"
-	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+	  xmlns:sec="http://www.thymeleaf.org/extras/spring-security" xmlns="http://www.w3.org/1999/html">
 <head>
 <title>Fat Down</title>
 <meta charset="UTF-8">
@@ -135,11 +135,13 @@ td:first-child {
 <!--		 						pedidos realizados</h4>-->
 		 					<p class="card-text">
 		 					<table class="table table-hover">
+
 		 						<tbody th:each="rutina: ${rutina}">
 		 							<tr class="table-primary">
 		 								<td class="celdas"><span
 		 									th:text="'Nombre Rutina '+${rutina.nombreRutina}"></span></td>
 									</tr>
+									<form>
 									<tr class="table-primary" th:each="ejercicio: ${rutina.ejercicio}">
 										<td class="celdas"><span
 											th:text="'Nombre ejercicio '+${ejercicio.nombreEjercicio}"></span></td>
@@ -153,6 +155,12 @@ td:first-child {
 												th:text="'Nombre ejercicio '+${ejercicio.repeticionEjercicio}"></span></td>
 										<td class="celdas"><span
 												th:text="'Nombre ejercicio '+${ejercicio.duracionEjercicio}"></span></td>
+										<td class="celdas"> <button type="button" id="bBorrarRutina"
+												class="btn btn-primary" th:value="${rutina.idRutina}">
+											<i class="far fa-trash-alt"></i> Borrar rutina
+										</button>
+										</td>
+										</form>
 <!--		 								<td class="celdas"><span style="background-color: #ffff33;"-->
 <!--		 									th:text="'Precio: '+${rutina.ejercicio.nombreEjercicio}"></span></td>-->
 <!--		 								<td class="celdas"><a-->
@@ -160,7 +168,7 @@ td:first-child {
 <!--		 									class="btn btn-info">Ver la compra</a></td>-->
 		 							</tr>
 		 						</tbody>
-		 					</table>
+							</table>
 		 				</div>
 		 			</div>
 	</section>
