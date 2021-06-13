@@ -135,6 +135,7 @@ h5 {
 			style="width: 60%;">
 		<h1>¡Nuestros entrenadores están trabajando en ello!</h1>
 	</div>
+	<div>
 	<div th:each="ejercicio : ${ejercicio}"
 		class="card text-white bg-primary mb-3"
 		style="width: 50%; margin-right: auto; margin-left: auto;">
@@ -174,7 +175,7 @@ h5 {
 		</div>
 	</div>
 
-	<div class="card text-white bg-success mb-3 cardrutina">
+	<div class="card text-white bg-success mb-3 cardrutina" th:unless="${ejercicio.empty}">
 		<div class="card-header" style="color: #ff9900;">¡Crea tu
 			rutina!</div>
 		<div class="card-body">
