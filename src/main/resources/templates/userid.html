@@ -191,14 +191,7 @@ td:first-child {
 							<td style="text-align: center" th:text="${video.categoriaVideo}"></td>
 							<td><iframe width="275" height="200"
 									th:src=" ${video.linkVideo}"></iframe></td>
-
-							<td>
-								<form th:action="@{/multimedia/eliminarVideo/{id}(id=${video.idMultimedia})}"
-									method="post">
-									<button class="btn btn-danger btn-lg" type="submit">Eliminar
-										vídeo</button>
-								</form>
-						</tr>
+							
 					</tbody>
 				</table>
 			</div>
